@@ -2,25 +2,27 @@
 
 :root {
   --background: #ffffff;
-  --foreground: #171717;
+  --foreground: #000000;
+  --accent: #00642E;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
-
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+@theme {
+  --color-accent: var(--accent);
+  --font-serif: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  --font-sans: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  --font-display: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  --font-body: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
 }
 
 body {
-  background: var(--background);
   color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--background);
+  font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+::selection {
+  background-color: var(--accent);
+  color: white;
 }

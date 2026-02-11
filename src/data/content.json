@@ -1,0 +1,126 @@
+{
+  "hero": {
+    "headline": "CREATOR-LED RESTAURANT CONTENT.",
+    "subheadline": "We help Vancouver restaurants fill tables by standing out on social media.",
+    "description": "",
+    "tagline": ""
+  },
+  "trustedBy": [
+    {
+      "name": "Restaurant A",
+      "logo": "/placeholders/logo1.svg"
+    },
+    {
+      "name": "Restaurant B",
+      "logo": "/placeholders/logo2.svg"
+    },
+    {
+      "name": "Restaurant C",
+      "logo": "/placeholders/logo3.svg"
+    },
+    {
+      "name": "Restaurant D",
+      "logo": "/placeholders/logo4.svg"
+    }
+  ],
+  "work": [
+    {
+      "id": 1,
+      "type": "video",
+      "src": "/placeholders/reel1.mp4",
+      "caption": "Cinematic Dish Reveal"
+    },
+    {
+      "id": 2,
+      "type": "image",
+      "src": "/placeholders/food1.jpg",
+      "caption": "Plating Detail"
+    },
+    {
+      "id": 3,
+      "type": "video",
+      "src": "/placeholders/reel2.mp4",
+      "caption": "Chef Action"
+    },
+    {
+      "id": 4,
+      "type": "image",
+      "src": "/placeholders/interior1.jpg",
+      "caption": "Ambiance"
+    }
+  ],
+  "services": [
+    {
+      "title": "One-off Eatcouver Reels",
+      "description": "Averaging over 75,000 local views, our Eatcouver reels offer great short-midterm exposure for Vancouver-based restaurants. We collaborate with restaurant teams to ensure that our messaging aligns exactly with what they want to share, contributing to a discernible spike in visibility and sales."
+    },
+    {
+      "title": "Ongoing Partnerships",
+      "description": "While Eatcouver reels have consistently delivered strong value to local businesses, we recognized they primarily drive short-term visibility. We have since introduced a new model to work with a hand-selected group of exceptional local restaurants on continuous content and visibility campaigns.\n\nOur approach is always collaborative and never one-size-fits-all. We invest significant care, strategy, and creative energy into each partnership to ensure the work genuinely supports long-term brand growth and business outcomes."
+    },
+    {
+      "title": "Creator Coordination",
+      "description": "Over the past 10 years, we’ve built strong relationships with local content creators and helped many grow their platforms. We can coordinate creators to visit your restaurant and create content on your behalf.\n\nWe handle scheduling, communication, and feedback — you get the visibility."
+    }
+  ],
+  "stats": [
+    {
+      "value": "650M+",
+      "label": "Impressions generated"
+    },
+    {
+      "value": "75k",
+      "label": "Avg local views per video"
+    },
+    {
+      "value": "140k+",
+      "label": "Local followers"
+    },
+    {
+      "value": "2.4x",
+      "label": "Sales increase off one video"
+    }
+  ],
+  "story": {
+    "paragraphs": [
+      "Eatcouver was founded in 2015 with a simple mission: support local restaurants by sharing their spaces, food, and stories with Vancouver’s community. What began as a passion project quickly evolved into a powerful marketing channel for hospitality businesses. By staying deeply attuned to platform trends and audience behaviour, our team drove consistent, organic growth and built one of Vancouver’s most trusted food platforms.",
+      "Our philosophy is straightforward: tell each restaurant’s story in the way they want it told. Visibility is great, but far less so when messaging doesn’t align with a restaurant’s story and brand. This is why collaboration with our partners is at the core of our operations.",
+      "We believe great content is not reserved for only the most prized venues. Family-run gems tucked down back lanes, nostalgic diners, and new neighbourhood spots deserve just as much visibility as any fine dining room. Every restaurant has a story worth sharing — our role is to tell it with care, intention, and authenticity.",
+      "In January 2024, our founder Ben launched @recipeincaption, applying the same principles we used to grow Eatcouver. By 2026, the page surpassed one million followers on Instagram alone and became one of the highest-performing accounts in the recipe space, reinforcing our team’s understanding of how to build reach through strong storytelling.",
+      "After Eatcouver surpassed 100,000 local followers in summer 2025, we expanded into full-scale hospitality media and content creation. Today, we partner directly with restaurants to produce native, high-performing content for their own channels, coordinate creator visits, and use our platforms to amplify local visibility. Our approach remains the same: don’t employ a one-size-fits-all approach, adapt quickly, and tell stories that resonate deeply with Vancouver's foodie community.",
+      "If you’re interested in partnering with us, start the conversation at admin@eatcouver.ca."
+    ]
+  },
+  "weHearYou": {
+    "title": "We Hear You",
+    "lines": [
+      "Our approach is built on creating content that organically resonates.",
+      "It’s not one-size-fits-all.",
+      "It’s about telling a restaurant’s story in a way that connects.",
+      "It’s about providing value that far outweighs the cost.",
+      "It’s about saving restaurant owners time and making a real, measurable difference."
+    ]
+  },
+  "team": [
+    {
+      "name": "Ben",
+      "role": "Founder",
+      "image": "/placeholders/team1.jpg"
+    },
+    {
+      "name": "Team Member 2",
+      "role": "Head of Production",
+      "image": "/placeholders/team2.jpg"
+    },
+    {
+      "name": "Team Member 3",
+      "role": "Creative Lead",
+      "image": "/placeholders/team3.jpg"
+    }
+  ],
+  "contact": {
+    "email": "admin@eatcouver.ca",
+    "phone": "604-404-1222",
+    "calendar": "https://calendar.app.google/9mrnXME5JRr2D6Ro6"
+  }
+}
