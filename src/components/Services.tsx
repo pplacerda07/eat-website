@@ -6,7 +6,7 @@ import { motion } from 'framer-motion';
 
 export default function Services() {
     return (
-        <Section id="services" className="bg-accent pt-24 pb-0 px-0 md:px-0 relative overflow-hidden">
+        <Section id="services" className="bg-accent pt-12 pb-0 px-0 md:px-0 relative overflow-hidden">
             {/* Massive Title Background */}
             <div className="w-full text-center mb-[-2vw] md:mb-[-3vw] relative z-0">
                 <h2 className="text-[16vw] leading-[0.8] font-bold font-serif text-white uppercase tracking-tighter opacity-90">

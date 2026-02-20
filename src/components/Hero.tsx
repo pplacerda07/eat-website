@@ -2,79 +2,91 @@
 
 import Section from './Section';
 import { motion } from 'framer-motion';
-import content from '../data/content.json';
 
 export default function Hero() {
     return (
-        <Section className="min-h-screen flex flex-col justify-center pt-32 pb-12 overflow-hidden relative">
-            <div className="max-w-[90vw] mx-auto relative w-full flex flex-col items-center">
-                {/* Main Title - Stacked and Massive */}
-                <div className="relative z-10 font-serif leading-[0.85] tracking-tighter text-black uppercase w-full">
-                    <motion.div
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8 }}
-                        className="text-[11vw] md:text-[12vw] font-bold block"
+        <Section className="min-h-screen w-full relative overflow-hidden bg-white flex flex-col justify-center pt-24">
+            <div className="w-full relative z-10 px-4 md:px-8 flex flex-col gap-[1.5vw]">
+
+                {/* LINE 1: PREMIUM (left) + Subtitle (right, vertically centered) */}
+                <div className="w-full flex items-center justify-between">
+                    <motion.span
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.9, ease: "easeOut" }}
+                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-black uppercase"
                     >
-                        CREATOR-LED
-                    </motion.div>
+                        PREMIUM
+                    </motion.span>
 
-                    <div className="flex items-start mt-2 md:mt-4 relative">
-                        <motion.div
-                            initial={{ y: 50, opacity: 0 }}
-                            animate={{ y: 0, opacity: 1 }}
-                            transition={{ duration: 0.8, delay: 0.1 }}
-                            className="text-[7vw] md:text-[8vw] font-bold block ml-[6vw] text-accent shrink-0"
-                        >
-                            RESTAURANT
-                        </motion.div>
-
-                        {/* Subtitle - Positioned next to RESTAURANT */}
-                        <motion.div
-                            initial={{ opacity: 0, x: -20 }}
-                            animate={{ opacity: 1, x: 0 }}
-                            transition={{ duration: 0.8, delay: 0.6 }}
-                            className="ml-8 max-w-[25vw] md:max-w-[20vw] text-justify z-20 pt-[1vw]"
-                        >
-                            <p className="text-[1.5vw] md:text-[1.2vw] font-serif font-medium leading-tight text-black">
-                                {content.hero.subheadline}
-                            </p>
-                        </motion.div>
-                    </div>
-
+                    {/* Subtitle - right side, same row as PREMIUM */}
                     <motion.div
-                        initial={{ y: 50, opacity: 0 }}
-                        animate={{ y: 0, opacity: 1 }}
-                        transition={{ duration: 0.8, delay: 0.2 }}
-                        className="text-[11vw] md:text-[12vw] font-bold block"
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        transition={{ duration: 0.8, delay: 0.5 }}
+                        className="hidden md:flex flex-col gap-2 max-w-[200px] text-right"
                     >
-                        CONTENT.
+                        <p className="text-sm font-serif text-black leading-snug">
+                            Built by Vancouverites, for Vancouver restaurants. We turn your story into a powerful marketing channel.
+                        </p>
+                        <a href="#services" className="flex items-center justify-end gap-2 text-xs font-serif text-black uppercase tracking-widest hover:opacity-60 transition-opacity">
+                            <span>↳</span> What we do
+                        </a>
                     </motion.div>
                 </div>
 
-                {/* 9:16 Carousel */}
+                {/* LINE 2: CONTENT (Hollow) - Right */}
+                <div className="w-full flex justify-end pr-[2%]">
+                    <motion.span
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.9, delay: 0.1, ease: "easeOut" }}
+                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-transparent uppercase"
+                        style={{ WebkitTextStroke: '2px black' }}
+                    >
+                        CONTENT
+                    </motion.span>
+                </div>
+
+                {/* LINE 3: CRAFTED BY - Left */}
+                <div className="w-full">
+                    <motion.span
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.9, delay: 0.2, ease: "easeOut" }}
+                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-black uppercase block"
+                    >
+                        CRAFTED BY
+                    </motion.span>
+                </div>
+
+                {/* LINE 4: CREATORS. - Center */}
+                <div className="w-full flex justify-center">
+                    <motion.span
+                        initial={{ opacity: 0, y: 60 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 0.9, delay: 0.3, ease: "easeOut" }}
+                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-[#00642E] uppercase"
+                    >
+                        CREATORS.
+                    </motion.span>
+                </div>
+
+                {/* Mobile Subtitle */}
                 <motion.div
-                    initial={{ opacity: 0, y: 40 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.4 }}
-                    className="w-full mt-24 md:mt-32 overflow-x-auto snap-x snap-mandatory scrollbar-hide pb-8"
+                    initial={{ opacity: 0 }}
+                    animate={{ opacity: 1 }}
+                    transition={{ duration: 0.8, delay: 0.8 }}
+                    className="flex md:hidden flex-col gap-3 mt-4"
                 >
-                    <div className="flex md:justify-center gap-4 min-w-max px-4">
-                        {content.work.map((item, index) => (
-                            <div
-                                key={index}
-                                className="snap-center shrink-0 w-[25vh] md:w-[30vh] aspect-[9/16] bg-gray-200 rounded-lg overflow-hidden relative group"
-                            >
-                                <div className="absolute inset-0 bg-gray-300 animate-pulse" />
-                                {/* Placeholder for actual media */}
-                                <div className="absolute inset-0 flex items-center justify-center text-gray-500 text-xs uppercase tracking-widest font-medium">
-                                    {item.type}
-                                </div>
-                                <div className="absolute inset-0 bg-black/20 group-hover:bg-black/40 transition-colors" />
-                            </div>
-                        ))}
-                    </div>
+                    <p className="text-sm font-serif text-black leading-snug max-w-xs">
+                        Built by Vancouverites, for Vancouver restaurants. We turn your story into a powerful marketing channel.
+                    </p>
+                    <a href="#services" className="flex items-center gap-2 text-xs font-serif text-black uppercase tracking-widest hover:opacity-60 transition-opacity">
+                        <span>↳</span> What we do
+                    </a>
                 </motion.div>
+
             </div>
         </Section>
     );

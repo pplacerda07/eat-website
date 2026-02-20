@@ -62,7 +62,7 @@ export default function Header() {
                 </nav>
 
                 {/* Mobile Menu Button */}
-                <button className="md:hidden text-accent justify-self-end col-start-2">
+                <button aria-label="Open navigation menu" className="md:hidden text-accent justify-self-end col-start-2">
                     Menu
                 </button>
             </div>

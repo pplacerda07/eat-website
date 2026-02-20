@@ -12,7 +12,7 @@ export default function Team() {
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-12">
                     {content.team.map((member, index) => (
                         <div key={index} className="flex flex-col gap-4 group">
-                            <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden">
+                            <div className="aspect-[3/4] bg-gray-200 relative overflow-hidden" role="img" aria-label={`Photo of ${member.name}, ${member.role} at Eatcouver`}>
                                 <div className="w-full h-full bg-gray-300 group-hover:bg-gray-400 transition-colors duration-500" />
                                 {/* Image placeholder */}
                             </div>

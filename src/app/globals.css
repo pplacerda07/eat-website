@@ -4,10 +4,12 @@
   --background: #ffffff;
   --foreground: #000000;
   --accent: #00642E;
+  --secondary: #F0EAD2;
 }
 
 @theme {
   --color-accent: var(--accent);
+  --color-secondary: var(--secondary);
   --font-serif: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
   --font-sans: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
   --font-display: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
