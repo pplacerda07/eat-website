@@ -2,6 +2,7 @@
 
 import Link from 'next/link';
 import { useState, useEffect } from 'react';
+import { motion } from 'framer-motion';
 
 const navItems = [
     { name: 'Work', href: '#work' },
@@ -24,8 +25,11 @@ export default function Header() {
     }, []);
 
     return (
-        <header
-            className={`fixed top-0 left-0 w-full z-50 transition-all duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
+        <motion.header
+            initial={{ opacity: 0, y: -20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+            className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
                 }`}
         >
             <div className="max-w-[95vw] mx-auto px-6 grid grid-cols-2 md:grid-cols-3 items-center">
@@ -66,6 +70,6 @@ export default function Header() {
                     Menu
                 </button>
             </div>
-        </header>
+        </motion.header>
     );
 }
