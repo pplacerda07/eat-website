@@ -5,12 +5,12 @@ import { useState, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 const navItems = [
-    { name: 'Work', href: '#work' },
-    { name: 'Services', href: '#services' },
-    { name: 'Impact', href: '#impact' },
-    { name: 'Partners', href: '#partners' },
-    { name: 'Story', href: '#story' },
-    { name: 'Team', href: '#team' },
+    { name: 'Work', href: '/#work' },
+    { name: 'Services', href: '/#services' },
+    { name: 'Impact', href: '/#impact' },
+    { name: 'Partners', href: '/partners' },
+    { name: 'Story', href: '/#story' },
+    { name: 'Team', href: '/team' },
 ];
 
 export default function Header() {
@@ -40,7 +40,7 @@ export default function Header() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-xs uppercase tracking-wider text-black hover:text-accent transition-colors font-medium"
+                            className="text-xs uppercase tracking-wider text-black hover:text-accent transition-colors"
                         >
                             {item.name}
                         </Link>
@@ -58,7 +58,7 @@ export default function Header() {
                         <Link
                             key={item.name}
                             href={item.href}
-                            className="text-xs uppercase tracking-wider text-black hover:text-accent transition-colors font-medium"
+                            className="text-xs uppercase tracking-wider text-black hover:text-accent transition-colors"
                         >
                             {item.name}
                         </Link>

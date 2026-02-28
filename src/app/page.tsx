@@ -1,10 +1,7 @@
-import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 
 import Services from '@/components/Services';
-import Stats from '@/components/Stats';
 import Story from '@/components/Story';
-import Team from '@/components/Team';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -15,6 +12,30 @@ import PartnersMarquee from '@/components/PartnersMarquee';
 import content from '@/data/content.json';
 
 const ENABLE_TESTIMONIALS = false;
+
+// Stacking section wrapper — slides over the hero with rounded top corners
+function StackSection({
+  children,
+  zIndex,
+  className = '',
+}: {
+  children: React.ReactNode;
+  zIndex: number;
+  className?: string;
+}) {
+  return (
+    <div
+      className={`relative bg-white ${className}`}
+      style={{
+        zIndex,
+        borderRadius: '20px 20px 0 0',
+        marginTop: '-20px',
+      }}
+    >
+      {children}
+    </div>
+  );
+}
 
 export default function Home() {
   const jsonLd = {
@@ -59,28 +80,40 @@ export default function Home() {
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <Header />
 
+      {/* Hero — sticky, sits behind all stacking sections */}
       <Hero />
 
-      <VideoCarousel />
+      {/* Stacking sections — each one slides up over the hero */}
+      <StackSection zIndex={10}>
+        <VideoCarousel />
+      </StackSection>
 
+      <StackSection zIndex={20}>
+        <PartnersMarquee />
+      </StackSection>
 
-      <Stats />
+      <StackSection zIndex={30}>
+        <Services />
+      </StackSection>
 
-      <Services />
+      <StackSection zIndex={40}>
+        <Story />
+      </StackSection>
 
-      <PartnersMarquee />
+      {ENABLE_TESTIMONIALS && (
+        <StackSection zIndex={50}>
+          <TestimonialShowreel />
+        </StackSection>
+      )}
 
-      <Story />
+      <StackSection zIndex={60}>
+        <ContactSection />
+      </StackSection>
 
-      {ENABLE_TESTIMONIALS && <TestimonialShowreel />}
-
-      <Team />
-
-      <ContactSection />
-
-      <Footer />
+      <StackSection zIndex={70}>
+        <Footer />
+      </StackSection>
 
       <ContactModal />
       <InstagramPopup />

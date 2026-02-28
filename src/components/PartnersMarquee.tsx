@@ -1,10 +1,10 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
+import { useEffect, useState } from 'react';
 
-// Client logo files from /public
 const clientLogos = [
-
     { name: 'Nook', src: '/3. Nook.png' },
     { name: 'Via Tevere', src: '/4. Via Tevere.png' },
     { name: 'Pan Pacific Vancouver', src: '/17. Pan Pacific Vancouver.png' },
@@ -14,51 +14,133 @@ const clientLogos = [
     { name: 'La Grotta del Formaggio', src: '/147. La Grotta del Formaggio.png' },
 ];
 
-// Duplicate for continuous loop
-const loopedLogos = [...clientLogos, ...clientLogos, ...clientLogos];
+function FlippingLogo({
+    currentIndex,
+    onFlip,
+}: {
+    currentIndex: number;
+    onFlip: () => void;
+}) {
+    const [flipping, setFlipping] = useState(false);
+    const [displayIndex, setDisplayIndex] = useState(currentIndex);
 
-export default function PartnersMarquee() {
+    useEffect(() => {
+        if (currentIndex !== displayIndex) {
+            setFlipping(true);
+            const timeout = setTimeout(() => {
+                setDisplayIndex(currentIndex);
+                setFlipping(false);
+            }, 300);
+            return () => clearTimeout(timeout);
+        }
+    }, [currentIndex]);
+
     return (
-        <section className="w-full bg-white py-16 overflow-hidden">
-            <div className="px-4 md:px-8 mb-8">
-                <h2 className="text-xs font-serif uppercase tracking-[0.3em] text-black/50">Our Partners — 200+ Partners</h2>
-            </div>
+        <span
+            className="inline-flex items-center justify-center align-middle mx-1 md:mx-3 relative"
+            style={{
+                width: 'clamp(40px, 10vw, 110px)',
+                height: 'clamp(14px, 2.5vw, 36px)',
+                verticalAlign: 'middle',
+                position: 'relative',
+                top: '-0.05em',
+                perspective: '600px',
+            }}
+        >
+            <span
+                style={{
+                    display: 'inline-flex',
+                    width: '100%',
+                    height: '100%',
+                    transition: 'transform 0.3s ease, opacity 0.3s ease',
+                    transform: flipping ? 'rotateX(90deg)' : 'rotateX(0deg)',
+                    opacity: flipping ? 0 : 1,
+                    transformOrigin: 'center center',
+                    position: 'relative',
+                }}
+            >
+                <Image
+                    src={clientLogos[displayIndex].src}
+                    alt={clientLogos[displayIndex].name}
+                    fill
+                    className="object-contain"
+                    sizes="110px"
+                />
+            </span>
+        </span>
+    );
+}
 
-            {/* Marquee container */}
-            <div className="relative w-full overflow-hidden">
-                {/* Fade edges */}
-                <div className="absolute left-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-r from-white to-transparent pointer-events-none" />
-                <div className="absolute right-0 top-0 bottom-0 w-24 z-10 bg-gradient-to-l from-white to-transparent pointer-events-none" />
+export default function PartnersStatement() {
+    const getInitialIndices = () => {
+        const shuffled = [...Array(clientLogos.length).keys()].sort(() => Math.random() - 0.5);
+        return [shuffled[0], shuffled[1], shuffled[2]];
+    };
 
-                <div
-                    className="flex items-center gap-12 w-max"
-                    style={{
-                        animation: 'marquee 22s linear infinite',
-                    }}
+    const [indices, setIndices] = useState<[number, number, number]>([0, 1, 2]);
+
+    useEffect(() => {
+        setIndices(getInitialIndices() as [number, number, number]);
+    }, []);
+
+    const flipSlot = (slot: 0 | 1 | 2) => {
+        setIndices((prev) => {
+            const used = new Set(prev);
+            const available = Array.from({ length: clientLogos.length }, (_, i) => i).filter(
+                (i) => !used.has(i)
+            );
+            if (available.length === 0) return prev;
+            const next = available[Math.floor(Math.random() * available.length)];
+            const updated = [...prev] as [number, number, number];
+            updated[slot] = next;
+            return updated;
+        });
+    };
+
+    useEffect(() => {
+        const intervals = [
+            setInterval(() => flipSlot(0), 2000),
+            setInterval(() => flipSlot(1), 2700),
+            setInterval(() => flipSlot(2), 3400),
+        ];
+        return () => intervals.forEach(clearInterval);
+    }, []);
+
+    return (
+        <section
+            className="w-full py-16 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
+            style={{ backgroundColor: '#fafafa' }}
+        >
+            <p
+                className="font-serif leading-[1.15] tracking-tight text-black text-center"
+                style={{ fontSize: 'clamp(20px, 4.5vw, 64px)' }}
+            >
+                We turn
+                <FlippingLogo currentIndex={indices[0]} onFlip={() => flipSlot(0)} />
+                restaurants
+                <br className="hidden sm:block" />
+                <span className="sm:hidden"> </span>
+                into the places
+                <FlippingLogo currentIndex={indices[1]} onFlip={() => flipSlot(1)} />
+                <br className="hidden sm:block" />
+                everyone in
+                <span className="sm:hidden"> </span>
+                <br className="sm:hidden" />
+                Vancouver
+                <FlippingLogo currentIndex={indices[2]} onFlip={() => flipSlot(2)} />
+                is talking about.
+            </p>
+
+            {/* Button */}
+            <div className="flex justify-center mt-7 md:mt-8">
+                <Link
+                    href="/partners"
+                    className="inline-flex items-center gap-2 px-6 py-2.5 md:px-7 md:py-3 rounded-full border border-black/30 text-black/70 tracking-widest uppercase transition-all duration-300 hover:border-black hover:text-black hover:bg-black/[0.04]"
+                    style={{ letterSpacing: '0.15em', fontSize: '10px' }}
                 >
-                    {loopedLogos.map((logo, i) => (
-                        <div
-                            key={i}
-                            className="shrink-0 h-14 w-32 relative grayscale hover:grayscale-0 opacity-60 hover:opacity-100 transition-all duration-300"
-                        >
-                            <Image
-                                src={logo.src}
-                                alt={logo.name}
-                                fill
-                                className="object-contain"
-                                sizes="128px"
-                            />
-                        </div>
-                    ))}
-                </div>
+                    See all partners
+                </Link>
             </div>
-
-            <style jsx>{`
-                @keyframes marquee {
-                    0%   { transform: translateX(0); }
-                    100% { transform: translateX(calc(-100% / 3)); }
-                }
-            `}</style>
         </section>
     );
 }

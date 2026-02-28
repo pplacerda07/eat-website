@@ -4,49 +4,11 @@ import Section from './Section';
 import content from '../data/content.json';
 import { motion } from 'framer-motion';
 
-const statIcons = [
-    // Eye icon — Impressions
-    <svg key="impressions" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <path d="M2 16s5.5-10 14-10 14 10 14 10-5.5 10-14 10S2 16 2 16z" strokeLinecap="round" strokeLinejoin="round" />
-        <circle cx="16" cy="16" r="4.5" />
-    </svg>,
-    // Play icon — Views
-    <svg key="views" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <polygon points="11,6 26,16 11,26" fill="currentColor" opacity="0.15" stroke="currentColor" strokeLinejoin="round" />
-        <polygon points="11,6 26,16 11,26" strokeLinejoin="round" />
-    </svg>,
-    // Users icon — Followers
-    <svg key="followers" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <circle cx="12" cy="10" r="4" />
-        <path d="M4 26c0-4.418 3.582-8 8-8s8 3.582 8 8" strokeLinecap="round" />
-        <circle cx="22" cy="10" r="3" opacity="0.5" />
-        <path d="M24 18c2.761 0 5 2.239 5 5v3" strokeLinecap="round" opacity="0.5" />
-    </svg>,
-    // Trending up icon — Sales
-    <svg key="sales" viewBox="0 0 32 32" fill="none" stroke="currentColor" strokeWidth="1.5" className="w-8 h-8">
-        <polyline points="4,24 12,14 18,18 28,6" strokeLinecap="round" strokeLinejoin="round" />
-        <polyline points="22,6 28,6 28,12" strokeLinecap="round" strokeLinejoin="round" />
-    </svg>,
-];
-
-const statDescriptions = [
-    "Total organic reach across platforms",
-    "Average local viewers per reel",
-    "Engaged community members",
-    "Revenue lift from a single post",
-];
 
 export default function Stats() {
     return (
         <Section id="impact" className="bg-white text-black py-20 relative overflow-hidden">
-            {/* Background decorative elements */}
-            <div className="absolute inset-0 pointer-events-none select-none">
-                {/* Large faded number */}
-                <div className="absolute -top-16 -right-8 text-[28vw] font-serif font-bold text-black/[0.03] leading-none select-none">
-                    650M
-                </div>
-
-            </div>
+            {/* Removed background decorative 650M element for a cleaner look */}
 
             <div className="max-w-7xl mx-auto relative z-10">
                 {/* Header area */}
@@ -75,7 +37,7 @@ export default function Stats() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3 }}
-                        className="text-black/60 font-serif text-lg max-w-md md:text-right leading-relaxed"
+                        className="text-black/60 text-lg max-w-md md:text-right leading-relaxed"
                     >
                         Real results, built organically over 10 years of telling Vancouver's food stories.
                     </motion.p>
@@ -91,7 +53,7 @@ export default function Stats() {
                 />
 
                 {/* Stats Grid */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-0">
+                <div className="grid grid-cols-2 lg:grid-cols-4 gap-8 md:gap-12 lg:gap-0">
                     {content.stats.map((stat, index) => (
                         <motion.div
                             key={index}
@@ -99,16 +61,10 @@ export default function Stats() {
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
                             transition={{ delay: index * 0.12, duration: 0.6 }}
-                            className={`flex flex-col gap-5 p-8 lg:p-10 relative group ${index < content.stats.length - 1 ? 'border-b sm:border-b lg:border-b-0 lg:border-r border-black/10' : ''
-                                } ${index === 1 ? 'sm:border-r sm:border-black/10 lg:border-r' : ''} ${index === 0 ? 'sm:border-r sm:border-black/10 lg:border-r' : ''}`}
+                            className={`flex flex-col gap-3 lg:p-10 relative group ${index < content.stats.length - 1 ? 'lg:border-r border-black/10' : ''}`}
                         >
-                            {/* Icon */}
-                            <div className="text-accent group-hover:text-black transition-colors duration-500">
-                                {statIcons[index]}
-                            </div>
-
                             {/* Value */}
-                            <span className="text-5xl md:text-5xl lg:text-6xl font-serif font-bold tracking-tight leading-none">
+                            <span className="text-5xl md:text-5xl lg:text-7xl font-serif font-bold tracking-tight text-black group-hover:text-accent transition-colors duration-500">
                                 {stat.value}
                             </span>
 
@@ -116,14 +72,6 @@ export default function Stats() {
                             <span className="text-xs uppercase tracking-[0.2em] text-black/80 font-semibold">
                                 {stat.label}
                             </span>
-
-                            {/* Description */}
-                            <span className="text-sm text-black/40 font-serif leading-relaxed">
-                                {statDescriptions[index]}
-                            </span>
-
-                            {/* Hover accent line */}
-                            <div className="absolute bottom-0 left-8 right-8 lg:left-10 lg:right-10 h-[2px] bg-black/0 group-hover:bg-accent transition-all duration-500 rounded-full" />
                         </motion.div>
                     ))}
                 </div>
@@ -138,7 +86,7 @@ export default function Stats() {
                 >
                     <div className="flex items-center gap-3">
                         <div className="w-2 h-2 rounded-full bg-accent animate-pulse" />
-                        <span className="text-sm text-black/50 tracking-wide font-serif">
+                        <span className="text-sm text-black/50 tracking-wide">
                             All metrics organic. No paid promotion.
                         </span>
                     </div>

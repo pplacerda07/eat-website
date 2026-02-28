@@ -2,8 +2,8 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-white py-20 px-6 md:px-12 lg:px-24 border-t border-gray-100">
-            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-start gap-12">
+        <footer className="bg-white py-12 md:py-20 px-5 md:px-12 lg:px-24 border-t border-gray-100">
+            <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-12 text-center md:text-left">
                 <div>
                     <p className="text-3xl font-serif text-accent mb-6">eatcouver</p>
                     <p className="text-gray-500 max-w-xs mb-6">
@@ -11,7 +11,7 @@ export default function Footer() {
                     </p>
 
                     {/* Social Media Icons */}
-                    <div className="flex items-center gap-4 mb-4">
+                    <div className="flex items-center justify-center md:justify-start gap-4 mb-4">
                         {/* Instagram */}
                         <a
                             href="https://www.instagram.com/eatcouver/"
@@ -53,20 +53,20 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <nav aria-label="Footer navigation" className="flex gap-12 text-sm text-gray-600">
+                <nav aria-label="Footer navigation" className="flex gap-8 md:gap-12 text-sm text-gray-600">
                     <div className="flex flex-col gap-4">
-                        <Link href="#work" className="hover:text-accent">Work</Link>
-                        <Link href="#services" className="hover:text-accent">Services</Link>
-                        <Link href="#impact" className="hover:text-accent">Impact</Link>
+                        <Link href="/#work" className="hover:text-accent">Work</Link>
+                        <Link href="/#services" className="hover:text-accent">Services</Link>
+                        <Link href="/#impact" className="hover:text-accent">Impact</Link>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <Link href="#partners" className="hover:text-accent">Partners</Link>
-                        <Link href="#story" className="hover:text-accent">Story</Link>
-                        <Link href="#team" className="hover:text-accent">Team</Link>
+                        <Link href="/partners" className="hover:text-accent">Partners</Link>
+                        <Link href="/#story" className="hover:text-accent">Story</Link>
+                        <Link href="/team" className="hover:text-accent">Team</Link>
                     </div>
                 </nav>
             </div>
-            <div className="max-w-7xl mx-auto mt-20 pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between text-xs text-gray-400">
+            <div className="max-w-7xl mx-auto mt-12 md:mt-20 pt-6 md:pt-8 border-t border-gray-200 flex flex-col md:flex-row justify-between items-center gap-2 text-xs text-gray-400">
                 <p>&copy; {new Date().getFullYear()} Eatcouver. All rights reserved.</p>
                 <p>Vancouver, BC</p>
             </div>

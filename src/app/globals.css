@@ -11,7 +11,7 @@
   --color-accent: var(--accent);
   --color-secondary: var(--secondary);
   --font-serif: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
-  --font-sans: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  --font-sans: "Helvetica Now Display", "Helvetica Now Text", "Helvetica Neue", Helvetica, Arial, sans-serif;
   --font-display: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
   --font-body: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
 }
@@ -19,7 +19,7 @@
 body {
   color: var(--foreground);
   background: var(--background);
-  font-family: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
+  font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }

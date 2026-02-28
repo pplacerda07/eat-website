@@ -1,19 +1,32 @@
 'use client';
 
 import Section from './Section';
-import { motion } from 'framer-motion';
+import Link from 'next/link';
+import Navbar from './Navbar';
+import { motion, useScroll, useTransform } from 'framer-motion';
+import { useRef } from 'react';
 
 export default function Hero() {
+    const ref = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: ref,
+        offset: ['start start', 'end start'],
+    });
+
+    const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
+    const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.5]);
+
     const AnimatedTitle = ({ text, className, delay = 0 }: { text: string; className: string; delay?: number }) => {
         return (
             <motion.div
-                className="flex whitespace-nowrap"
+                className="flex flex-wrap"
                 initial="hidden"
                 animate="visible"
                 variants={{
                     hidden: {},
                     visible: {
-                        transition: { staggerChildren: 0.08, delayChildren: delay }
+                        transition: { staggerChildren: 0.04, delayChildren: delay }
                     }
                 }}
             >
@@ -21,10 +34,10 @@ export default function Hero() {
                     <motion.span
                         key={index}
                         variants={{
-                            hidden: { opacity: 0, y: 40, filter: "blur(10px)" },
+                            hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
                             visible: { opacity: 1, y: 0, filter: "blur(0px)" }
                         }}
-                        transition={{ duration: 0.8, ease: "easeOut" }}
+                        transition={{ duration: 0.7, ease: "easeOut" }}
                         className={className}
                     >
                         {char === " " ? "\u00A0" : char}
@@ -35,76 +48,68 @@ export default function Hero() {
     };
 
     return (
-        <Section className="min-h-screen w-full relative overflow-hidden bg-white flex flex-col justify-center pt-24">
-            <div className="w-full relative z-10 px-4 md:px-8 flex flex-col gap-[1.5vw]">
+        <div
+            ref={ref}
+            style={{ position: 'sticky', top: 0, zIndex: 0, height: '100vh', overflow: 'hidden' }}
+        >
+            <motion.div
+                style={{ scale, opacity, height: '100%' }}
+                className="w-full relative flex flex-col"
+            >
+                {/* Background Image */}
+                <div
+                    className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
+                    style={{ backgroundImage: "url('/herosection_bg.svg')" }}
+                />
 
-                {/* LINE 1: PREMIUM (left) + Subtitle (right, vertically centered) */}
-                <div className="w-full flex items-center justify-between">
-                    <AnimatedTitle
-                        text="PREMIUM"
-                        delay={0}
-                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-black uppercase"
-                    />
-
-                    {/* Subtitle - right side, same row as PREMIUM */}
-                    <motion.div
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1.6, ease: "easeOut" }}
-                        className="hidden md:flex flex-col gap-2 max-w-[200px] text-right"
-                    >
-                        <p className="text-sm font-serif text-black leading-snug">
-                            We turn your business into a powerful marketing channel.
-                        </p>
-                        <a href="#services" className="flex items-center justify-end gap-2 text-xs font-serif text-black uppercase tracking-widest hover:opacity-60 transition-opacity">
-                            <span>↳</span> What we do
-                        </a>
-                    </motion.div>
-                </div>
-
-                {/* LINE 2: CONTENT (Hollow) - Right */}
-                <div className="w-full flex justify-end pr-[2%]">
-                    <AnimatedTitle
-                        text="CONTENT"
-                        delay={0.1}
-                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-black uppercase"
-                    />
-                </div>
-
-                {/* LINE 3: CRAFTED BY - Left */}
-                <div className="w-full">
-                    <AnimatedTitle
-                        text="CRAFTED BY"
-                        delay={0.2}
-                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-black uppercase block"
-                    />
-                </div>
-
-                {/* LINE 4: CREATORS. - Center */}
-                <div className="w-full flex justify-center">
-                    <AnimatedTitle
-                        text="CREATORS."
-                        delay={0.3}
-                        className="font-serif font-black text-[12vw] leading-[0.82] tracking-tighter text-[#00642E] uppercase"
-                    />
-                </div>
-
-                {/* Mobile Subtitle */}
+                {/* Top Bar: Navbar */}
                 <motion.div
-                    initial={{ opacity: 0, y: 20 }}
+                    initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 1, delay: 1.6, ease: "easeOut" }}
-                    className="flex md:hidden flex-col gap-3 mt-4"
+                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                    className="relative z-10"
                 >
-                    <p className="text-sm font-serif text-black leading-snug max-w-xs">
-                        We turn your business into a powerful marketing channel.
-                    </p>
-                    <a href="#services" className="flex items-center gap-2 text-xs font-serif text-black uppercase tracking-widest hover:opacity-60 transition-opacity">
-                        <span>↳</span> What we do
-                    </a>
+                    <Navbar variant="light" />
                 </motion.div>
 
-            </div>
-        </Section>
+                {/* Spacer */}
+                <div className="flex-1" />
+
+                {/* Bottom Content */}
+                <div className="relative z-10 w-full px-5 md:px-10 lg:px-14 pb-10 md:pb-20 flex flex-col items-end gap-2 md:gap-3">
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        animate={{ opacity: 1, y: 0 }}
+                        transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+                        className="text-[9px] md:text-xs text-white/80 leading-snug text-right max-w-[160px] md:max-w-[200px]"
+                    >
+                        We turn your business into a powerful marketing channel.
+                    </motion.p>
+
+                    <div className="flex flex-col items-end text-right">
+                        <AnimatedTitle
+                            text="PREMIUM"
+                            delay={0}
+                            className="font-serif font-black text-[11vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                        />
+                        <AnimatedTitle
+                            text="CONTENT"
+                            delay={0.08}
+                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                        />
+                        <AnimatedTitle
+                            text="CRAFTED BY"
+                            delay={0.16}
+                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                        />
+                        <AnimatedTitle
+                            text="CREATORS"
+                            delay={0.24}
+                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                        />
+                    </div>
+                </div>
+            </motion.div>
+        </div>
     );
 }
