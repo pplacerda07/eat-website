@@ -178,8 +178,9 @@ export default function VideoCarousel() {
                                         className="w-full h-full object-cover"
                                         loop
                                         playsInline
-                                        muted={playing !== i}
-                                        preload="auto"
+                                        preload="metadata"
+                                        autoPlay
+                                        muted
                                     />
 
                                     {isCenter && (
@@ -207,7 +208,7 @@ export default function VideoCarousel() {
             </div>
 
             {/* Mobile stats — shown below carousel on small screens */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-5 px-6 mt-10 lg:hidden">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-6 px-6 mt-16 lg:hidden">
                 {stats.map((stat, i) => (
                     <motion.div
                         key={i}

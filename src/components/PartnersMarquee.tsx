@@ -108,25 +108,28 @@ export default function PartnersStatement() {
 
     return (
         <section
-            className="w-full py-16 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
+            className="w-full py-28 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
             style={{ backgroundColor: '#fafafa' }}
         >
             <p
-                className="font-serif leading-[1.15] tracking-tight text-black text-center"
-                style={{ fontSize: 'clamp(20px, 4.5vw, 64px)' }}
+                className="font-serif leading-[1.25] tracking-tight text-black text-center"
+                style={{ fontSize: 'clamp(32px, 4.5vw, 64px)' }}
             >
+                {/* Line 1: We turn [logo] restaurants */}
                 We turn
                 <FlippingLogo currentIndex={indices[0]} onFlip={() => flipSlot(0)} />
                 restaurants
-                <br className="hidden sm:block" />
-                <span className="sm:hidden"> </span>
+                <br className="sm:hidden" />
+                {/* Line 2 mobile / continues on desktop */}
+                <span className="hidden sm:inline"> </span>
                 into the places
                 <FlippingLogo currentIndex={indices[1]} onFlip={() => flipSlot(1)} />
                 <br className="hidden sm:block" />
-                everyone in
-                <span className="sm:hidden"> </span>
                 <br className="sm:hidden" />
-                Vancouver
+                {/* Line 3 mobile */}
+                everyone in Vancouver
+                <br className="sm:hidden" />
+                {/* Line 4 mobile */}
                 <FlippingLogo currentIndex={indices[2]} onFlip={() => flipSlot(2)} />
                 is talking about.
             </p>

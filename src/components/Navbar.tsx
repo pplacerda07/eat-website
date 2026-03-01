@@ -25,7 +25,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
     return (
         <>
             <div className="w-full flex items-start justify-between px-6 md:px-10 lg:px-14 pt-8 md:pt-10 relative z-[100]">
-                {/* Logo — big serif, same as original */}
+                {/* Logo — big serif */}
                 <Link
                     href="/"
                     className={`font-serif text-[8vw] md:text-[4.5vw] lg:text-[3.5vw] leading-none tracking-tight ${logoColor} hover:opacity-80 transition-opacity`}
@@ -33,7 +33,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                     eatcouver
                 </Link>
 
-                {/* Desktop nav links — plain text, same as original */}
+                {/* Desktop nav links */}
                 <nav className="hidden md:flex items-center gap-6 md:gap-8 pt-2 md:pt-3">
                     {navItems.map((item) => (
                         <Link
@@ -46,28 +46,21 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                     ))}
                 </nav>
 
-                {/* Mobile hamburger */}
-                <button
-                    onClick={() => setMenuOpen(!menuOpen)}
-                    className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-[110] mt-2"
-                    aria-label="Toggle menu"
-                >
-                    <span
-                        className={`block w-5 h-[1.5px] ${menuOpen ? 'bg-black' : hamburgerColor} transition-all duration-300 origin-center ${menuOpen ? 'rotate-45 translate-y-[6.5px]' : ''
-                            }`}
-                    />
-                    <span
-                        className={`block w-5 h-[1.5px] ${menuOpen ? 'bg-black' : hamburgerColor} transition-all duration-300 ${menuOpen ? 'opacity-0 scale-0' : 'opacity-100'
-                            }`}
-                    />
-                    <span
-                        className={`block w-5 h-[1.5px] ${menuOpen ? 'bg-black' : hamburgerColor} transition-all duration-300 origin-center ${menuOpen ? '-rotate-45 -translate-y-[6.5px]' : ''
-                            }`}
-                    />
-                </button>
+                {/* Mobile hamburger — hidden when menu is open (X button inside overlay instead) */}
+                {!menuOpen && (
+                    <button
+                        onClick={() => setMenuOpen(true)}
+                        className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-[110] mt-2"
+                        aria-label="Open menu"
+                    >
+                        <span className={`block w-5 h-[1.5px] ${hamburgerColor}`} />
+                        <span className={`block w-5 h-[1.5px] ${hamburgerColor}`} />
+                        <span className={`block w-5 h-[1.5px] ${hamburgerColor}`} />
+                    </button>
+                )}
             </div>
 
-            {/* Mobile fullscreen overlay menu */}
+            {/* Mobile fullscreen overlay — fully opaque white, nothing shows through */}
             <AnimatePresence>
                 {menuOpen && (
                     <motion.div
@@ -75,8 +68,29 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
                         transition={{ duration: 0.25 }}
-                        className="fixed inset-0 z-[105] bg-white/95 backdrop-blur-xl flex flex-col items-center justify-center gap-6 md:hidden"
+                        className="fixed inset-0 z-[200] bg-white flex flex-col items-center justify-center gap-8 md:hidden"
                     >
+                        {/* Close X button — top right */}
+                        <button
+                            onClick={() => setMenuOpen(false)}
+                            className="absolute top-8 right-6 w-10 h-10 flex items-center justify-center"
+                            aria-label="Close menu"
+                        >
+                            <svg className="w-6 h-6 text-black/60" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={1.5}>
+                                <path strokeLinecap="round" strokeLinejoin="round" d="M6 18L18 6M6 6l12 12" />
+                            </svg>
+                        </button>
+
+                        {/* Logo in menu */}
+                        <Link
+                            href="/"
+                            onClick={() => setMenuOpen(false)}
+                            className="font-serif text-2xl text-accent mb-4"
+                        >
+                            eatcouver
+                        </Link>
+
+                        {/* Nav links */}
                         {navItems.map((item, i) => (
                             <motion.div
                                 key={item.name}

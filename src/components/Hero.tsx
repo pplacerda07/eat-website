@@ -76,7 +76,7 @@ export default function Hero() {
                 <div className="flex-1" />
 
                 {/* Bottom Content */}
-                <div className="relative z-10 w-full px-5 md:px-10 lg:px-14 pb-10 md:pb-20 flex flex-col items-end gap-2 md:gap-3">
+                <div className="relative z-10 w-full px-5 md:px-10 lg:px-14 pb-14 md:pb-16 lg:pb-20 flex flex-col items-end gap-2 md:gap-3">
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
