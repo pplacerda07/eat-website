@@ -179,7 +179,7 @@ export default function VideoCarousel() {
                                         loop
                                         playsInline
                                         muted={playing !== i}
-                                        preload={Math.abs(offset) <= 1 ? 'metadata' : 'none'}
+                                        preload="auto"
                                     />
 
                                     {isCenter && (
@@ -207,7 +207,7 @@ export default function VideoCarousel() {
             </div>
 
             {/* Mobile stats — shown below carousel on small screens */}
-            <div className="grid grid-cols-2 gap-4 px-6 mt-6 lg:hidden">
+            <div className="grid grid-cols-2 gap-x-8 gap-y-5 px-6 mt-10 lg:hidden">
                 {stats.map((stat, i) => (
                     <motion.div
                         key={i}
@@ -215,12 +215,12 @@ export default function VideoCarousel() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.08, duration: 0.5 }}
-                        className="flex flex-col py-3 border-t border-black/[0.07]"
+                        className="flex flex-col py-4 border-t border-black/[0.07]"
                     >
-                        <span className="font-serif text-lg font-semibold" style={{ color: '#00642E' }}>
+                        <span className="font-serif text-xl font-semibold" style={{ color: '#00642E' }}>
                             {stat.value}
                         </span>
-                        <span className="text-[9px] uppercase tracking-widest text-black/35 mt-0.5 leading-tight">
+                        <span className="text-[11px] uppercase tracking-widest text-black/40 mt-1 leading-tight">
                             {stat.label}
                         </span>
                     </motion.div>

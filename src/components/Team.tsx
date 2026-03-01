@@ -21,7 +21,7 @@ export default function Team() {
                         pointerEvents: 'none',
                     }}
                 >
-                    Team,
+                    Team
                 </h1>
 
                 {/* Cards — na frente, sobrepostos ao título */}

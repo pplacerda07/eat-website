@@ -1,16 +1,14 @@
 'use client';
 
 import Link from 'next/link';
-import { usePathname } from 'next/navigation';
 import { useState } from 'react';
 import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
-    { name: 'Home', href: '/' },
-    { name: 'Work', href: '/#work' },
-    { name: 'Team', href: '/team' },
-    { name: 'Services', href: '/#services' },
-    { name: 'Contact', href: '/#connect' },
+    { name: 'home', href: '/' },
+    { name: 'team', href: '/team' },
+    { name: 'services', href: '/#services' },
+    { name: 'work', href: '/#work' },
 ];
 
 interface NavbarProps {
@@ -18,51 +16,40 @@ interface NavbarProps {
 }
 
 export default function Navbar({ variant = 'dark' }: NavbarProps) {
-    const pathname = usePathname();
     const [menuOpen, setMenuOpen] = useState(false);
 
+    const textColor = variant === 'light' ? 'text-white' : 'text-black/70';
     const logoColor = 'text-accent';
-    const linkColor = variant === 'light' ? 'text-white/70 hover:text-white' : 'text-black/50 hover:text-black';
-    const activeBorder = variant === 'light' ? 'border-white/40 text-white' : 'border-black/30 text-black';
-    const inactiveBorder = 'border-transparent';
     const hamburgerColor = variant === 'light' ? 'bg-white' : 'bg-black';
 
     return (
         <>
-            <div className="w-full flex items-center justify-between px-5 md:px-10 lg:px-14 pt-6 md:pt-10 relative z-[100]">
-                {/* Logo */}
+            <div className="w-full flex items-start justify-between px-6 md:px-10 lg:px-14 pt-8 md:pt-10 relative z-[100]">
+                {/* Logo — big serif, same as original */}
                 <Link
                     href="/"
-                    className={`font-sans text-sm md:text-base tracking-wide ${logoColor} hover:opacity-80 transition-opacity lowercase font-medium`}
+                    className={`font-serif text-[8vw] md:text-[4.5vw] lg:text-[3.5vw] leading-none tracking-tight ${logoColor} hover:opacity-80 transition-opacity`}
                 >
                     eatcouver
                 </Link>
 
-                {/* Desktop nav links */}
-                <nav className="hidden md:flex items-center gap-1">
-                    {navItems.map((item) => {
-                        const isActive =
-                            (item.href === '/team' && pathname === '/team') ||
-                            (item.href === '/partners' && pathname === '/partners') ||
-                            (item.href === '/' && pathname === '/');
-
-                        return (
-                            <Link
-                                key={item.name}
-                                href={item.href}
-                                className={`font-sans text-[11px] md:text-xs tracking-wider px-4 py-1.5 rounded-full border transition-all duration-200 ${isActive ? activeBorder : `${inactiveBorder} ${linkColor}`
-                                    }`}
-                            >
-                                {item.name}
-                            </Link>
-                        );
-                    })}
+                {/* Desktop nav links — plain text, same as original */}
+                <nav className="hidden md:flex items-center gap-6 md:gap-8 pt-2 md:pt-3">
+                    {navItems.map((item) => (
+                        <Link
+                            key={item.name}
+                            href={item.href}
+                            className={`text-xs md:text-sm tracking-wider ${textColor} hover:opacity-70 transition-opacity lowercase`}
+                        >
+                            {item.name}
+                        </Link>
+                    ))}
                 </nav>
 
                 {/* Mobile hamburger */}
                 <button
                     onClick={() => setMenuOpen(!menuOpen)}
-                    className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-[110]"
+                    className="md:hidden flex flex-col justify-center items-center w-8 h-8 gap-[5px] z-[110] mt-2"
                     aria-label="Toggle menu"
                 >
                     <span
@@ -78,9 +65,6 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                             }`}
                     />
                 </button>
-
-                {/* Desktop spacer to balance logo */}
-                <div className="w-16 hidden md:block" />
             </div>
 
             {/* Mobile fullscreen overlay menu */}
