@@ -1,7 +1,28 @@
 'use client';
 
 import { useRef, useState, useEffect } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useInView, useSpring, useTransform } from 'framer-motion';
+
+function AnimatedCounter({ value, suffix = '', isFloat = false }: { value: number, suffix?: string, isFloat?: boolean }) {
+    const ref = useRef<HTMLSpanElement>(null);
+    const inView = useInView(ref, { once: true, margin: "0px 0px -50px 0px" });
+    const spring = useSpring(0, { mass: 1, stiffness: 50, damping: 15 });
+
+    useEffect(() => {
+        if (inView) {
+            spring.set(value);
+        }
+    }, [inView, spring, value]);
+
+    const display = useTransform(spring, (current) => {
+        if (isFloat) {
+            return current.toFixed(1) + suffix;
+        }
+        return Math.floor(current) + suffix;
+    });
+
+    return <motion.span ref={ref}>{display}</motion.span>;
+}
 
 const videos = [
     { src: '/v3.mp4', label: 'Reel' },
@@ -30,10 +51,10 @@ const fanMobile = [
 ];
 
 const stats = [
-    { value: '650M+', label: 'impressions generated' },
-    { value: '75K', label: 'avg local views per video' },
-    { value: '140K+', label: 'local followers' },
-    { value: '2.4×', label: 'increase in sales from one video' },
+    { value: 650, suffix: 'M+', label: 'impressions generated' },
+    { value: 75, suffix: 'K', label: 'avg local views per video' },
+    { value: 140, suffix: 'K+', label: 'local followers' },
+    { value: 2.4, suffix: '×', label: 'increase in sales from one video', isFloat: true },
 ];
 
 export default function VideoCarousel() {
@@ -109,7 +130,7 @@ export default function VideoCarousel() {
                                 className="font-serif leading-none"
                                 style={{ color: '#00642E', fontSize: 'clamp(20px, 1.9vw, 28px)', fontWeight: 600 }}
                             >
-                                {stat.value}
+                                <AnimatedCounter value={stat.value as number} suffix={stat.suffix} isFloat={stat.isFloat} />
                             </span>
                             <span
                                 className="uppercase tracking-widest text-black/30 mt-1 leading-tight"
@@ -219,7 +240,7 @@ export default function VideoCarousel() {
                         className="flex flex-col py-4 border-t border-black/[0.07]"
                     >
                         <span className="font-serif text-xl font-semibold" style={{ color: '#00642E' }}>
-                            {stat.value}
+                            <AnimatedCounter value={stat.value as number} suffix={stat.suffix} isFloat={stat.isFloat} />
                         </span>
                         <span className="text-[11px] uppercase tracking-widest text-black/40 mt-1 leading-tight">
                             {stat.label}

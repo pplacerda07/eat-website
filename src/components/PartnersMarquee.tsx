@@ -2,7 +2,8 @@
 
 import Image from 'next/image';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
 const clientLogos = [
     { name: 'Nook', src: '/3. Nook.png' },
@@ -16,7 +17,6 @@ const clientLogos = [
 
 function FlippingLogo({
     currentIndex,
-    onFlip,
 }: {
     currentIndex: number;
     onFlip: () => void;
@@ -33,11 +33,11 @@ function FlippingLogo({
             }, 300);
             return () => clearTimeout(timeout);
         }
-    }, [currentIndex]);
+    }, [currentIndex, displayIndex]);
 
     return (
         <span
-            className="inline-flex items-center justify-center align-middle mx-1 md:mx-3 relative"
+            className="inline-flex items-center justify-center align-middle mx-1 md:mx-3 relative z-[5]"
             style={{
                 width: 'clamp(40px, 10vw, 110px)',
                 height: 'clamp(14px, 2.5vw, 36px)',
@@ -78,6 +78,14 @@ export default function PartnersStatement() {
     };
 
     const [indices, setIndices] = useState<[number, number, number]>([0, 1, 2]);
+    const sectionRef = useRef<HTMLElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ["start 80%", "end 60%"]
+    });
+
+    const clipPath = useTransform(scrollYProgress, (val) => `inset(0 0 ${100 - val * 100}% 0)`);
 
     useEffect(() => {
         setIndices(getInitialIndices() as [number, number, number]);
@@ -106,36 +114,58 @@ export default function PartnersStatement() {
         return () => intervals.forEach(clearInterval);
     }, []);
 
+    const TextContent = () => (
+        <>
+            {/* Line 1: We turn [logo] restaurants */}
+            We turn
+            <FlippingLogo currentIndex={indices[0]} onFlip={() => flipSlot(0)} />
+            restaurants
+            <br className="sm:hidden" />
+            {/* Line 2 mobile / continues on desktop */}
+            <span className="hidden sm:inline"> </span>
+            into the places
+            <FlippingLogo currentIndex={indices[1]} onFlip={() => flipSlot(1)} />
+            <br className="hidden sm:block" />
+            <br className="sm:hidden" />
+            {/* Line 3 mobile */}
+            everyone in Vancouver
+            <br className="sm:hidden" />
+            {/* Line 4 mobile */}
+            <FlippingLogo currentIndex={indices[2]} onFlip={() => flipSlot(2)} />
+            is talking about.
+        </>
+    );
+
     return (
         <section
+            ref={sectionRef}
             className="w-full py-28 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
             style={{ backgroundColor: '#fafafa' }}
         >
-            <p
-                className="font-serif leading-[1.25] tracking-tight text-black text-center"
-                style={{ fontSize: 'clamp(32px, 4.5vw, 64px)' }}
-            >
-                {/* Line 1: We turn [logo] restaurants */}
-                We turn
-                <FlippingLogo currentIndex={indices[0]} onFlip={() => flipSlot(0)} />
-                restaurants
-                <br className="sm:hidden" />
-                {/* Line 2 mobile / continues on desktop */}
-                <span className="hidden sm:inline"> </span>
-                into the places
-                <FlippingLogo currentIndex={indices[1]} onFlip={() => flipSlot(1)} />
-                <br className="hidden sm:block" />
-                <br className="sm:hidden" />
-                {/* Line 3 mobile */}
-                everyone in Vancouver
-                <br className="sm:hidden" />
-                {/* Line 4 mobile */}
-                <FlippingLogo currentIndex={indices[2]} onFlip={() => flipSlot(2)} />
-                is talking about.
-            </p>
+            <div className="relative max-w-6xl mx-auto">
+                {/* Base text (gray) */}
+                <p
+                    className="font-serif leading-[1.25] tracking-tight text-center text-black/10"
+                    style={{ fontSize: 'clamp(32px, 4.5vw, 64px)' }}
+                >
+                    <TextContent />
+                </p>
+
+                {/* Overlay colored text with scroll clip-path */}
+                <motion.p
+                    className="font-serif leading-[1.25] tracking-tight text-center absolute top-0 left-0 right-0 w-full"
+                    style={{
+                        fontSize: 'clamp(32px, 4.5vw, 64px)',
+                        color: '#000000',
+                        clipPath
+                    }}
+                >
+                    <TextContent />
+                </motion.p>
+            </div>
 
             {/* Button */}
-            <div className="flex justify-center mt-7 md:mt-8">
+            <div className="flex justify-center mt-7 md:mt-8 relative z-10">
                 <Link
                     href="/partners"
                     className="inline-flex items-center gap-2 px-6 py-2.5 md:px-7 md:py-3 rounded-full border border-black/30 text-black/70 tracking-widest uppercase transition-all duration-300 hover:border-black hover:text-black hover:bg-black/[0.04]"
