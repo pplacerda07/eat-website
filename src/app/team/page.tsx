@@ -7,7 +7,7 @@ import InstagramPopup from '@/components/InstagramPopup';
 export default function TeamPage() {
     return (
         <main className="min-h-screen bg-white">
-            <div className="relative z-10">
+            <div className="relative z-[200]">
                 <Navbar variant="dark" />
             </div>
             <Team />

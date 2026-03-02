@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { useInView } from 'framer-motion';
 
 const clientLogos = [
     { name: 'Nook', src: '/3. Nook.png' },
@@ -39,8 +39,8 @@ function FlippingLogo({
         <span
             className="inline-flex items-center justify-center align-middle mx-1 md:mx-3 relative z-[5]"
             style={{
-                width: 'clamp(40px, 10vw, 110px)',
-                height: 'clamp(14px, 2.5vw, 36px)',
+                width: 'clamp(80px, 18vw, 130px)',
+                height: 'clamp(28px, 6vw, 44px)',
                 verticalAlign: 'middle',
                 position: 'relative',
                 top: '-0.05em',
@@ -79,13 +79,8 @@ export default function PartnersStatement() {
 
     const [indices, setIndices] = useState<[number, number, number]>([0, 1, 2]);
     const sectionRef = useRef<HTMLElement>(null);
-
-    const { scrollYProgress } = useScroll({
-        target: sectionRef,
-        offset: ["start 80%", "end 60%"]
-    });
-
-    const clipPath = useTransform(scrollYProgress, (val) => `inset(0 0 ${100 - val * 100}% 0)`);
+    const textRef = useRef<HTMLDivElement>(null);
+    const inView = useInView(textRef, { once: true, margin: "0px 0px -10% 0px" });
 
     useEffect(() => {
         setIndices(getInitialIndices() as [number, number, number]);
@@ -114,27 +109,26 @@ export default function PartnersStatement() {
         return () => intervals.forEach(clearInterval);
     }, []);
 
-    const TextContent = () => (
-        <>
-            {/* Line 1: We turn [logo] restaurants */}
-            We turn
-            <FlippingLogo currentIndex={indices[0]} onFlip={() => flipSlot(0)} />
-            restaurants
-            <br className="sm:hidden" />
-            {/* Line 2 mobile / continues on desktop */}
-            <span className="hidden sm:inline"> </span>
-            into the places
-            <FlippingLogo currentIndex={indices[1]} onFlip={() => flipSlot(1)} />
-            <br className="hidden sm:block" />
-            <br className="sm:hidden" />
-            {/* Line 3 mobile */}
-            everyone in Vancouver
-            <br className="sm:hidden" />
-            {/* Line 4 mobile */}
-            <FlippingLogo currentIndex={indices[2]} onFlip={() => flipSlot(2)} />
-            is talking about.
-        </>
-    );
+    const lineElements = [
+        [
+            "We turn ",
+            <FlippingLogo key="f1" currentIndex={indices[0]} onFlip={() => flipSlot(0)} />,
+            " restaurants"
+        ],
+        [
+            "into the places ",
+            <FlippingLogo key="f2" currentIndex={indices[1]} onFlip={() => flipSlot(1)} />,
+            " everyone in"
+        ],
+        [
+            "Vancouver ",
+            <FlippingLogo key="f3" currentIndex={indices[2]} onFlip={() => flipSlot(2)} />,
+            " is talking about."
+        ]
+    ];
+
+    // Each line takes 0.5s, staggered: line1 0-0.5s, line2 0.5-1s, line3 1-1.5s
+    const lineDelays = [0, 0.5, 1];
 
     return (
         <section
@@ -142,26 +136,40 @@ export default function PartnersStatement() {
             className="w-full py-28 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
             style={{ backgroundColor: '#fafafa' }}
         >
-            <div className="relative max-w-6xl mx-auto">
+            <div className="relative max-w-6xl mx-auto" ref={textRef}>
                 {/* Base text (gray) */}
-                <p
-                    className="font-serif leading-[1.25] tracking-tight text-center text-black/10"
-                    style={{ fontSize: 'clamp(32px, 4.5vw, 64px)' }}
+                <div
+                    className="font-serif leading-[1.25] tracking-tight text-center text-black/10 flex flex-col"
+                    style={{ fontSize: 'clamp(36px, 5.5vw, 78px)' }}
                 >
-                    <TextContent />
-                </p>
+                    {lineElements.map((content, i) => (
+                        <div key={`base-${i}`} className="w-full">
+                            {content}
+                        </div>
+                    ))}
+                </div>
 
-                {/* Overlay colored text with scroll clip-path */}
-                <motion.p
-                    className="font-serif leading-[1.25] tracking-tight text-center absolute top-0 left-0 right-0 w-full"
+                {/* Overlay colored text with timed clip-path */}
+                <div
+                    className="font-serif leading-[1.25] tracking-tight text-center absolute top-0 left-0 right-0 w-full flex flex-col"
                     style={{
-                        fontSize: 'clamp(32px, 4.5vw, 64px)',
+                        fontSize: 'clamp(36px, 5.5vw, 78px)',
                         color: '#000000',
-                        clipPath
                     }}
                 >
-                    <TextContent />
-                </motion.p>
+                    {lineElements.map((content, i) => (
+                        <div
+                            key={`overlay-${i}`}
+                            className="w-full"
+                            style={{
+                                clipPath: inView ? 'inset(0 0% 0 0)' : 'inset(0 100% 0 0)',
+                                transition: `clip-path 0.5s cubic-bezier(0.25, 0.1, 0.25, 1) ${lineDelays[i]}s`,
+                            }}
+                        >
+                            {content}
+                        </div>
+                    ))}
+                </div>
             </div>
 
             {/* Button */}

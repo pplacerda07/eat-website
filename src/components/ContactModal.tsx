@@ -72,7 +72,7 @@ export default function ContactModal() {
 
                         <h2 className="text-3xl font-serif text-accent mb-6">Let&apos;s Connect</h2>
                         <p className="text-gray-600 mb-8 font-light">
-                            We&apos;re currently taking on new partners for Q1 2026. Let&apos;s discuss how we can tell your story.
+                            We&apos;re currently taking on new partners. Let&apos;s discuss how we can tell your story.
                         </p>
 
                         <div className="space-y-4">

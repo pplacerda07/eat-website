@@ -34,20 +34,20 @@ const videos = [
 
 /* Desktop fan — percentage-based instead of fixed px */
 const fanDesktop = [
-    { x: '-17vw', rotate: -14, scale: 0.62, y: 60, zIndex: 10, opacity: 0.85 },
-    { x: '-9vw', rotate: -7, scale: 0.8, y: 25, zIndex: 20, opacity: 0.92 },
+    { x: '-17vw', rotate: 0, scale: 0.62, y: 0, zIndex: 10, opacity: 0.85 },
+    { x: '-9vw', rotate: 0, scale: 0.8, y: 0, zIndex: 20, opacity: 0.92 },
     { x: '0vw', rotate: 0, scale: 1, y: 0, zIndex: 30, opacity: 1 },
-    { x: '9vw', rotate: 7, scale: 0.8, y: 25, zIndex: 20, opacity: 0.92 },
-    { x: '17vw', rotate: 14, scale: 0.62, y: 60, zIndex: 10, opacity: 0.85 },
+    { x: '9vw', rotate: 0, scale: 0.8, y: 0, zIndex: 20, opacity: 0.92 },
+    { x: '17vw', rotate: 0, scale: 0.62, y: 0, zIndex: 10, opacity: 0.85 },
 ];
 
 /* Mobile — only show center + immediate neighbours, tighter */
 const fanMobile = [
-    { x: '-30vw', rotate: -10, scale: 0.65, y: 30, zIndex: 10, opacity: 0.7 },
-    { x: '-15vw', rotate: -5, scale: 0.82, y: 12, zIndex: 20, opacity: 0.85 },
+    { x: '-30vw', rotate: 0, scale: 0.65, y: 0, zIndex: 10, opacity: 0.7 },
+    { x: '-15vw', rotate: 0, scale: 0.82, y: 0, zIndex: 20, opacity: 0.85 },
     { x: '0vw', rotate: 0, scale: 1, y: 0, zIndex: 30, opacity: 1 },
-    { x: '15vw', rotate: 5, scale: 0.82, y: 12, zIndex: 20, opacity: 0.85 },
-    { x: '30vw', rotate: 10, scale: 0.65, y: 30, zIndex: 10, opacity: 0.7 },
+    { x: '15vw', rotate: 0, scale: 0.82, y: 0, zIndex: 20, opacity: 0.85 },
+    { x: '30vw', rotate: 0, scale: 0.65, y: 0, zIndex: 10, opacity: 0.7 },
 ];
 
 const stats = [
@@ -99,7 +99,7 @@ export default function VideoCarousel() {
         }
     };
 
-    const cardWidth = isMobile ? 'clamp(160px, 45vw, 220px)' : '240px';
+    const cardWidth = isMobile ? 'clamp(180px, 50vw, 260px)' : '300px';
 
     return (
         <section
@@ -107,7 +107,7 @@ export default function VideoCarousel() {
             className="w-full relative pt-0 pb-10 md:pb-20 overflow-hidden"
             style={{ backgroundColor: '#fafafa' }}
         >
-            <div className="relative flex justify-center items-end h-[100vw] sm:h-[80vw] md:h-[520px] lg:h-[580px] select-none">
+            <div className="relative flex justify-center items-end h-[120vw] sm:h-[90vw] md:h-[620px] lg:h-[720px] select-none">
 
                 {/* Title — left side, hidden on small mobile */}
                 <div

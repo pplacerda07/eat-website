@@ -40,7 +40,7 @@ export default function Footer() {
                     </div>
 
                     {/* More content / Vibecouver */}
-                    <div className="flex items-center gap-2 text-sm text-gray-500">
+                    <div className="flex items-center justify-center md:justify-start gap-2 text-sm text-gray-500">
                         <span>more content</span>
                         <a
                             href="https://www.instagram.com/vibecouver/"
