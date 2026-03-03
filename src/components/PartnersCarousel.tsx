@@ -77,11 +77,11 @@ export default function PartnersCarousel() {
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="font-serif font-bold tracking-tight text-black/80 text-center mb-10 sm:mb-12 md:mb-16 px-5"
                 style={{ fontSize: 'clamp(32px, 7vw, 64px)', lineHeight: 1.05 }}
             >
-                Results over<br />words.
+                Driven by Design, <br className="md:hidden" />Trusted by Brands.
             </motion.h2>
 
             {/* Background "PARTNERS" text */}
@@ -131,3 +131,4 @@ export default function PartnersCarousel() {
         </section>
     );
 }
+

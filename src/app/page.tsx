@@ -1,7 +1,6 @@
 import Hero from '@/components/Hero';
 
 import Services from '@/components/Services';
-import Story from '@/components/Story';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
@@ -90,28 +89,24 @@ export default function Home() {
       </StackSection>
 
       <StackSection zIndex={20}>
-        <PartnersMarquee />
-      </StackSection>
-
-      <StackSection zIndex={30}>
         <Services />
       </StackSection>
 
-      <StackSection zIndex={40}>
-        <Story />
-      </StackSection>
+      {/* <StackSection zIndex={30}>
+        <PartnersMarquee />
+      </StackSection> */}
 
       {ENABLE_TESTIMONIALS && (
-        <StackSection zIndex={50}>
+        <StackSection zIndex={40}>
           <TestimonialShowreel />
         </StackSection>
       )}
 
-      <StackSection zIndex={60}>
+      <StackSection zIndex={50} className="!bg-[#fafafa]">
         <ContactSection />
       </StackSection>
 
-      <StackSection zIndex={70}>
+      <StackSection zIndex={60}>
         <Footer />
       </StackSection>
 

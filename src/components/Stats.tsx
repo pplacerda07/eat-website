@@ -26,7 +26,7 @@ export default function Stats() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.1 }}
+                            transition={{ delay: 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                             className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight"
                         >
                             Our Impact
@@ -36,7 +36,7 @@ export default function Stats() {
                         initial={{ opacity: 0 }}
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
-                        transition={{ delay: 0.3 }}
+                        transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         className="text-black/60 text-lg max-w-md md:text-right leading-relaxed"
                     >
                         Real results, built organically over 10 years of telling Vancouver's food stories.
@@ -48,7 +48,7 @@ export default function Stats() {
                     initial={{ scaleX: 0 }}
                     whileInView={{ scaleX: 1 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.8, ease: 'easeOut' }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="h-px bg-black/10 mb-10 origin-left"
                 />
 
@@ -60,7 +60,7 @@ export default function Stats() {
                             initial={{ opacity: 0, y: 40 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.12, duration: 0.6 }}
+                            transition={{ delay: index * 0.12, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                             className={`flex flex-col gap-3 lg:p-10 relative group ${index < content.stats.length - 1 ? 'lg:border-r border-black/10' : ''}`}
                         >
                             {/* Value */}
@@ -81,7 +81,7 @@ export default function Stats() {
                     initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ delay: 0.5 }}
+                    transition={{ delay: 0.5, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="mt-14 pt-8 border-t border-black/10 flex flex-col md:flex-row items-center justify-center gap-4 text-center"
                 >
                     <div className="flex items-center gap-3">
@@ -95,3 +95,4 @@ export default function Stats() {
         </Section>
     );
 }
+

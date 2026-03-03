@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="bg-white py-12 md:py-20 px-5 md:px-12 lg:px-24 border-t border-gray-100">
+        <footer className="py-12 md:py-20 px-5 md:px-12 lg:px-24 border-t border-gray-100" style={{ backgroundColor: '#fafafa' }}>
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-12 text-center md:text-left">
                 <div>
                     <p className="text-3xl font-serif text-accent mb-6">eatcouver</p>
@@ -53,16 +53,16 @@ export default function Footer() {
                     </div>
                 </div>
 
-                <nav aria-label="Footer navigation" className="flex gap-8 md:gap-12 text-sm text-gray-600">
+                <nav aria-label="Footer navigation" className="flex gap-8 md:gap-16 text-base md:text-lg font-medium text-gray-700">
                     <div className="flex flex-col gap-4">
-                        <Link href="/#work" className="hover:text-accent">Work</Link>
-                        <Link href="/#services" className="hover:text-accent">Services</Link>
-                        <Link href="/#impact" className="hover:text-accent">Impact</Link>
+                        <Link href="/#work" className="hover:text-accent transition-colors">Work</Link>
+                        <Link href="/#services" className="hover:text-accent transition-colors">Services</Link>
+                        <Link href="/#impact" className="hover:text-accent transition-colors">Impact</Link>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <Link href="/partners" className="hover:text-accent">Partners</Link>
-                        <Link href="/#story" className="hover:text-accent">Story</Link>
-                        <Link href="/team" className="hover:text-accent">Team</Link>
+                        <Link href="/partners" className="hover:text-accent transition-colors">Partners</Link>
+                        <Link href="/#story" className="hover:text-accent transition-colors">Story</Link>
+                        <Link href="/team" className="hover:text-accent transition-colors">Team</Link>
                     </div>
                 </nav>
             </div>

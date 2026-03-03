@@ -37,7 +37,7 @@ export default function Hero() {
                             hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
                             visible: { opacity: 1, y: 0, filter: "blur(0px)" }
                         }}
-                        transition={{ duration: 0.7, ease: "easeOut" }}
+                        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                         className={className}
                     >
                         {char === " " ? "\u00A0" : char}
@@ -66,7 +66,7 @@ export default function Hero() {
                 <motion.div
                     initial={{ opacity: 0, y: -20 }}
                     animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.3, ease: "easeOut" }}
+                    transition={{ duration: 1.2, delay: 0.3, ease: [0.16, 1, 0.3, 1] }}
                     className="relative z-10"
                 >
                     <Navbar variant="light" />
@@ -80,7 +80,7 @@ export default function Hero() {
                     <motion.p
                         initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1, delay: 1.2, ease: "easeOut" }}
+                        transition={{ duration: 1.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         className="text-[9px] md:text-xs text-white/80 leading-snug text-right max-w-[160px] md:max-w-[200px]"
                     >
                         We turn your business into a powerful marketing channel.
@@ -113,3 +113,4 @@ export default function Hero() {
         </div>
     );
 }
+

@@ -67,7 +67,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
-                        transition={{ duration: 0.25 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         className="fixed inset-0 z-[200] bg-white flex flex-col items-center justify-center gap-8 md:hidden"
                     >
                         {/* Close X button — top right */}
@@ -97,7 +97,7 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                                 initial={{ opacity: 0, y: 20 }}
                                 animate={{ opacity: 1, y: 0 }}
                                 exit={{ opacity: 0, y: 10 }}
-                                transition={{ delay: i * 0.06, duration: 0.3 }}
+                                transition={{ delay: i * 0.06, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                             >
                                 <Link
                                     href={item.href}
@@ -114,3 +114,4 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
         </>
     );
 }
+

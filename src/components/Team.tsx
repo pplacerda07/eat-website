@@ -35,9 +35,9 @@ export default function Team() {
                             initial={{ opacity: 0, y: 40 }}
                             animate={{ opacity: 1, y: 0 }}
                             transition={{
-                                duration: 0.6,
-                                delay: index * 0.12,
-                                ease: [0.22, 1, 0.36, 1],
+                                duration: 1.0,
+                                delay: index * 0.15,
+                                ease: [0.16, 1, 0.3, 1],
                             }}
                             className="group relative overflow-hidden"
                             style={{

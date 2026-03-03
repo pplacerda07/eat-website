@@ -13,3 +13,4 @@ export default function Section({ id, className = '', children }: SectionProps) 
         </section>
     );
 }
+

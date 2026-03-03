@@ -140,7 +140,7 @@ export default function PartnersStatement() {
                 initial={{ opacity: 0, y: 35 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="relative max-w-6xl mx-auto"
                 ref={textRef}
             >
@@ -184,7 +184,7 @@ export default function PartnersStatement() {
                 initial={{ opacity: 0, y: 20 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
-                transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                transition={{ delay: 0.3, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                 className="flex justify-center mt-7 md:mt-8 relative z-10"
             >
                 <Link

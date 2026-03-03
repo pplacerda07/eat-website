@@ -19,7 +19,7 @@ export default function Services() {
                     initial={{ opacity: 0, y: 30 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true }}
-                    transition={{ duration: 0.7 }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="text-[14vw] md:text-[16vw] leading-[0.8] font-bold font-serif text-white uppercase tracking-tighter opacity-90"
                 >
                     SERVICES
@@ -27,7 +27,7 @@ export default function Services() {
             </div>
 
             {/* White Card Container */}
-            <div className="bg-white rounded-2xl md:rounded-[2.5rem] p-5 md:p-12 lg:p-16 relative z-10 min-h-[40vh] max-w-6xl mx-4 md:mx-auto shadow-lg md:shadow-2xl mb-16 md:mb-24">
+            <div className="bg-white/40 backdrop-blur-xl border border-white/50 rounded-2xl md:rounded-[2.5rem] p-5 md:p-12 lg:p-16 relative z-10 min-h-[40vh] max-w-6xl mx-4 md:mx-auto shadow-lg md:shadow-2xl mb-16 md:mb-24">
                 {/* Decorative corner dots */}
                 <div className="absolute top-6 left-6 w-2 h-2 bg-black rounded-full opacity-20 hidden md:block" />
                 <div className="absolute top-6 right-6 w-2 h-2 bg-black rounded-full opacity-20 hidden md:block" />
@@ -39,13 +39,13 @@ export default function Services() {
                             initial={{ opacity: 0, y: 25 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: index * 0.1, duration: 0.6 }}
+                            transition={{ delay: 0.2 + index * 0.15, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                             className="flex flex-col gap-3 md:gap-4"
                         >
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black uppercase leading-[0.9] break-words">
+                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black uppercase leading-[0.9] break-words drop-shadow-md">
                                 {service.title}
                             </h3>
-                            <div className="prose prose-sm md:prose-base text-black/80 leading-relaxed whitespace-pre-line">
+                            <div className="prose prose-sm md:prose-base text-black/90 font-medium leading-relaxed whitespace-pre-line drop-shadow-sm">
                                 {service.description}
                             </div>
                         </motion.div>

@@ -28,3 +28,4 @@ export default function LogoWall({ id, title, logos, variant = 'grid' }: LogoWal
         </Section>
     );
 }
+

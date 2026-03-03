@@ -28,7 +28,7 @@ export default function Header() {
         <motion.header
             initial={{ opacity: 0, y: -20 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 1.5, ease: "easeOut" }}
+            transition={{ duration: 1.2, delay: 1.5, ease: [0.16, 1, 0.3, 1] }}
             className={`fixed top-0 left-0 w-full z-50 transition-colors duration-300 ${isScrolled ? 'bg-white/90 backdrop-blur-md shadow-sm py-4' : 'bg-transparent py-6'
                 }`}
         >
@@ -73,3 +73,4 @@ export default function Header() {
         </motion.header>
     );
 }
+

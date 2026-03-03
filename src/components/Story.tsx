@@ -9,15 +9,15 @@ const slides = [
         id: 'title',
         render: () => (
             <div className="flex flex-col items-center justify-center h-full text-center px-6">
-                <p className="font-sans text-[9px] uppercase tracking-[0.35em] text-black/25 mb-6">
+                <p className="font-sans text-[13px] uppercase tracking-[0.35em] text-black/25 mb-8">
                     Our Story
                 </p>
-                <h2 className="font-serif text-3xl md:text-5xl font-bold leading-[0.95] tracking-tight text-black">
+                <h2 className="font-serif text-5xl md:text-7xl font-bold leading-[0.95] tracking-tight text-black">
                     How we became
                     <br />
                     <span className="text-accent italic font-normal">eatcouver.</span>
                 </h2>
-                <p className="font-sans text-[10px] uppercase tracking-[0.2em] text-black/20 mt-10">
+                <p className="font-sans text-[14px] uppercase tracking-[0.2em] text-black/20 mt-14">
                     Vancouver, BC — Est. 2015
                 </p>
             </div>
@@ -26,11 +26,11 @@ const slides = [
     {
         id: 'origin',
         render: () => (
-            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-2xl mx-auto">
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-black/20 mb-5">
+            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-3xl mx-auto">
+                <span className="font-sans text-[13px] uppercase tracking-[0.3em] text-black/20 mb-7">
                     01
                 </span>
-                <p className="text-lg md:text-2xl leading-[1.5] tracking-tight text-black">
+                <p className="text-2xl md:text-3xl leading-[1.5] tracking-tight text-black">
                     <span className="font-serif font-bold">Eatcouver</span>{' '}
                     <span className="font-sans font-light text-black/55">was founded in</span>{' '}
                     <span className="font-serif italic text-accent">2015</span>{' '}
@@ -50,11 +50,11 @@ const slides = [
     {
         id: 'philosophy',
         render: () => (
-            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-2xl mx-auto">
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-black/20 mb-5">
+            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-3xl mx-auto">
+                <span className="font-sans text-[13px] uppercase tracking-[0.3em] text-black/20 mb-7">
                     02
                 </span>
-                <p className="text-lg md:text-2xl leading-[1.5] tracking-tight text-black">
+                <p className="text-2xl md:text-3xl leading-[1.5] tracking-tight text-black">
                     <span className="font-sans font-light text-black/55">We believe</span>{' '}
                     <span className="font-serif font-bold">every restaurant</span>{' '}
                     <span className="font-sans font-light text-black/55">
@@ -81,11 +81,11 @@ const slides = [
     {
         id: 'growth',
         render: () => (
-            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-2xl mx-auto">
-                <span className="font-sans text-[9px] uppercase tracking-[0.3em] text-black/20 mb-5">
+            <div className="flex flex-col items-center justify-center h-full text-center px-8 md:px-16 max-w-3xl mx-auto">
+                <span className="font-sans text-[13px] uppercase tracking-[0.3em] text-black/20 mb-7">
                     03
                 </span>
-                <p className="text-lg md:text-2xl leading-[1.5] tracking-tight text-black">
+                <p className="text-2xl md:text-3xl leading-[1.5] tracking-tight text-black">
                     <span className="font-sans font-light text-black/55">Today we partner</span>{' '}
                     <span className="font-serif font-bold tracking-tight">
                         directly with restaurants
@@ -133,14 +133,14 @@ export default function Story() {
         <section
             ref={sectionRef}
             id="story"
-            className="relative bg-white"
+            className="relative"
             style={{
                 // Each slide gets 100vh of scroll space — user stays "stuck"
                 height: `${slides.length * 70}vh`,
             }}
         >
             {/* Sticky viewport — locks in view while scrolling through */}
-            <div className="sticky top-[15vh] h-[70vh] w-full overflow-hidden">
+            <div className="sticky top-[10vh] h-[80vh] w-full overflow-hidden">
                 {slides.map((slide, i) => (
                     <motion.div
                         key={slide.id}
@@ -150,7 +150,7 @@ export default function Story() {
                             x: i < current ? '-100%' : i === current ? '0%' : '100%',
                             opacity: i === current ? 1 : 0,
                         }}
-                        transition={{ duration: 0.5, ease: [0.22, 1, 0.36, 1] }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     >
                         {slide.render()}
                     </motion.div>

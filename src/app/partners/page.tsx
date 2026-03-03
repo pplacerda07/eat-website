@@ -3,6 +3,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
 import InstagramPopup from '@/components/InstagramPopup';
+import Story from '@/components/Story';
 
 export default function PartnersPage() {
     return (
@@ -11,6 +12,7 @@ export default function PartnersPage() {
             <div className="pt-24">
                 <PartnersCarousel />
             </div>
+            <Story />
             <Footer />
             <ContactModal />
             <InstagramPopup />

@@ -2,6 +2,7 @@
 
 import { useRef, useState, useEffect } from 'react';
 import { motion, useInView, useSpring, useTransform } from 'framer-motion';
+import Link from 'next/link';
 
 function AnimatedCounter({ value, suffix = '', isFloat = false }: { value: number, suffix?: string, isFloat?: boolean }) {
     const ref = useRef<HTMLSpanElement>(null);
@@ -109,17 +110,22 @@ export default function VideoCarousel() {
         >
             <div className="relative flex justify-center items-end h-[120vw] sm:h-[90vw] md:h-[620px] lg:h-[720px] select-none">
 
-                {/* Title — left side, hidden on small mobile */}
+                {/* Title — left side, static, hidden on small mobile */}
                 <motion.div
-                    initial={{ opacity: 0, y: 30 }}
+                    initial={{ opacity: 0, y: 20 }}
                     whileInView={{ opacity: 1, y: 0 }}
                     viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="absolute left-4 md:left-16 z-[5] pointer-events-none hidden sm:block"
                     style={{ bottom: '50%' }}
                 >
-                    <h2 className="font-serif font-bold text-[8vw] sm:text-[7vw] md:text-[5vw] leading-[1.05] tracking-tight text-black/80 text-left">
-                        Results over<br />words.
+                    <h2 className="font-serif font-bold text-[6vw] sm:text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-tighter text-black uppercase text-left">
+                        <span className="underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8">
+                            RESULTS
+                        </span>
+                        {' '}OVER
+                        <br />
+                        WORDS.
                     </h2>
                 </motion.div>
 
@@ -134,7 +140,7 @@ export default function VideoCarousel() {
                             initial={{ opacity: 0, y: 20 }}
                             whileInView={{ opacity: 1, y: 0 }}
                             viewport={{ once: true }}
-                            transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            transition={{ delay: 0.2 + i * 0.15, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                             className="flex flex-col py-3 border-t border-black/[0.07] last:border-b"
                         >
                             <span
@@ -187,7 +193,7 @@ export default function VideoCarousel() {
                                     opacity: config.opacity,
                                     zIndex: config.zIndex,
                                 }}
-                                transition={{ type: 'spring', stiffness: 300, damping: 30, mass: 0.8 }}
+                                transition={{ type: 'spring', stiffness: 200, damping: 25, mass: 1 }}
                                 onClick={() => togglePlay(i)}
                                 style={{
                                     transformOrigin: 'center bottom',
@@ -247,7 +253,7 @@ export default function VideoCarousel() {
                         initial={{ opacity: 0, y: 15 }}
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
-                        transition={{ delay: i * 0.08, duration: 0.5 }}
+                        transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         className="flex flex-col py-4 border-t border-black/[0.07]"
                     >
                         <span className="font-serif text-xl font-semibold" style={{ color: '#00642E' }}>
@@ -271,6 +277,32 @@ export default function VideoCarousel() {
                     />
                 ))}
             </div>
+
+            {/* Buttons — Our story + See all partners */}
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-10 md:mt-14 px-5"
+            >
+                <Link
+                    href="/#story"
+                    className="inline-flex items-center justify-center gap-3 px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-widest uppercase transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                    style={{ letterSpacing: '0.15em', fontSize: '13px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
+                >
+                    Our story
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="ml-1"><path d="M8 0L10 6L16 8L10 10L8 16L6 10L0 8L6 6L8 0Z" fill="currentColor" /></svg>
+                </Link>
+                <Link
+                    href="/partners"
+                    className="inline-flex items-center justify-center gap-3 px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-widest uppercase transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                    style={{ letterSpacing: '0.15em', fontSize: '13px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
+                >
+                    See all partners
+                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="ml-1"><path d="M8 0L10 6L16 8L10 10L8 16L6 10L0 8L6 6L8 0Z" fill="currentColor" /></svg>
+                </Link>
+            </motion.div>
         </section>
     );
 }
