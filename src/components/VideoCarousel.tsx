@@ -110,14 +110,18 @@ export default function VideoCarousel() {
             <div className="relative flex justify-center items-end h-[120vw] sm:h-[90vw] md:h-[620px] lg:h-[720px] select-none">
 
                 {/* Title — left side, hidden on small mobile */}
-                <div
+                <motion.div
+                    initial={{ opacity: 0, y: 30 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                    transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
                     className="absolute left-4 md:left-16 z-[5] pointer-events-none hidden sm:block"
                     style={{ bottom: '50%' }}
                 >
                     <h2 className="font-serif font-bold text-[8vw] sm:text-[7vw] md:text-[5vw] leading-[1.05] tracking-tight text-black/80 text-left">
                         Results over<br />words.
                     </h2>
-                </div>
+                </motion.div>
 
                 {/* Stats — right side, hidden on mobile */}
                 <div
@@ -125,7 +129,14 @@ export default function VideoCarousel() {
                     style={{ top: '28%', bottom: '10%', right: '11%' }}
                 >
                     {stats.map((stat, i) => (
-                        <div key={i} className="flex flex-col py-3 border-t border-black/[0.07] last:border-b">
+                        <motion.div
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            viewport={{ once: true }}
+                            transition={{ delay: 0.15 + i * 0.12, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                            className="flex flex-col py-3 border-t border-black/[0.07] last:border-b"
+                        >
                             <span
                                 className="font-serif leading-none"
                                 style={{ color: '#00642E', fontSize: 'clamp(20px, 1.9vw, 28px)', fontWeight: 600 }}
@@ -138,7 +149,7 @@ export default function VideoCarousel() {
                             >
                                 {stat.label}
                             </span>
-                        </div>
+                        </motion.div>
                     ))}
                 </div>
 

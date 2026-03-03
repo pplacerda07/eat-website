@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import { motion } from 'framer-motion';
 
 const clientLogos = [
     { name: 'Anh and Chi', src: '/1. Anh and Chi.png' },
@@ -34,10 +35,10 @@ function MarqueeRow({
     return (
         <div
             className="relative w-full overflow-hidden"
-            style={{ padding: '20px 0' }}
+            style={{ padding: '10px 0' }}
         >
             <div
-                className="flex items-center gap-12 md:gap-16 lg:gap-20 w-max"
+                className="flex items-center gap-6 sm:gap-10 md:gap-16 lg:gap-20 w-max"
                 style={{
                     animation: `marquee-${direction} ${speed}s linear infinite`,
                 }}
@@ -47,8 +48,8 @@ function MarqueeRow({
                         key={`${logo.name}-${idx}`}
                         className="flex-shrink-0 flex items-center justify-center"
                         style={{
-                            width: 'clamp(100px, 14vw, 160px)',
-                            height: 'clamp(40px, 7vw, 70px)',
+                            width: 'clamp(70px, 14vw, 160px)',
+                            height: 'clamp(30px, 6vw, 70px)',
                         }}
                     >
                         <Image
@@ -68,9 +69,21 @@ function MarqueeRow({
 export default function PartnersCarousel() {
     return (
         <section
-            className="relative w-full overflow-hidden py-20 md:py-28 lg:py-36"
+            className="relative w-full overflow-hidden py-14 sm:py-20 md:py-28 lg:py-36"
             style={{ backgroundColor: '#fafafa' }}
         >
+            {/* Section title */}
+            <motion.h2
+                initial={{ opacity: 0, y: 30 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                transition={{ duration: 0.8, ease: [0.22, 1, 0.36, 1] }}
+                className="font-serif font-bold tracking-tight text-black/80 text-center mb-8 sm:mb-12 md:mb-16 px-5"
+                style={{ fontSize: 'clamp(28px, 7vw, 64px)', lineHeight: 1.05 }}
+            >
+                Results over words.
+            </motion.h2>
+
             {/* Background "PARTNERS" text */}
             <div
                 className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
@@ -79,7 +92,7 @@ export default function PartnersCarousel() {
                 <span
                     className="font-serif font-bold uppercase whitespace-nowrap"
                     style={{
-                        fontSize: 'clamp(120px, 18vw, 300px)',
+                        fontSize: 'clamp(80px, 18vw, 300px)',
                         letterSpacing: '0.08em',
                         color: 'rgba(0, 0, 0, 0.04)',
                         lineHeight: 1,
@@ -90,7 +103,7 @@ export default function PartnersCarousel() {
             </div>
 
             {/* Carousel rows */}
-            <div className="relative z-10 flex flex-col gap-2 md:gap-4">
+            <div className="relative z-10 flex flex-col gap-1 sm:gap-2 md:gap-4">
                 <MarqueeRow logos={row1Logos} direction="right" speed={40} />
                 <MarqueeRow logos={row2Logos} direction="left" speed={35} />
                 <MarqueeRow logos={row3Logos} direction="right" speed={45} />

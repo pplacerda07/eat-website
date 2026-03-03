@@ -3,7 +3,7 @@
 import Image from 'next/image';
 import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
-import { useInView } from 'framer-motion';
+import { motion, useInView } from 'framer-motion';
 
 const clientLogos = [
     { name: 'Nook', src: '/3. Nook.png' },
@@ -136,7 +136,14 @@ export default function PartnersStatement() {
             className="w-full py-28 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
             style={{ backgroundColor: '#fafafa' }}
         >
-            <div className="relative max-w-6xl mx-auto" ref={textRef}>
+            <motion.div
+                initial={{ opacity: 0, y: 35 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                transition={{ duration: 0.9, ease: [0.22, 1, 0.36, 1] }}
+                className="relative max-w-6xl mx-auto"
+                ref={textRef}
+            >
                 {/* Base text (gray) */}
                 <div
                     className="font-serif leading-[1.25] tracking-tight text-center text-black/10 flex flex-col"
@@ -170,10 +177,16 @@ export default function PartnersStatement() {
                         </div>
                     ))}
                 </div>
-            </div>
+            </motion.div>
 
             {/* Button */}
-            <div className="flex justify-center mt-7 md:mt-8 relative z-10">
+            <motion.div
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.3, duration: 0.7, ease: [0.22, 1, 0.36, 1] }}
+                className="flex justify-center mt-7 md:mt-8 relative z-10"
+            >
                 <Link
                     href="/partners"
                     className="inline-flex items-center gap-2 px-6 py-2.5 md:px-7 md:py-3 rounded-full border border-black/30 text-black/70 tracking-widest uppercase transition-all duration-300 hover:border-black hover:text-black hover:bg-black/[0.04]"
@@ -181,7 +194,7 @@ export default function PartnersStatement() {
                 >
                     See all partners
                 </Link>
-            </div>
+            </motion.div>
         </section>
     );
 }
