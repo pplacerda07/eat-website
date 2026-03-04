@@ -55,8 +55,9 @@ function MarqueeRow({
                         <Image
                             src={logo.src}
                             alt={logo.name}
-                            width={160}
-                            height={70}
+                            width={120}
+                            height={50}
+                            loading="lazy"
                             className="object-contain w-full h-full opacity-70 hover:opacity-100 transition-all duration-500"
                         />
                     </div>
@@ -102,11 +103,10 @@ export default function PartnersCarousel() {
                 </span>
             </div>
 
-            {/* Carousel rows */}
+            {/* Carousel rows — 2 rows for a lighter feel */}
             <div className="relative z-10 flex flex-col gap-1 sm:gap-2 md:gap-4">
-                <MarqueeRow logos={row1Logos} direction="right" speed={40} />
-                <MarqueeRow logos={row2Logos} direction="left" speed={35} />
-                <MarqueeRow logos={row3Logos} direction="right" speed={45} />
+                <MarqueeRow logos={row1Logos} direction="right" speed={50} />
+                <MarqueeRow logos={row2Logos} direction="left" speed={45} />
             </div>
 
             {/* Keyframes */}

@@ -1,6 +1,6 @@
 'use client';
 
-import { useRef, useState, useEffect } from 'react';
+import { useRef, useState, useEffect, useCallback } from 'react';
 import { motion, useInView, useSpring, useTransform } from 'framer-motion';
 import Link from 'next/link';
 
@@ -83,6 +83,17 @@ export default function VideoCarousel() {
         }
         setCurrent(newIndex);
     };
+
+    // Auto-rotate carousel every 4 seconds
+    const autoRotate = useCallback(() => {
+        goTo(current + 1);
+    }, [current]);
+
+    useEffect(() => {
+        if (playing !== null) return; // Don't auto-rotate while video is playing
+        const interval = setInterval(autoRotate, 4000);
+        return () => clearInterval(interval);
+    }, [autoRotate, playing]);
 
     const togglePlay = (index: number) => {
         if (index !== current) {
@@ -288,19 +299,17 @@ export default function VideoCarousel() {
             >
                 <Link
                     href="/#story"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-widest uppercase transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-                    style={{ letterSpacing: '0.15em', fontSize: '13px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
+                    className="inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                    style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
                 >
                     Our story
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="ml-1"><path d="M8 0L10 6L16 8L10 10L8 16L6 10L0 8L6 6L8 0Z" fill="currentColor" /></svg>
                 </Link>
                 <Link
                     href="/partners"
-                    className="inline-flex items-center justify-center gap-3 px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-widest uppercase transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
-                    style={{ letterSpacing: '0.15em', fontSize: '13px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
+                    className="inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
+                    style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
                 >
                     See all partners
-                    <svg width="14" height="14" viewBox="0 0 16 16" fill="none" className="ml-1"><path d="M8 0L10 6L16 8L10 10L8 16L6 10L0 8L6 6L8 0Z" fill="currentColor" /></svg>
                 </Link>
             </motion.div>
         </section>
