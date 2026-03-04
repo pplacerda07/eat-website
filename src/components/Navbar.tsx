@@ -6,9 +6,8 @@ import { motion, AnimatePresence } from 'framer-motion';
 
 const navItems = [
     { name: 'home', href: '/' },
-    { name: 'team', href: '/team' },
-    { name: 'services', href: '/#services' },
-    { name: 'work', href: '/#work' },
+    { name: 'about us', href: '/team' },
+    { name: 'contact', href: '/#connect' },
 ];
 
 interface NavbarProps {
