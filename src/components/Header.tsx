@@ -8,7 +8,7 @@ const navItems = [
     { name: 'Work', href: '/#work' },
     { name: 'Services', href: '/#services' },
     { name: 'Impact', href: '/#impact' },
-    { name: 'Partners', href: '/partners' },
+    { name: 'Partners', href: '/#partners' },
     { name: 'Story', href: '/#story' },
     { name: 'Team', href: '/team' },
 ];

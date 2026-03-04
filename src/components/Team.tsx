@@ -1,22 +1,26 @@
 'use client';
 
+import Image from 'next/image';
 import content from '../data/content.json';
 import { motion } from 'framer-motion';
 
 export default function Team() {
     return (
-        <section className="w-full bg-white min-h-screen px-4 md:px-10 lg:px-14 overflow-hidden pt-14 md:pt-24"> {/* Aumentei o padding-top aqui */}
+        <section
+            className="w-full min-h-screen px-4 md:px-10 lg:px-14 overflow-hidden pt-14 md:pt-24"
+            style={{ backgroundColor: '#fafafa' }}
+        >
 
             {/* Wrapper relativo para sobrepor título e cards */}
             <div className="relative w-full">
 
-                {/* "People" — atrás dos cards, opaco e fino */}
+                {/* "Team" — atrás dos cards, opaco e fino */}
                 <h1
                     className="font-serif text-black select-none leading-[0.85] text-center w-full absolute top-0 left-0 right-0 z-0"
                     style={{
                         fontSize: 'clamp(70px, 18vw, 320px)',
                         letterSpacing: '0.05em',
-                        fontWeight: 100, // Font mais fina
+                        fontWeight: 100,
                         opacity: 0.1,
                         pointerEvents: 'none',
                     }}
@@ -24,10 +28,10 @@ export default function Team() {
                     Team
                 </h1>
 
-                {/* Cards — na frente, sobrepostos ao título */}
+                {/* Cards */}
                 <div
                     className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 max-w-5xl mx-auto pb-16 md:pb-24"
-                    style={{ paddingTop: 'clamp(60px, 10vw, 140px)' }} // Mantive o padding-top nos cards para posicioná-los
+                    style={{ paddingTop: 'clamp(60px, 10vw, 140px)' }}
                 >
                     {content.team.map((member, index) => (
                         <motion.div
@@ -45,25 +49,15 @@ export default function Team() {
                                 borderRadius: '16px',
                             }}
                         >
-                            {/* Foto / placeholder */}
-                            <div
-                                className="absolute inset-0"
-                                style={{
-                                    backgroundColor: '#c8c4b8',
-                                    filter: 'grayscale(100%)',
-                                }}
-                            >
-                                <div className="absolute inset-0 flex flex-col items-center justify-center gap-3 opacity-20">
-                                    <div
-                                        className="rounded-full bg-black"
-                                        style={{ width: '28%', aspectRatio: '1' }}
-                                    />
-                                    <div
-                                        className="rounded-full bg-black"
-                                        style={{ width: '55%', height: '38%' }}
-                                    />
-                                </div>
-                            </div>
+                            {/* Photo */}
+                            <Image
+                                src={member.image}
+                                alt={member.name}
+                                fill
+                                sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                                className="object-cover"
+                                priority={index < 3}
+                            />
 
                             {/* Overlay gradiente inferior */}
                             <div

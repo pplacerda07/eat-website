@@ -8,6 +8,7 @@ import InstagramPopup from '@/components/InstagramPopup';
 import TestimonialShowreel from '@/components/TestimonialShowreel';
 import VideoCarousel from '@/components/VideoCarousel';
 import PartnersMarquee from '@/components/PartnersMarquee';
+import PartnersCarousel from '@/components/PartnersCarousel';
 import content from '@/data/content.json';
 
 const ENABLE_TESTIMONIALS = false;
@@ -92,9 +93,9 @@ export default function Home() {
         <Services />
       </StackSection>
 
-      {/* <StackSection zIndex={30}>
-        <PartnersMarquee />
-      </StackSection> */}
+      <StackSection zIndex={25} className="!bg-[#fafafa]">
+        <PartnersCarousel />
+      </StackSection>
 
       {ENABLE_TESTIMONIALS && (
         <StackSection zIndex={40}>

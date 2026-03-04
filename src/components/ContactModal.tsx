@@ -21,9 +21,13 @@ export default function ContactModal() {
             const hasSeenModal = sessionStorage.getItem('hasSeenContactModal');
 
             if (scrollPercent > 0.35 && !hasSeenModal) {
-                setIsOpen(true);
                 setHasAutomaticallyOpened(true);
                 sessionStorage.setItem('hasSeenContactModal', 'true');
+
+                // Add 3 second delay before opening
+                setTimeout(() => {
+                    setIsOpen(true);
+                }, 3000);
             }
         };
 
@@ -53,14 +57,16 @@ export default function ContactModal() {
                         initial={{ opacity: 0 }}
                         animate={{ opacity: 1 }}
                         exit={{ opacity: 0 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
                         onClick={() => setIsOpen(false)}
                         className="absolute inset-0 bg-black/60 backdrop-blur-sm"
                     />
 
                     <motion.div
-                        initial={{ opacity: 0, scale: 0.95, y: 20 }}
+                        initial={{ opacity: 0, scale: 0.95, y: 30 }}
                         animate={{ opacity: 1, scale: 1, y: 0 }}
                         exit={{ opacity: 0, scale: 0.95, y: 20 }}
+                        transition={{ duration: 0.8, ease: [0.16, 1, 0.3, 1], delay: 0.1 }}
                         className="relative bg-white w-full max-w-lg p-8 md:p-12 rounded shadow-2xl overflow-hidden"
                     >
                         <button

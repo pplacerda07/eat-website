@@ -305,7 +305,7 @@ export default function VideoCarousel() {
                     Our story
                 </Link>
                 <Link
-                    href="/partners"
+                    href="/#partners"
                     className="inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
                     style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
                 >

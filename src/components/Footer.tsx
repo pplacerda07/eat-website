@@ -60,7 +60,7 @@ export default function Footer() {
                         <Link href="/#impact" className="hover:text-accent transition-colors">Impact</Link>
                     </div>
                     <div className="flex flex-col gap-4">
-                        <Link href="/partners" className="hover:text-accent transition-colors">Partners</Link>
+                        <Link href="/#partners" className="hover:text-accent transition-colors">Partners</Link>
                         <Link href="/#story" className="hover:text-accent transition-colors">Story</Link>
                         <Link href="/team" className="hover:text-accent transition-colors">Team</Link>
                     </div>
