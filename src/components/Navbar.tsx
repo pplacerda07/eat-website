@@ -81,7 +81,6 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                             </svg>
                         </button>
 
-                        {/* Logo in menu */}
                         <Link
                             href="/"
                             onClick={() => setMenuOpen(false)}

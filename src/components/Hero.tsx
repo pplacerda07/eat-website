@@ -4,7 +4,7 @@ import Section from './Section';
 import Link from 'next/link';
 import Navbar from './Navbar';
 import { motion, useScroll, useTransform } from 'framer-motion';
-import { useRef } from 'react';
+import { useRef, useState, useEffect } from 'react';
 
 export default function Hero() {
     const ref = useRef<HTMLDivElement>(null);
@@ -47,6 +47,19 @@ export default function Hero() {
         );
     };
 
+    const [isMounted, setIsMounted] = useState(false);
+    const videoRef = useRef<HTMLVideoElement>(null);
+
+    useEffect(() => {
+        setIsMounted(true);
+        // Force play the video to ensure autoplay works on all devices and low-power modes
+        if (videoRef.current) {
+            videoRef.current.play().catch(() => {
+                // Ignore play error
+            });
+        }
+    }, []);
+
     return (
         <div
             ref={ref}
@@ -59,6 +72,7 @@ export default function Hero() {
                 {/* Background Video */}
                 <div className="absolute inset-0 z-0 overflow-hidden">
                     <video
+                        ref={videoRef}
                         autoPlay
                         loop
                         muted
