@@ -56,11 +56,20 @@ export default function Hero() {
                 style={{ scale, opacity, height: '100%' }}
                 className="w-full relative flex flex-col"
             >
-                {/* Background Image */}
-                <div
-                    className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                    style={{ backgroundImage: "url('/herosection_bg.svg')" }}
-                />
+                {/* Background Video */}
+                <div className="absolute inset-0 z-0 overflow-hidden">
+                    <video
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        className="w-full h-full object-cover"
+                    >
+                        <source src="/video_hero_section.mp4" type="video/mp4" />
+                    </video>
+                    {/* Dark overlay for text readability */}
+                    <div className="absolute inset-0 bg-black/30" />
+                </div>
 
                 {/* Top Bar: Navbar */}
                 <motion.div
@@ -77,35 +86,28 @@ export default function Hero() {
 
                 {/* Bottom Content */}
                 <div className="relative z-10 w-full px-5 md:px-10 lg:px-14 pb-14 md:pb-16 lg:pb-20 flex flex-col items-end gap-2 md:gap-3">
-                    <motion.p
-                        initial={{ opacity: 0, y: 20 }}
-                        animate={{ opacity: 1, y: 0 }}
-                        transition={{ duration: 1.4, delay: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="text-[9px] md:text-xs text-white/80 leading-snug text-right max-w-[160px] md:max-w-[200px]"
-                    >
-                        We turn your business into a powerful marketing channel.
-                    </motion.p>
+
 
                     <div className="flex flex-col items-end text-right">
                         <AnimatedTitle
                             text="PREMIUM"
                             delay={0}
-                            className="font-serif font-black text-[11vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                            className="font-sans font-black text-[11vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
                         />
                         <AnimatedTitle
                             text="CONTENT"
                             delay={0.08}
-                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
                         />
                         <AnimatedTitle
                             text="CRAFTED BY"
                             delay={0.16}
-                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
                         />
                         <AnimatedTitle
                             text="CREATORS"
                             delay={0.24}
-                            className="font-serif font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
+                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
                         />
                     </div>
                 </div>

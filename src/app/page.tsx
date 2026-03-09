@@ -4,7 +4,7 @@ import Services from '@/components/Services';
 import ContactSection from '@/components/ContactSection';
 import Footer from '@/components/Footer';
 import ContactModal from '@/components/ContactModal';
-import InstagramPopup from '@/components/InstagramPopup';
+
 import TestimonialShowreel from '@/components/TestimonialShowreel';
 import VideoCarousel from '@/components/VideoCarousel';
 import PartnersMarquee from '@/components/PartnersMarquee';
@@ -93,7 +93,7 @@ export default function Home() {
         <Services />
       </StackSection>
 
-      <StackSection zIndex={25} className="!bg-[#fafafa]">
+      <StackSection zIndex={25} className="!bg-white">
         <PartnersCarousel />
       </StackSection>
 
@@ -112,7 +112,7 @@ export default function Home() {
       </StackSection>
 
       <ContactModal />
-      <InstagramPopup />
+
     </main>
   );
 }

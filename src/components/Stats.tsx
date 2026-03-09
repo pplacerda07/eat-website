@@ -22,15 +22,18 @@ export default function Stats() {
                         >
                             The Numbers
                         </motion.span>
-                        <motion.h2
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight"
-                        >
-                            Our Impact
-                        </motion.h2>
+                        <div className="overflow-hidden inline-block">
+                            <motion.h2
+                                initial={{ y: '100%' }}
+                                whileInView={{ y: 0 }}
+                                viewport={{ once: true }}
+                                transition={{ delay: 0.1, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                                className="text-4xl md:text-5xl lg:text-6xl font-serif font-bold leading-tight pb-2"
+                                animate={{ y: [0, -3, 0] }}
+                            >
+                                Our Impact
+                            </motion.h2>
+                        </div>
                     </div>
                     <motion.p
                         initial={{ opacity: 0 }}

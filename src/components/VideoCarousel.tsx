@@ -117,57 +117,40 @@ export default function VideoCarousel() {
         <section
             id="work"
             className="w-full relative pt-0 pb-10 md:pb-20 overflow-hidden"
-            style={{ backgroundColor: '#fafafa' }}
+            style={{ backgroundColor: '#ffffff' }}
         >
             <div className="relative flex justify-center items-end h-[120vw] sm:h-[90vw] md:h-[620px] lg:h-[720px] select-none">
 
                 {/* Title — left side, static, hidden on small mobile */}
-                <motion.div
-                    initial={{ opacity: 0, y: 20 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true, margin: '0px 0px -80px 0px' }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="absolute left-4 md:left-16 z-[5] pointer-events-none hidden sm:block"
-                    style={{ bottom: '50%' }}
-                >
-                    <h2 className="font-serif font-bold text-[6vw] sm:text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-tighter text-black uppercase text-left">
-                        <span className="underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8">
-                            RESULTS
-                        </span>
-                        {' '}OVER
-                        <br />
-                        WORDS.
-                    </h2>
-                </motion.div>
-
-                {/* Stats — right side, hidden on mobile */}
                 <div
-                    className="absolute z-[5] pointer-events-none hidden lg:flex flex-col justify-center"
-                    style={{ top: '28%', bottom: '10%', right: '11%' }}
+                    className="absolute left-4 md:left-16 z-[5] pointer-events-none hidden sm:block"
+                    style={{ bottom: '70%' }}
                 >
-                    {stats.map((stat, i) => (
-                        <motion.div
-                            key={i}
-                            initial={{ opacity: 0, y: 20 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 + i * 0.15, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex flex-col py-3 border-t border-black/[0.07] last:border-b"
+                    <div className="text-xs text-black/80 max-w-[200px] mb-4 overflow-hidden">
+                        <motion.p
+                            initial={{ y: '100%' }}
+                            whileInView={{ y: 0 }}
+                            viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                            transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            <span
-                                className="font-serif leading-none"
-                                style={{ color: '#00642E', fontSize: 'clamp(20px, 1.9vw, 28px)', fontWeight: 600 }}
-                            >
-                                <AnimatedCounter value={stat.value as number} suffix={stat.suffix} isFloat={stat.isFloat} />
+                            We help Vancouver restaurants fill tables by standing out on social media.
+                        </motion.p>
+                    </div>
+
+                    <div className="overflow-hidden">
+                        <motion.h2
+                            initial={{ y: '100%' }}
+                            whileInView={{ y: 0 }}
+                            viewport={{ once: true, margin: '0px 0px -80px 0px' }}
+                            transition={{ duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
+                            className="font-serif font-bold text-[6vw] sm:text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-tighter text-black uppercase text-left"
+                        >
+                            <span className="underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8">
+                                OUR
                             </span>
-                            <span
-                                className="uppercase tracking-widest text-black/30 mt-1 leading-tight"
-                                style={{ fontSize: '8.5px', maxWidth: '115px' }}
-                            >
-                                {stat.label}
-                            </span>
-                        </motion.div>
-                    ))}
+                            {' '}RESULTS.
+                        </motion.h2>
+                    </div>
                 </div>
 
                 {/* Carousel */}
@@ -256,8 +239,8 @@ export default function VideoCarousel() {
                 </div>
             </div>
 
-            {/* Mobile stats — shown below carousel on small screens */}
-            <div className="grid grid-cols-2 gap-x-8 gap-y-6 px-6 mt-16 lg:hidden">
+            {/* Stats — shown unconditionally below carousel, larger */}
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 px-6 md:px-16 mt-16 md:mt-24 max-w-6xl mx-auto">
                 {stats.map((stat, i) => (
                     <motion.div
                         key={i}
@@ -265,12 +248,12 @@ export default function VideoCarousel() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col py-4 border-t border-black/[0.07]"
+                        className="flex flex-col py-6 border-t border-black/[0.07] text-center md:text-left"
                     >
-                        <span className="font-serif text-xl font-semibold" style={{ color: '#00642E' }}>
+                        <span className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-black tracking-tight drop-shadow-sm mb-2">
                             <AnimatedCounter value={stat.value as number} suffix={stat.suffix} isFloat={stat.isFloat} />
                         </span>
-                        <span className="text-[11px] uppercase tracking-widest text-black/40 mt-1 leading-tight">
+                        <span className="text-xs md:text-sm uppercase tracking-widest text-black/60 leading-tight font-sans">
                             {stat.label}
                         </span>
                     </motion.div>
@@ -298,7 +281,7 @@ export default function VideoCarousel() {
                 className="flex flex-col sm:flex-row justify-center items-center gap-4 sm:gap-6 mt-10 md:mt-14 px-5"
             >
                 <Link
-                    href="/#story"
+                    href="/story"
                     className="inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none"
                     style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
                 >

@@ -2,7 +2,7 @@ import Link from 'next/link';
 
 export default function Footer() {
     return (
-        <footer className="py-12 md:py-20 px-5 md:px-12 lg:px-24 border-t border-gray-100" style={{ backgroundColor: '#fafafa' }}>
+        <footer className="py-12 md:py-20 px-5 md:px-12 lg:px-24 border-t border-gray-100" style={{ backgroundColor: '#ffffff' }}>
             <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center md:items-start gap-8 md:gap-12 text-center md:text-left">
                 <div>
                     <p className="text-3xl font-serif text-accent mb-6">eatcouver</p>
@@ -61,7 +61,7 @@ export default function Footer() {
                     </div>
                     <div className="flex flex-col gap-4">
                         <Link href="/#partners" className="hover:text-accent transition-colors">Partners</Link>
-                        <Link href="/#story" className="hover:text-accent transition-colors">Story</Link>
+                        <Link href="/story" className="hover:text-accent transition-colors">Story</Link>
                         <Link href="/team" className="hover:text-accent transition-colors">Team</Link>
                     </div>
                 </nav>

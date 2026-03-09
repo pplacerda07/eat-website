@@ -134,7 +134,7 @@ export default function PartnersStatement() {
         <section
             ref={sectionRef}
             className="w-full py-28 md:py-28 lg:py-36 px-5 md:px-12 lg:px-20 overflow-hidden"
-            style={{ backgroundColor: '#fafafa' }}
+            style={{ backgroundColor: '#ffffff' }}
         >
             <motion.div
                 initial={{ opacity: 0, y: 35 }}
@@ -143,6 +143,7 @@ export default function PartnersStatement() {
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                 className="relative max-w-6xl mx-auto"
                 ref={textRef}
+                animate={{ y: [0, -4, 0] }}
             >
                 {/* Base text (gray) */}
                 <div

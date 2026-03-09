@@ -1,57 +1,171 @@
 'use client';
 
-import Section from './Section';
-import content from '../data/content.json';
-import { motion } from 'framer-motion';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-export default function Services() {
+const services = [
+    {
+        number: '01',
+        title: 'Reels',
+        tags: ['Short-form Video', 'Eatcouver Platform', 'Local Reach'],
+        description:
+            'Averaging 75K+ local views, our Eatcouver reels deliver high-impact exposure for Vancouver restaurants. We collaborate closely to align messaging with your brand.',
+        image: '/JDM07580 (1).jpg',
+    },
+    {
+        number: '02',
+        title: 'Partnerships',
+        tags: ['Ongoing Content', 'Strategy', 'Brand Growth'],
+        description:
+            'Continuous content and visibility campaigns for a hand-selected group of exceptional restaurants. Collaborative, strategic, and built for long-term outcomes.',
+        image: '/JDM09960.jpg',
+    },
+    {
+        number: '03',
+        title: 'Creators',
+        tags: ['Coordination', 'Creator Visits', 'UGC'],
+        description:
+            'We coordinate local content creators to visit your restaurant and produce authentic content on your behalf. We handle everything — you get the visibility.',
+        image: '/JDM08301 (1).jpg',
+    },
+    {
+        number: '04',
+        title: 'Strategy',
+        tags: ['Positioning', 'Creative Direction', 'Messaging'],
+        description:
+            'Messaging, positioning, and creative direction aligned with your story. We help define how your restaurant shows up across every touchpoint.',
+        image: '/JDM06300 (1).jpg',
+    },
+];
+
+/*
+ * Each row starts collapsed to the same Y position (stacked on top of each other)
+ * and as you scroll, they spread apart into their final positions.
+ * The further down the row, the more Y offset it needs to travel.
+ */
+const stackOffsets = [0, -120, -240, -360]; // initial Y shift to stack them visually
+
+function ServiceRow({
+    service,
+    index,
+}: {
+    service: (typeof services)[0];
+    index: number;
+}) {
+    const rowRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: rowRef,
+        offset: ['start end', 'center 0.55'],
+    });
+
+    // Start stacked (shifted up by stackOffset), end at 0 (natural position)
+    const stackY = stackOffsets[index] || 0;
+    const y = useTransform(scrollYProgress, [0, 1], [stackY, 0]);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [0.4, 1, 1]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.97, 1]);
+
     return (
-        <Section id="services" className="pt-12 pb-0 px-0 md:px-0 relative overflow-hidden">
-            {/* SVG Background */}
-            <div
-                className="absolute inset-0 z-0 bg-cover bg-center bg-no-repeat"
-                style={{ backgroundImage: 'url("/services_backgorund_image.svg")' }}
-            />
+        <motion.div
+            ref={rowRef}
+            style={{ y, opacity, scale, zIndex: services.length - index }}
+            className="border-t border-black/10 py-8 md:py-12 grid grid-cols-1 md:grid-cols-[40px_minmax(200px,1fr)_1fr_220px] lg:grid-cols-[50px_360px_1fr_260px] gap-5 md:gap-8 items-start will-change-transform bg-white relative"
+        >
+            {/* Number */}
+            <span className="font-sans text-xs text-black/30 tracking-wide pt-2 hidden md:block">
+                {service.number}
+            </span>
 
-            {/* Massive Title Background */}
-            <div className="w-full text-center mb-[-2vw] md:mb-[-3vw] relative z-10">
-                <motion.h2
-                    initial={{ opacity: 0, y: 30 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="text-[14vw] md:text-[16vw] leading-[0.8] font-bold font-serif text-white uppercase tracking-tighter opacity-90"
+            {/* Title + Tags */}
+            <div className="flex flex-col gap-2">
+                <div className="flex items-baseline gap-3 md:hidden">
+                    <span className="font-sans text-xs text-black/30 tracking-wide">
+                        {service.number}
+                    </span>
+                </div>
+                <h3
+                    className="font-sans font-bold text-black tracking-tight leading-[1]"
+                    style={{ fontSize: 'clamp(32px, 5vw, 56px)' }}
                 >
-                    SERVICES
-                </motion.h2>
-            </div>
-
-            {/* White Card Container */}
-            <div className="bg-white/40 backdrop-blur-xl border border-white/50 rounded-2xl md:rounded-[2.5rem] p-5 md:p-12 lg:p-16 relative z-10 min-h-[40vh] max-w-6xl mx-4 md:mx-auto shadow-lg md:shadow-2xl mb-16 md:mb-24">
-                {/* Decorative corner dots */}
-                <div className="absolute top-6 left-6 w-2 h-2 bg-black rounded-full opacity-20 hidden md:block" />
-                <div className="absolute top-6 right-6 w-2 h-2 bg-black rounded-full opacity-20 hidden md:block" />
-
-                <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 lg:gap-8">
-                    {content.services.map((service, index) => (
-                        <motion.div
-                            key={index}
-                            initial={{ opacity: 0, y: 25 }}
-                            whileInView={{ opacity: 1, y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.2 + index * 0.15, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                            className="flex flex-col gap-3 md:gap-4"
+                    {service.title}
+                </h3>
+                <div className="flex flex-wrap gap-x-4 gap-y-1 mt-1">
+                    {service.tags.map((tag) => (
+                        <span
+                            key={tag}
+                            className="font-sans text-[11px] text-black/35 tracking-wide"
                         >
-                            <h3 className="text-2xl md:text-3xl lg:text-4xl font-bold text-black uppercase leading-[0.9] break-words drop-shadow-md">
-                                {service.title}
-                            </h3>
-                            <div className="prose prose-sm md:prose-base text-black/90 font-medium leading-relaxed whitespace-pre-line drop-shadow-sm">
-                                {service.description}
-                            </div>
-                        </motion.div>
+                            {tag}
+                        </span>
                     ))}
                 </div>
             </div>
-        </Section>
+
+            {/* Description */}
+            <p className="font-sans text-sm md:text-[15px] text-black/55 leading-relaxed max-w-md pt-1">
+                {service.description}
+            </p>
+
+            {/* Service image */}
+            <div className="hidden md:block">
+                <div
+                    className="w-full rounded-md overflow-hidden"
+                    style={{ aspectRatio: '16/9' }}
+                >
+                    <img
+                        src={service.image}
+                        alt={service.title}
+                        className="w-full h-full object-cover"
+                        loading="lazy"
+                    />
+                </div>
+            </div>
+        </motion.div>
+    );
+}
+
+export default function Services() {
+    const sectionRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start end', 'start 0.3'],
+    });
+
+    const titleY = useTransform(scrollYProgress, [0, 1], ['120%', '0%']);
+
+    return (
+        <section
+            ref={sectionRef}
+            id="services"
+            className="w-full pt-20 md:pt-32 lg:pt-40 pb-8 md:pb-12 px-6 md:px-12 lg:px-20"
+            style={{ backgroundColor: '#ffffff' }}
+        >
+            <div className="max-w-7xl mx-auto">
+                {/* Massive centered title — mask reveal */}
+                <div className="overflow-hidden mb-16 md:mb-24">
+                    <motion.h2
+                        style={{
+                            y: titleY,
+                            fontSize: 'clamp(60px, 14vw, 200px)',
+                        }}
+                        animate={{ y: [0, -3, 0] }}
+                        transition={{ duration: 4, repeat: Infinity, ease: 'easeInOut' }}
+                        className="font-sans font-black uppercase tracking-tighter text-black leading-[0.85] text-center"
+                    >
+                        SERVICES
+                    </motion.h2>
+                </div>
+
+                {/* Service rows */}
+                <div className="flex flex-col">
+                    {services.map((service, i) => (
+                        <ServiceRow key={service.number} service={service} index={i} />
+                    ))}
+                    {/* Bottom border */}
+                    <div className="border-t border-black/10" />
+                </div>
+            </div>
+        </section>
     );
 }

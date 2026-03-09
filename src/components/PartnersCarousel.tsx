@@ -1,6 +1,7 @@
 'use client';
 
 import Image from 'next/image';
+import Link from 'next/link';
 import { motion } from 'framer-motion';
 
 const clientLogos = [
@@ -24,7 +25,7 @@ const clientLogos = [
     { name: 'Folke', src: '/29. Folke.png' },
     { name: 'Fiorino', src: '/30. Fiorino.png' },
     { name: 'Wildlight Kitchen & Bar', src: '/32. Wildlight Kitchen & Bar.png' },
-    { name: 'Ophelia', src: '/33. Ophelia.png' },
+    { name: 'Ophelia', src: '/Ophelia_logo.png' },
     { name: 'St. Lawrence', src: '/34. St. Lawrence.png' },
     { name: 'Fanny Bay Oysters', src: '/35. Fanny Bay Oysters.png' },
     { name: "Steve's Poke", src: "/36. Steve’s Poke.png" },
@@ -124,7 +125,7 @@ export default function PartnersCarousel() {
         <section
             id="partners"
             className="relative w-full overflow-hidden py-14 sm:py-20 md:py-28 lg:py-36"
-            style={{ backgroundColor: '#fafafa' }}
+            style={{ backgroundColor: '#ffffff' }}
         >
             {/* Section title */}
             <motion.h2
@@ -135,33 +136,28 @@ export default function PartnersCarousel() {
                 className="font-serif font-bold tracking-tight text-black/80 text-center mb-10 sm:mb-12 md:mb-16 px-5"
                 style={{ fontSize: 'clamp(32px, 7vw, 64px)', lineHeight: 1.05 }}
             >
-                Driven by Design, <br className="md:hidden" />Trusted by Brands.
+                Our partners.
             </motion.h2>
 
-            {/* Background "PARTNERS" text */}
-            <div
-                className="absolute inset-0 flex items-center justify-center pointer-events-none select-none"
-                aria-hidden="true"
-            >
-                <span
-                    className="font-serif font-bold uppercase whitespace-nowrap"
-                    style={{
-                        fontSize: 'clamp(80px, 18vw, 300px)',
-                        letterSpacing: '0.08em',
-                        color: 'rgba(0, 0, 0, 0.04)',
-                        lineHeight: 1,
-                    }}
-                >
-                    PARTNERS
-                </span>
-            </div>
+
 
             {/* Carousel rows — 4 rows for a full logo wall */}
             <div className="relative z-10 flex flex-col gap-1 sm:gap-2 md:gap-4">
-                <MarqueeRow logos={row1Logos} direction="right" speed={45} />
-                <MarqueeRow logos={row2Logos} direction="left" speed={40} />
-                <MarqueeRow logos={row3Logos} direction="right" speed={50} />
-                <MarqueeRow logos={row4Logos} direction="left" speed={42} />
+                <MarqueeRow logos={row1Logos} direction="right" speed={70} />
+                <MarqueeRow logos={row2Logos} direction="left" speed={65} />
+                <MarqueeRow logos={row3Logos} direction="right" speed={80} />
+                <MarqueeRow logos={row4Logos} direction="left" speed={68} />
+            </div>
+
+            {/* CTA button */}
+            <div className="relative z-10 flex justify-center mt-10 md:mt-14">
+                <Link
+                    href="/partners"
+                    className="inline-flex items-center justify-center px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none font-sans"
+                    style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
+                >
+                    See them all
+                </Link>
             </div>
         </section>
     );

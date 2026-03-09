@@ -27,14 +27,18 @@ export const metadata: Metadata = {
     title: "Eatcouver | Creator-Led Restaurant Content in Vancouver",
     description:
       "We help Vancouver restaurants fill tables by standing out on social media. 650M+ impressions generated, 75k avg local views per video.",
-    // images: [{ url: "/og-image.jpg", width: 1200, height: 630, alt: "Eatcouver – Creator-Led Restaurant Content" }],
+    images: [{ url: "/metalogo.png", width: 1200, height: 630, alt: "Eatcouver – Creator-Led Restaurant Content" }],
   },
   twitter: {
     card: "summary_large_image",
     title: "Eatcouver | Creator-Led Restaurant Content in Vancouver",
     description:
       "We help Vancouver restaurants fill tables by standing out on social media. 650M+ impressions generated.",
-    // images: ["/og-image.jpg"],
+    images: ["/metalogo.png"],
+  },
+  icons: {
+    icon: '/metalogo.png',
+    apple: '/metalogo.png',
   },
   alternates: {
     canonical: "https://eatcouver.ca",

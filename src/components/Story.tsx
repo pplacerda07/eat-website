@@ -7,83 +7,36 @@ const chapters = [
         number: '01',
         title: 'The Beginning',
         text: (
-            <>
-                <span className="font-serif font-bold">Eatcouver</span>{' '}
-                <span className="text-black/55">was founded in</span>{' '}
-                <span className="font-serif italic text-accent">2015</span>{' '}
-                <span className="text-black/55">
-                    with a simple mission:
-                </span>{' '}
-                <span className="font-serif font-bold">support local restaurants</span>{' '}
-                <span className="text-black/55">
-                    by sharing their spaces, food, and stories with Vancouver&apos;s community. What began as a passion project quickly evolved into a powerful marketing channel for hospitality businesses.
-                </span>
-            </>
+            <span className="text-black/80">
+                Eatcouver was founded in 2015 with a simple mission: support local restaurants by sharing their spaces, food, and stories with Vancouver&apos;s community. What began as a passion project quickly evolved into a powerful marketing channel for hospitality businesses.
+            </span>
         ),
     },
     {
         number: '02',
         title: 'Our Philosophy',
         text: (
-            <>
-                <span className="text-black/55">We believe</span>{' '}
-                <span className="font-serif font-bold">every restaurant</span>{' '}
-                <span className="text-black/55">
-                    has a story worth sharing —
-                </span>{' '}
-                <span className="font-serif italic text-accent">family-run gems,</span>{' '}
-                <span className="text-black/55">
-                    nostalgic diners, and
-                </span>{' '}
-                <span className="font-serif font-bold">
-                    new neighbourhood spots.
-                </span>{' '}
-                <span className="text-black/55">
-                    Our role is to tell each story with
-                </span>{' '}
-                <span className="font-serif italic font-semibold">
-                    care, intention &amp; authenticity.
-                </span>
-            </>
+            <span className="text-black/80">
+                We believe every restaurant has a story worth sharing — family-run gems, nostalgic diners, and new neighbourhood spots. Our role is to tell each story with care, intention &amp; authenticity.
+            </span>
         ),
     },
     {
         number: '03',
         title: 'The Growth',
         text: (
-            <>
-                <span className="text-black/55">In January 2024, our founder Ben launched</span>{' '}
-                <span className="font-serif font-bold">@recipeincaption</span>{' '}
-                <span className="text-black/55">
-                    — by 2026, it surpassed
-                </span>{' '}
-                <span className="font-serif italic text-accent">one million followers</span>{' '}
-                <span className="text-black/55">
-                    on Instagram alone, reinforcing our team&apos;s deep understanding of how to build reach through
-                </span>{' '}
-                <span className="font-serif font-bold">strong storytelling.</span>
-            </>
+            <span className="text-black/80">
+                In January 2024, our founder Ben launched @recipeincaption — by 2026, it surpassed one million followers on Instagram alone, reinforcing our team&apos;s deep understanding of how to build reach through strong storytelling.
+            </span>
         ),
     },
     {
         number: '04',
         title: 'Today',
         text: (
-            <>
-                <span className="text-black/55">Today, we partner directly with restaurants to produce</span>{' '}
-                <span className="font-serif italic text-accent">high-performing content,</span>{' '}
-                <span className="text-black/55">coordinate</span>{' '}
-                <span className="font-serif font-bold">creator visits,</span>{' '}
-                <span className="text-black/55">and</span>{' '}
-                <span className="font-serif font-bold">amplify local visibility</span>{' '}
-                <span className="text-black/55">
-                    — surpassing
-                </span>{' '}
-                <span className="font-serif italic text-accent">140k+ local followers</span>{' '}
-                <span className="text-black/55">
-                    and 650M+ impressions generated organically.
-                </span>
-            </>
+            <span className="text-black/80">
+                Today, we partner directly with restaurants to produce high-performing content, coordinate creator visits, and amplify local visibility — surpassing 140k+ local followers and 650M+ impressions generated organically.
+            </span>
         ),
     },
 ];
@@ -92,8 +45,8 @@ export default function Story() {
     return (
         <section
             id="story"
-            className="relative w-full overflow-hidden"
-            style={{ backgroundColor: '#fafafa' }}
+            className="relative w-full overflow-hidden border-t border-black/10"
+            style={{ backgroundColor: '#ffffff' }}
         >
             {/* Header */}
             <div className="max-w-5xl mx-auto px-6 md:px-12 pt-24 md:pt-36 pb-16 md:pb-24 text-center">
@@ -106,18 +59,20 @@ export default function Story() {
                 >
                     Our Story
                 </motion.p>
-                <motion.h2
-                    initial={{ opacity: 0, y: 25 }}
-                    whileInView={{ opacity: 1, y: 0 }}
-                    viewport={{ once: true }}
-                    transition={{ delay: 0.1, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="font-serif font-bold leading-[0.95] tracking-tight text-black"
-                    style={{ fontSize: 'clamp(36px, 7vw, 72px)' }}
-                >
-                    How we became
-                    <br />
-                    <span className="text-accent italic font-normal">eatcouver.</span>
-                </motion.h2>
+                <div className="overflow-hidden">
+                    <motion.h2
+                        initial={{ y: '100%' }}
+                        whileInView={{ y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.1, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                        className="font-sans font-bold leading-[0.95] tracking-tight text-black pb-2"
+                        style={{ fontSize: 'clamp(36px, 7vw, 72px)' }}
+                    >
+                        How we became
+                        <br />
+                        <span className="text-accent italic font-normal">eatcouver.</span>
+                    </motion.h2>
+                </div>
                 <motion.p
                     initial={{ opacity: 0 }}
                     whileInView={{ opacity: 1 }}
@@ -150,13 +105,10 @@ export default function Story() {
                             transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                             className="grid grid-cols-1 md:grid-cols-[120px_1fr] gap-4 md:gap-10"
                         >
-                            {/* Left — number + title */}
+                            {/* Left — number */}
                             <div className="flex flex-row md:flex-col items-baseline md:items-start gap-3 md:gap-1">
                                 <span className="font-sans text-[11px] uppercase tracking-[0.3em] text-accent font-medium">
                                     {chapter.number}
-                                </span>
-                                <span className="font-serif text-sm md:text-base text-black/40 tracking-tight">
-                                    {chapter.title}
                                 </span>
                             </div>
 
@@ -178,7 +130,7 @@ export default function Story() {
                 className="max-w-5xl mx-auto px-6 md:px-12 pb-24 md:pb-36"
             >
                 <div className="h-px bg-black/8 mb-10" />
-                <p className="text-lg md:text-xl text-black/55 leading-relaxed max-w-2xl">
+                <p className="text-lg md:text-xl text-black/55 leading-relaxed max-w-2xl mx-auto text-center">
                     If you&apos;re interested in partnering with us, start the conversation at{' '}
                     <a
                         href="mailto:admin@eatcouver.ca"

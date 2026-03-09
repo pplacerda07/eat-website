@@ -19,7 +19,7 @@ export default function Preloader() {
                     exit={{ opacity: 0 }}
                     transition={{ duration: 0.6, ease: [0.16, 1, 0.3, 1] }}
                     className="fixed inset-0 z-[9999] flex flex-col items-center justify-center"
-                    style={{ backgroundColor: '#fafafa' }}
+                    style={{ backgroundColor: '#ffffff' }}
                 >
                     {/* Logo */}
                     <motion.p

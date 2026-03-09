@@ -8,25 +8,31 @@ export default function Team() {
     return (
         <section
             className="w-full min-h-screen px-4 md:px-10 lg:px-14 overflow-hidden pt-14 md:pt-24"
-            style={{ backgroundColor: '#fafafa' }}
+            style={{ backgroundColor: '#ffffff' }}
         >
 
             {/* Wrapper relativo para sobrepor título e cards */}
             <div className="relative w-full">
 
                 {/* "Team" — atrás dos cards, opaco e fino */}
-                <h1
-                    className="font-serif text-black select-none leading-[0.85] text-center w-full absolute top-0 left-0 right-0 z-0"
-                    style={{
-                        fontSize: 'clamp(70px, 18vw, 320px)',
-                        letterSpacing: '0.05em',
-                        fontWeight: 100,
-                        opacity: 0.1,
-                        pointerEvents: 'none',
-                    }}
-                >
-                    Team
-                </h1>
+                <div className="absolute top-0 left-0 right-0 z-0 overflow-hidden text-center w-full" style={{ paddingTop: '20px' }}>
+                    <motion.h1
+                        initial={{ y: '100%' }}
+                        animate={{ y: 0 }}
+                        transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="font-serif text-black select-none leading-none inline-block"
+                        style={{
+                            fontSize: 'clamp(70px, 18vw, 320px)',
+                            letterSpacing: '0.05em',
+                            fontWeight: 100,
+                            opacity: 0.1,
+                            pointerEvents: 'none',
+                            lineHeight: 1
+                        }}
+                    >
+                        Team
+                    </motion.h1>
+                </div>
 
                 {/* Cards */}
                 <div
@@ -43,7 +49,7 @@ export default function Team() {
                                 delay: index * 0.15,
                                 ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="group relative overflow-hidden"
+                            className="group relative overflow-hidden bg-[#e0e0e0]"
                             style={{
                                 aspectRatio: '3/4',
                                 borderRadius: '16px',
@@ -55,7 +61,7 @@ export default function Team() {
                                 alt={member.name}
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                className="object-cover"
+                                className="object-cover object-top"
                                 priority={index < 3}
                             />
 
@@ -68,37 +74,7 @@ export default function Team() {
                                 }}
                             />
 
-                            {/* Tags topo */}
-                            <div className="absolute top-4 left-4 right-4 flex items-center justify-between z-10">
-                                <span
-                                    className="uppercase tracking-[0.18em] text-white/60"
-                                    style={{
-                                        fontSize: '7px',
-                                        fontFamily: 'sans-serif',
-                                        background: 'rgba(255,255,255,0.1)',
-                                        backdropFilter: 'blur(6px)',
-                                        border: '1px solid rgba(255,255,255,0.15)',
-                                        padding: '3px 8px',
-                                        borderRadius: '999px',
-                                    }}
-                                >
-                                    eatcouver
-                                </span>
-                                <span
-                                    className="uppercase tracking-[0.18em] text-white/60"
-                                    style={{
-                                        fontSize: '7px',
-                                        fontFamily: 'sans-serif',
-                                        background: 'rgba(255,255,255,0.1)',
-                                        backdropFilter: 'blur(6px)',
-                                        border: '1px solid rgba(255,255,255,0.15)',
-                                        padding: '3px 8px',
-                                        borderRadius: '999px',
-                                    }}
-                                >
-                                    {member.role}
-                                </span>
-                            </div>
+
 
                             {/* Nome e cargo — rodapé */}
                             <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
@@ -109,8 +85,8 @@ export default function Team() {
                                     {member.name}
                                 </h3>
                                 <p
-                                    className="text-white/50 mt-1 uppercase tracking-[0.18em]"
-                                    style={{ fontSize: '7px', fontFamily: 'sans-serif' }}
+                                    className="text-white/90 mt-1 uppercase tracking-[0.18em]"
+                                    style={{ fontSize: '11px', fontFamily: 'sans-serif', fontWeight: 500 }}
                                 >
                                     {member.role}
                                 </p>
