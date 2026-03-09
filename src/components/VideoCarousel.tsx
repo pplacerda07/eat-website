@@ -74,6 +74,19 @@ export default function VideoCarousel() {
 
     const fanConfig = isMobile ? fanMobile : fanDesktop;
 
+    // Mute/unmute videos based on which one is centered
+    // Small delay ensures autoplay starts muted first, then we unmute the center
+    useEffect(() => {
+        const timer = setTimeout(() => {
+            Object.entries(videoRefs.current).forEach(([key, vid]) => {
+                if (vid) {
+                    vid.muted = Number(key) !== current;
+                }
+            });
+        }, 300);
+        return () => clearTimeout(timer);
+    }, [current]);
+
     const goTo = (index: number) => {
         const total = videos.length;
         const newIndex = ((index % total) + total) % total;
@@ -205,14 +218,20 @@ export default function VideoCarousel() {
                                     }}
                                 >
                                     <video
-                                        ref={(el) => { videoRefs.current[i] = el; }}
+                                        ref={(el) => {
+                                            videoRefs.current[i] = el;
+                                            if (el) {
+                                                // Start all muted for autoplay, useEffect will unmute center
+                                                el.defaultMuted = true;
+                                                el.muted = true;
+                                            }
+                                        }}
                                         src={video.src}
                                         className="w-full h-full object-cover"
                                         loop
                                         playsInline
                                         preload="metadata"
                                         autoPlay
-                                        muted
                                     />
 
                                     {isCenter && (

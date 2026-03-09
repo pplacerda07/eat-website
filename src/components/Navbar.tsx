@@ -8,7 +8,7 @@ const navItems = [
     { name: 'home', href: '/' },
     { name: 'team', href: '/team' },
     { name: 'story', href: '/story' },
-    { name: 'contact', href: '/#connect' },
+    { name: 'contact', href: 'https://calendar.app.google/9mrnXME5JRr2D6Ro6' },
 ];
 
 interface NavbarProps {
@@ -35,15 +35,31 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
 
                 {/* Desktop nav links */}
                 <nav className="hidden md:flex items-center gap-6 md:gap-8 pt-2 md:pt-3">
-                    {navItems.map((item) => (
-                        <Link
-                            key={item.name}
-                            href={item.href}
-                            className={`text-xs md:text-sm tracking-wider ${textColor} hover:opacity-70 transition-opacity lowercase`}
-                        >
-                            {item.name}
-                        </Link>
-                    ))}
+                    {navItems.map((item) => {
+                        const isExternal = item.href.startsWith('http');
+                        if (isExternal) {
+                            return (
+                                <a
+                                    key={item.name}
+                                    href={item.href}
+                                    target="_blank"
+                                    rel="noopener noreferrer"
+                                    className={`text-xs md:text-sm tracking-wider ${textColor} hover:opacity-70 transition-opacity lowercase`}
+                                >
+                                    {item.name}
+                                </a>
+                            );
+                        }
+                        return (
+                            <Link
+                                key={item.name}
+                                href={item.href}
+                                className={`text-xs md:text-sm tracking-wider ${textColor} hover:opacity-70 transition-opacity lowercase`}
+                            >
+                                {item.name}
+                            </Link>
+                        );
+                    })}
                 </nav>
 
                 {/* Mobile hamburger — hidden when menu is open (X button inside overlay instead) */}
@@ -90,23 +106,38 @@ export default function Navbar({ variant = 'dark' }: NavbarProps) {
                         </Link>
 
                         {/* Nav links */}
-                        {navItems.map((item, i) => (
-                            <motion.div
-                                key={item.name}
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                exit={{ opacity: 0, y: 10 }}
-                                transition={{ delay: i * 0.06, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                            >
-                                <Link
-                                    href={item.href}
-                                    onClick={() => setMenuOpen(false)}
-                                    className="font-serif text-3xl tracking-tight text-black/80 hover:text-accent transition-colors"
+                        {navItems.map((item, i) => {
+                            const isExternal = item.href.startsWith('http');
+                            return (
+                                <motion.div
+                                    key={item.name}
+                                    initial={{ opacity: 0, y: 20 }}
+                                    animate={{ opacity: 1, y: 0 }}
+                                    exit={{ opacity: 0, y: 10 }}
+                                    transition={{ delay: i * 0.06, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                                 >
-                                    {item.name}
-                                </Link>
-                            </motion.div>
-                        ))}
+                                    {isExternal ? (
+                                        <a
+                                            href={item.href}
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            onClick={() => setMenuOpen(false)}
+                                            className="font-serif text-3xl tracking-tight text-black/80 hover:text-accent transition-colors"
+                                        >
+                                            {item.name}
+                                        </a>
+                                    ) : (
+                                        <Link
+                                            href={item.href}
+                                            onClick={() => setMenuOpen(false)}
+                                            className="font-serif text-3xl tracking-tight text-black/80 hover:text-accent transition-colors"
+                                        >
+                                            {item.name}
+                                        </Link>
+                                    )}
+                                </motion.div>
+                            );
+                        })}
                     </motion.div>
                 )}
             </AnimatePresence>

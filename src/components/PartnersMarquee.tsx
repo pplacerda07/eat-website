@@ -5,6 +5,10 @@ import Link from 'next/link';
 import { useEffect, useState, useRef } from 'react';
 import { motion, useInView } from 'framer-motion';
 
+function encodeSrc(src: string): string {
+    return src.replace(/&/g, '%26').replace(/'/g, '%27');
+}
+
 const clientLogos = [
     { name: 'Nook', src: '/3. Nook.png' },
     { name: 'Via Tevere', src: '/4. Via Tevere.png' },
@@ -60,7 +64,7 @@ function FlippingLogo({
                 }}
             >
                 <Image
-                    src={clientLogos[displayIndex].src}
+                    src={encodeSrc(clientLogos[displayIndex].src)}
                     alt={clientLogos[displayIndex].name}
                     fill
                     className="object-contain"

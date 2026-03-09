@@ -4,6 +4,10 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 
+function encodeSrc(src: string): string {
+    return src.replace(/&/g, '%26').replace(/'/g, '%27');
+}
+
 const clientLogos = [
     { name: 'Anh and Chi', src: '/1. Anh and Chi.png' },
     { name: 'JoeFortes', src: '/2. JoeFortes.png' },
@@ -104,7 +108,7 @@ function MarqueeRow({
                         }}
                     >
                         <Image
-                            src={logo.src}
+                            src={encodeSrc(logo.src)}
                             alt={logo.name}
                             width={120}
                             height={50}
