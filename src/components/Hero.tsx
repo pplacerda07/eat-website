@@ -79,7 +79,7 @@ export default function Hero() {
                         playsInline
                         className="w-full h-full object-cover"
                     >
-                        <source src="/video_hero_section.mp4" type="video/mp4" />
+                        <source src="/Video Website without transitions.m4v" type="video/mp4" />
                     </video>
                     {/* Dark overlay for text readability */}
                     <div className="absolute inset-0 bg-black/30" />
