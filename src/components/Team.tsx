@@ -15,7 +15,7 @@ export default function Team() {
             <div className="relative w-full">
 
                 {/* "Team" — atrás dos cards, opaco e fino */}
-                <div className="absolute top-0 left-0 right-0 z-0 overflow-hidden text-center w-full" style={{ paddingTop: '20px' }}>
+                <div className="absolute top-0 left-0 right-0 z-0 overflow-hidden text-center w-full" style={{ paddingTop: '0px' }}>
                     <motion.h1
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
