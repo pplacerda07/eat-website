@@ -49,10 +49,11 @@ export default function Team() {
                                 delay: index * 0.15,
                                 ease: [0.16, 1, 0.3, 1],
                             }}
-                            className="group relative overflow-hidden bg-[#e0e0e0]"
+                            className="group relative overflow-hidden"
                             style={{
                                 aspectRatio: '3/4',
                                 borderRadius: '16px',
+                                backgroundColor: '#f5f5f5',
                             }}
                         >
                             {/* Photo */}
@@ -61,7 +62,8 @@ export default function Team() {
                                 alt={member.name}
                                 fill
                                 sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
-                                className="object-cover object-top"
+                                className="object-cover"
+                                style={{ objectPosition: 'center 20%' }}
                                 priority={index < 3}
                             />
 

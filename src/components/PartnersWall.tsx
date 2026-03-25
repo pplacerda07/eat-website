@@ -1,6 +1,6 @@
 'use client';
 
-import Image from 'next/image';
+import { useState, useRef, useEffect } from 'react';
 import { motion } from 'framer-motion';
 
 function encodeSrc(src: string): string {
@@ -187,7 +187,82 @@ const allLogos = [
     { name: 'Chickpea', src: '/197. Chickpea.png' },
 ];
 
+const BATCH_SIZE = 24;
+
+function LogoItem({ logo }: { logo: { name: string; src: string } }) {
+    const [loaded, setLoaded] = useState(false);
+    const [error, setError] = useState(false);
+    const [retryCount, setRetryCount] = useState(0);
+
+    const handleError = () => {
+        if (retryCount < 2) {
+            // Retry loading with a cache-busting parameter
+            setRetryCount((c) => c + 1);
+            setError(false);
+        } else {
+            setError(true);
+        }
+    };
+
+    const imgSrc = retryCount > 0
+        ? `${encodeSrc(logo.src)}?retry=${retryCount}`
+        : encodeSrc(logo.src);
+
+    if (error) return null; // Hide permanently failed images
+
+    return (
+        <div
+            className="flex items-center justify-center p-3 md:p-4"
+            style={{ aspectRatio: '1' }}
+        >
+            <img
+                src={imgSrc}
+                alt={logo.name}
+                loading="lazy"
+                decoding="async"
+                onLoad={() => setLoaded(true)}
+                onError={handleError}
+                className="object-contain w-full h-full hover:opacity-100 transition-opacity duration-500"
+                style={{
+                    opacity: loaded ? 0.7 : 0,
+                    maxWidth: '120px',
+                    maxHeight: '80px',
+                }}
+            />
+        </div>
+    );
+}
+
 export default function PartnersWall() {
+    const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
+    const sentinelRef = useRef<HTMLDivElement>(null);
+
+    useEffect(() => {
+        const sentinel = sentinelRef.current;
+        if (!sentinel) return;
+
+        const observer = new IntersectionObserver(
+            (entries) => {
+                if (entries[0].isIntersecting) {
+                    setVisibleCount((prev) => {
+                        const next = prev + BATCH_SIZE;
+                        if (next >= allLogos.length) {
+                            observer.disconnect();
+                            return allLogos.length;
+                        }
+                        return next;
+                    });
+                }
+            },
+            { rootMargin: '400px' }
+        );
+
+        observer.observe(sentinel);
+        return () => observer.disconnect();
+    }, []);
+
+    const visibleLogos = allLogos.slice(0, visibleCount);
+
     return (
         <section className="w-full py-16 md:py-24 px-4 md:px-10 lg:px-16" style={{ backgroundColor: '#ffffff' }}>
             {/* Header */}
@@ -214,31 +289,15 @@ export default function PartnersWall() {
 
             {/* Logo wall grid */}
             <div className="max-w-7xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-6 md:gap-8">
-                {allLogos.map((logo, i) => (
-                    <motion.div
-                        key={`${logo.name}-${i}`}
-                        initial={{ opacity: 0, y: 20 }}
-                        whileInView={{ opacity: 1, y: 0 }}
-                        viewport={{ once: true, margin: '0px 0px -40px 0px' }}
-                        transition={{
-                            delay: (i % 8) * 0.03,
-                            duration: 0.8,
-                            ease: [0.16, 1, 0.3, 1],
-                        }}
-                        className="flex items-center justify-center p-3 md:p-4"
-                        style={{ aspectRatio: '1' }}
-                    >
-                        <Image
-                            src={encodeSrc(logo.src)}
-                            alt={logo.name}
-                            width={120}
-                            height={80}
-                            loading="lazy"
-                            className="object-contain w-full h-full opacity-70 hover:opacity-100 transition-opacity duration-400"
-                        />
-                    </motion.div>
+                {visibleLogos.map((logo, i) => (
+                    <LogoItem key={`${logo.name}-${i}`} logo={logo} />
                 ))}
             </div>
+
+            {/* Sentinel for infinite scroll loading */}
+            {visibleCount < allLogos.length && (
+                <div ref={sentinelRef} style={{ height: '1px' }} />
+            )}
         </section>
     );
 }
