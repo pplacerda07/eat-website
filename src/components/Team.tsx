@@ -14,19 +14,17 @@ export default function Team() {
             {/* Wrapper relativo para sobrepor título e cards */}
             <div className="relative w-full">
 
-                {/* "Team" — atrás dos cards, opaco e fino */}
-                <div className="absolute top-0 left-0 right-0 z-0 overflow-hidden text-center w-full" style={{ paddingTop: '0px' }}>
+                {/* "Team" — title above cards */}
+                <div className="overflow-hidden text-center w-full mb-10 md:mb-16">
                     <motion.h1
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                         className="font-serif text-black select-none leading-none inline-block"
                         style={{
-                            fontSize: 'clamp(70px, 18vw, 320px)',
+                            fontSize: 'clamp(50px, 10vw, 150px)',
                             letterSpacing: '0.05em',
                             fontWeight: 100,
-                            opacity: 0.1,
-                            pointerEvents: 'none',
                             lineHeight: 1
                         }}
                     >
@@ -37,7 +35,6 @@ export default function Team() {
                 {/* Cards */}
                 <div
                     className="relative z-10 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4 md:gap-7 max-w-5xl mx-auto pb-16 md:pb-24"
-                    style={{ paddingTop: 'clamp(60px, 10vw, 140px)' }}
                 >
                     {content.team.map((member, index) => (
                         <motion.div
