@@ -65,7 +65,7 @@ export default function Story() {
             className="relative w-full overflow-hidden border-t border-black/10"
             style={{ backgroundColor: '#ffffff' }}
         >
-            <div className="max-w-5xl mx-auto px-6 md:px-12 py-24 md:py-36">
+            <div className="max-w-7xl mx-auto px-6 md:px-12 py-24 md:py-36">
                 {/* Header */}
                 <div className="text-center mb-20 md:mb-28">
                     <motion.p
@@ -134,13 +134,13 @@ export default function Story() {
                                 {/* Title */}
                                 <h3
                                     className="font-sans font-bold tracking-tight text-black leading-[1.0] mb-6 md:mb-8"
-                                    style={{ fontSize: 'clamp(28px, 5vw, 52px)' }}
+                                    style={{ fontSize: 'clamp(32px, 6vw, 64px)' }}
                                 >
                                     {chapter.title}
                                 </h3>
 
                                 {/* Body */}
-                                <p className="text-lg md:text-xl lg:text-2xl leading-[1.7] tracking-tight text-black/70 font-light max-w-3xl">
+                                <p className="text-lg md:text-xl lg:text-3xl leading-[1.6] tracking-tight text-black/70 font-light max-w-5xl">
                                     {chapter.text}
                                 </p>
                             </motion.div>
@@ -177,7 +177,7 @@ export default function Story() {
                             <button
                                 onClick={() => paginate(-1)}
                                 disabled={activeIndex === 0}
-                                className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black/15 flex items-center justify-center transition-all duration-300 hover:border-black/40 hover:bg-black/[0.03] disabled:opacity-20 disabled:cursor-not-allowed"
+                                className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-green-500 text-white flex items-center justify-center transition-all duration-300 hover:bg-green-600 disabled:opacity-20 disabled:cursor-not-allowed"
                                 aria-label="Previous chapter"
                             >
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
@@ -187,7 +187,7 @@ export default function Story() {
                             <button
                                 onClick={() => paginate(1)}
                                 disabled={activeIndex === chapters.length - 1}
-                                className="w-10 h-10 md:w-11 md:h-11 rounded-full border border-black/15 flex items-center justify-center transition-all duration-300 hover:border-black/40 hover:bg-black/[0.03] disabled:opacity-20 disabled:cursor-not-allowed"
+                                className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-green-500 text-white flex items-center justify-center transition-all duration-300 hover:bg-green-600 disabled:opacity-20 disabled:cursor-not-allowed"
                                 aria-label="Next chapter"
                             >
                                 <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
