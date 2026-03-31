@@ -1,66 +1,70 @@
 'use client';
 
-import { motion, AnimatePresence } from 'framer-motion';
-import { useState } from 'react';
+import { useRef } from 'react';
+import { motion, useScroll, useTransform } from 'framer-motion';
 
-const chapters = [
-    {
-        number: '01',
-        title: 'The Beginning',
-        text: "Eatcouver was founded in 2015 with a simple mission: support local restaurants by sharing their spaces, food, and stories with Vancouver\u2019s community. What began as a passion project quickly evolved into a powerful marketing channel for hospitality businesses.",
-    },
-    {
-        number: '02',
-        title: 'Our Philosophy',
-        text: "We believe every restaurant has a story worth sharing \u2014 family-run gems, nostalgic diners, and new neighbourhood spots. Our role is to tell each story with care, intention & authenticity.",
-    },
-    {
-        number: '03',
-        title: 'The Growth',
-        text: "In January 2024, our founder Ben launched @recipeincaption \u2014 by 2026, it surpassed one million followers on Instagram alone, reinforcing our team\u2019s deep understanding of how to build reach through strong storytelling.",
-    },
-    {
-        number: '04',
-        title: 'Today',
-        text: "Today, we partner directly with restaurants to produce high-performing content, coordinate creator visits, and amplify local visibility \u2014 surpassing 140k+ local followers and 650M+ impressions generated organically.",
-    },
+const paragraphs = [
+    "Eatcouver was founded in 2015 with a simple mission: support local restaurants by sharing their spaces, food, and stories with Vancouver\u2019s community. What began as a passion project quickly evolved into a powerful marketing channel for hospitality businesses.",
+    "We believe every restaurant has a story worth sharing \u2014 family-run gems, nostalgic diners, and new neighbourhood spots. Our role is to tell each story with care, intention & authenticity.",
+    "In January 2024, our founder Ben launched @recipeincaption \u2014 by 2026, it surpassed one million followers on Instagram alone, reinforcing our team\u2019s deep understanding of how to build reach through strong storytelling.",
+    "Today, we partner directly with restaurants to produce high-performing content, coordinate creator visits, and amplify local visibility \u2014 surpassing 140k+ local followers and 650M+ impressions generated organically.",
 ];
 
-const slideVariants = {
-    enter: (direction: number) => ({
-        x: direction > 0 ? 80 : -80,
-        opacity: 0,
-        filter: 'blur(6px)',
-    }),
-    center: {
-        x: 0,
-        opacity: 1,
-        filter: 'blur(0px)',
-    },
-    exit: (direction: number) => ({
-        x: direction > 0 ? -80 : 80,
-        opacity: 0,
-        filter: 'blur(6px)',
-    }),
-};
+const stackOffsets = ['0%', '-100%', '-200%', '-300%'];
+
+function StoryParagraph({ text, index, total }: { text: string; index: number; total: number }) {
+    const rowRef = useRef<HTMLDivElement>(null);
+
+    const { scrollYProgress } = useScroll({
+        target: rowRef,
+        offset: ['start end', 'center 0.60'],
+    });
+
+    // Start stacked (shifted up by stackOffset), end at 0% (natural position)
+    const stackY = stackOffsets[index] || '0%';
+    const y = useTransform(scrollYProgress, [0, 1], [stackY, '0%']);
+    const opacity = useTransform(scrollYProgress, [0, 0.2, 1], [0.1, 1, 1]);
+    const scale = useTransform(scrollYProgress, [0, 1], [0.95, 1]);
+
+    return (
+        <div ref={rowRef} className="relative w-full">
+            <motion.div
+                style={{ y, opacity, scale, zIndex: total - index }}
+                className="border-t border-black/8 py-12 md:py-20 will-change-transform bg-white relative"
+            >
+                {/* Number + line */}
+                <div className="flex items-center gap-6 mb-8 md:mb-10">
+                    <span className="font-sans text-[11px] uppercase tracking-[0.35em] text-accent font-semibold shrink-0">
+                        {String(index + 1).padStart(2, '0')}
+                    </span>
+                    <div className="h-px bg-black/10 flex-1" />
+                    <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-black/20 shrink-0">
+                        {String(index + 1).padStart(2, '0')} / {String(total).padStart(2, '0')}
+                    </span>
+                </div>
+
+                {/* Body text — no title */}
+                <p className="text-lg md:text-xl lg:text-3xl leading-[1.6] tracking-tight text-black/70 font-light max-w-5xl">
+                    {text}
+                </p>
+            </motion.div>
+        </div>
+    );
+}
 
 export default function Story() {
-    const [[activeIndex, direction], setActiveIndex] = useState([0, 0]);
+    const sectionRef = useRef<HTMLDivElement>(null);
 
-    const paginate = (newDirection: number) => {
-        const nextIndex = activeIndex + newDirection;
-        if (nextIndex < 0 || nextIndex >= chapters.length) return;
-        setActiveIndex([nextIndex, newDirection]);
-    };
+    const { scrollYProgress } = useScroll({
+        target: sectionRef,
+        offset: ['start end', 'start 0.3'],
+    });
 
-    const goTo = (index: number) => {
-        setActiveIndex([index, index > activeIndex ? 1 : -1]);
-    };
-
-    const chapter = chapters[activeIndex];
+    const titleY = useTransform(scrollYProgress, [0, 1], ['100%', '0%']);
 
     return (
         <section
+            ref={sectionRef}
             id="story"
             className="relative w-full overflow-hidden border-t border-black/10"
             style={{ backgroundColor: '#ffffff' }}
@@ -78,18 +82,16 @@ export default function Story() {
                         Our Story
                     </motion.p>
                     <div className="overflow-hidden">
-                        <motion.h2
-                            initial={{ y: '100%' }}
-                            whileInView={{ y: 0 }}
-                            viewport={{ once: true }}
-                            transition={{ delay: 0.1, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                        <motion.div style={{ y: titleY }}>
+                        <h2
                             className="font-sans font-bold leading-[0.95] tracking-tight text-black pb-2"
                             style={{ fontSize: 'clamp(36px, 7vw, 72px)' }}
                         >
                             How we became
                             <br />
                             <span className="text-accent italic font-normal">eatcouver.</span>
-                        </motion.h2>
+                        </h2>
+                        </motion.div>
                     </div>
                     <motion.p
                         initial={{ opacity: 0 }}
@@ -100,108 +102,56 @@ export default function Story() {
                     >
                         Vancouver, BC &mdash; Est. 2015
                     </motion.p>
+
+                    {/* Scroll arrow indicator */}
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        whileInView={{ opacity: 1 }}
+                        viewport={{ once: true }}
+                        transition={{ delay: 0.6, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
+                        className="mt-12 flex justify-center"
+                    >
+                        <motion.div
+                            animate={{ y: [0, 8, 0] }}
+                            transition={{ duration: 2, repeat: Infinity, ease: 'easeInOut' }}
+                            className="w-10 h-10 rounded-full border border-black/15 flex items-center justify-center"
+                        >
+                            <svg
+                                width="14"
+                                height="14"
+                                viewBox="0 0 24 24"
+                                fill="none"
+                                stroke="currentColor"
+                                strokeWidth="1.5"
+                                strokeLinecap="round"
+                                strokeLinejoin="round"
+                                className="text-black/30"
+                            >
+                                <path d="M7 13l5 5 5-5" />
+                                <path d="M7 7l5 5 5-5" />
+                            </svg>
+                        </motion.div>
+                    </motion.div>
                 </div>
 
-                {/* Carousel */}
-                <div className="relative">
-                    {/* Chapter content area */}
-                    <div className="relative min-h-[280px] md:min-h-[260px]">
-                        <AnimatePresence mode="wait" custom={direction}>
-                            <motion.div
-                                key={activeIndex}
-                                custom={direction}
-                                variants={slideVariants}
-                                initial="enter"
-                                animate="center"
-                                exit="exit"
-                                transition={{
-                                    duration: 0.5,
-                                    ease: [0.16, 1, 0.3, 1],
-                                }}
-                                className="w-full"
-                            >
-                                {/* Number + line */}
-                                <div className="flex items-center gap-6 mb-8 md:mb-10">
-                                    <span className="font-sans text-[11px] uppercase tracking-[0.35em] text-accent font-semibold shrink-0">
-                                        {chapter.number}
-                                    </span>
-                                    <div className="h-px bg-black/10 flex-1" />
-                                    <span className="font-sans text-[11px] uppercase tracking-[0.2em] text-black/20 shrink-0">
-                                        {chapter.number} / {String(chapters.length).padStart(2, '0')}
-                                    </span>
-                                </div>
-
-                                {/* Title */}
-                                <h3
-                                    className="font-sans font-bold tracking-tight text-black leading-[1.0] mb-6 md:mb-8"
-                                    style={{ fontSize: 'clamp(32px, 6vw, 64px)' }}
-                                >
-                                    {chapter.title}
-                                </h3>
-
-                                {/* Body */}
-                                <p className="text-lg md:text-xl lg:text-3xl leading-[1.6] tracking-tight text-black/70 font-light max-w-5xl">
-                                    {chapter.text}
-                                </p>
-                            </motion.div>
-                        </AnimatePresence>
-                    </div>
-
-                    {/* Navigation controls */}
-                    <div className="flex items-center justify-between mt-14 md:mt-20 border-t border-black/8 pt-8">
-                        {/* Progress dots */}
-                        <div className="flex gap-2.5">
-                            {chapters.map((_, i) => (
-                                <button
-                                    key={i}
-                                    onClick={() => goTo(i)}
-                                    className="group relative p-1 -m-1"
-                                    aria-label={`Go to chapter ${i + 1}`}
-                                >
-                                    <div
-                                        className="h-[3px] rounded-full transition-all duration-500"
-                                        style={{
-                                            width: i === activeIndex ? '32px' : '10px',
-                                            backgroundColor:
-                                                i === activeIndex
-                                                    ? 'var(--color-accent, #000)'
-                                                    : 'rgba(0,0,0,0.12)',
-                                        }}
-                                    />
-                                </button>
-                            ))}
-                        </div>
-
-                        {/* Prev / Next arrows */}
-                        <div className="flex items-center gap-3">
-                            <button
-                                onClick={() => paginate(-1)}
-                                disabled={activeIndex === 0}
-                                className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-green-500 text-white flex items-center justify-center transition-all duration-300 hover:bg-green-600 disabled:opacity-20 disabled:cursor-not-allowed"
-                                aria-label="Previous chapter"
-                            >
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M15 19l-7-7 7-7" />
-                                </svg>
-                            </button>
-                            <button
-                                onClick={() => paginate(1)}
-                                disabled={activeIndex === chapters.length - 1}
-                                className="w-10 h-10 md:w-11 md:h-11 rounded-full bg-green-500 text-white flex items-center justify-center transition-all duration-300 hover:bg-green-600 disabled:opacity-20 disabled:cursor-not-allowed"
-                                aria-label="Next chapter"
-                            >
-                                <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
-                                    <path d="M9 5l7 7-7 7" />
-                                </svg>
-                            </button>
-                        </div>
-                    </div>
+                {/* Scroll-reveal paragraphs */}
+                <div className="flex flex-col">
+                    {paragraphs.map((text, i) => (
+                        <StoryParagraph key={i} text={text} index={i} total={paragraphs.length} />
+                    ))}
+                    {/* Bottom border */}
+                    <div className="border-t border-black/8" />
                 </div>
 
                 {/* Bottom CTA */}
                 <div className="mt-20 md:mt-28">
-                    <div className="h-px bg-black/8 mb-10" />
-                    <p className="text-lg md:text-xl text-black/55 leading-relaxed max-w-2xl mx-auto text-center">
+                    <motion.p
+                        initial={{ opacity: 0, y: 20 }}
+                        whileInView={{ opacity: 1, y: 0 }}
+                        viewport={{ once: true }}
+                        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                        className="text-lg md:text-xl text-black/55 leading-relaxed max-w-2xl mx-auto text-center"
+                    >
                         If you&apos;re interested in partnering with us, start the conversation at{' '}
                         <a
                             href="mailto:admin@eatcouver.ca"
@@ -209,7 +159,7 @@ export default function Story() {
                         >
                             admin@eatcouver.ca
                         </a>
-                    </p>
+                    </motion.p>
                 </div>
             </div>
         </section>
