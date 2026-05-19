@@ -280,9 +280,9 @@ export default function PartnersWall() {
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
                         transition={{ delay: 0.1, duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
-                        className="font-sans font-bold text-3xl md:text-5xl tracking-tight text-black pb-2"
+                        className="font-sans font-bold uppercase text-3xl md:text-5xl tracking-tight text-black pb-2"
                     >
-                        Our partners.
+                        Brands We Partner With
                     </motion.h1>
                 </div>
             </div>

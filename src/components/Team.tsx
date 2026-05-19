@@ -20,11 +20,9 @@ export default function Team() {
                         initial={{ y: '100%' }}
                         animate={{ y: 0 }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="font-serif text-black select-none leading-none inline-block"
+                        className="font-sans font-bold text-black tracking-tight select-none leading-none uppercase inline-block"
                         style={{
-                            fontSize: 'clamp(50px, 10vw, 150px)',
-                            letterSpacing: '0.05em',
-                            fontWeight: 100,
+                            fontSize: 'clamp(32px, 7vw, 150px)',
                             lineHeight: 1
                         }}
                     >
@@ -78,7 +76,7 @@ export default function Team() {
                             {/* Nome e cargo — rodapé */}
                             <div className="absolute bottom-0 left-0 right-0 z-10 px-5 pb-5">
                                 <h3
-                                    className="font-serif font-bold text-white leading-tight tracking-tight"
+                                    className="font-serif text-white leading-tight tracking-tight"
                                     style={{ fontSize: 'clamp(18px, 2.2vw, 28px)' }}
                                 >
                                     {member.name}

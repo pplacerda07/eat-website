@@ -75,10 +75,6 @@
     {
       "value": "140k+",
       "label": "Local followers"
-    },
-    {
-      "value": "2.4x",
-      "label": "Sales increase off one video"
     }
   ],
   "story": {
@@ -134,7 +130,7 @@
     }
   ],
   "contact": {
-    "email": "admin@eatcouver.ca",
+    "email": "mailto:admin@eatcouver.ca",
     "phone": "604-404-1222",
     "calendar": "https://calendar.app.google/9mrnXME5JRr2D6Ro6"
   }
