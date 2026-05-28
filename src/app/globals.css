@@ -16,12 +16,20 @@
   --font-body: "Palatino", "Palatino Linotype", "Book Antiqua", serif;
 }
 
+a,
+button,
+[role="button"],
+.cursor-pointer {
+  cursor: url("/cursor-active.svg"), auto !important;
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
   font-family: var(--font-sans);
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  cursor: url("/cursor-dark.svg"), auto !important;
 }
 
 ::selection {

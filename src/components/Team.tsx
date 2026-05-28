@@ -67,7 +67,7 @@ export default function Team() {
                                 className="absolute inset-0 pointer-events-none"
                                 style={{
                                     background:
-                                        'linear-gradient(to top, rgba(0,0,0,0.72) 0%, rgba(0,0,0,0.2) 45%, transparent 70%)',
+                                        'linear-gradient(to top, rgba(0,0,0,0.75) 0%, rgba(0,0,0,0.2) 20%, transparent 45%)',
                                 }}
                             />
 
