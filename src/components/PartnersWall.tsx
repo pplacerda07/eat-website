@@ -271,7 +271,7 @@ export default function PartnersWall() {
                     initial={{ opacity: 0 }}
                     animate={{ opacity: 1 }}
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                    className="font-sans text-[11px] uppercase tracking-[0.3em] text-black/30 mb-3"
+                    className="font-sans text-[12px] uppercase tracking-[0.2em] text-black/30 mb-3"
                 >
                     {allLogos.length}+ partners and counting
                 </motion.p>

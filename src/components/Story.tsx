@@ -190,7 +190,7 @@ export default function Story() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="font-sans text-[11px] uppercase tracking-[0.2em] text-black/25 mt-6 mb-6"
+                        className="text-xs md:text-sm uppercase tracking-widest text-black/55 leading-tight font-sans mt-16 mb-6"
                     >
                         Our Story
                     </motion.p>
@@ -200,11 +200,11 @@ export default function Story() {
                                 className="font-sans font-bold leading-[0.95] tracking-tight text-black pb-2"
                                 style={{ fontSize: 'clamp(28px, 4vw, 56px)' }}
                             >
-                                HOW WE BECAME
+                                HOW WE STARTED
                                 <br />
                                 <span className="text-accent font-serif font-normal"
                                     style={{ fontSize: 'clamp(42px, 8vw, 80px)' }}>
-                                    eatcouver.
+                                    eatcouver
                                 </span>
                             </h2>
                         </motion.div>
@@ -214,7 +214,7 @@ export default function Story() {
                         whileInView={{ opacity: 1 }}
                         viewport={{ once: true }}
                         transition={{ delay: 0.3, duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                        className="font-sans text-[12px] uppercase tracking-[0.2em] text-black/20 mt-5"
+                        className="text-xs md:text-sm uppercase tracking-widest text-black/55 leading-tight font-sans mt-6 mb-6"
                     >
                         Vancouver, BC &mdash; Est. 2015
                     </motion.p>
