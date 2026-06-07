@@ -10,7 +10,7 @@ const services = [
         tags: ['Short form Video', 'Eatcouver Platform', 'Local Reach'],
         description:
             'Averaging 75K+ local views, our Eatcouver reels deliver high impact exposure for Vancouver restaurants. We collaborate closely to align messaging with your brand.',
-        image: '/JDM07580 (1).jpg',
+        image: '/19.jpg',
     },
     {
         number: '02',
@@ -26,7 +26,7 @@ const services = [
         tags: ['Coordination', 'Creator Visits', 'UGC'],
         description:
             'We coordinate local content creators to visit your restaurant and produce authentic content on your behalf. We handle everything — you get the visibility.',
-        image: '/JDM08301 (1).jpg',
+        image: '/3.jpg',
     },
     {
         number: '04',
@@ -108,7 +108,7 @@ function ServiceRow({
                 <div className="hidden md:block">
                     <div
                         className="w-full rounded-md overflow-hidden"
-                        style={{ aspectRatio: '16/9' }}
+                        style={{ aspectRatio: '1/1' }}
                     >
                         <img
                             src={service.image}

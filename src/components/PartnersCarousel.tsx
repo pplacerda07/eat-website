@@ -90,7 +90,7 @@ function MarqueeRow({
     return (
         <div
             className="relative w-full overflow-hidden"
-            style={{ padding: '10px 0' }}
+            style={{ padding: '35px 0' }}
         >
             <div
                 className="flex items-center gap-6 sm:gap-10 md:gap-16 lg:gap-20 w-max"
@@ -135,10 +135,10 @@ export default function PartnersCarousel() {
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: '0px 0px -80px 0px' }}
                 transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
-                className="font-serif font-bold tracking-tight text-black/80 text-center mb-10 sm:mb-12 md:mb-16 px-5"
+                className="font-sans font-bold uppercase tracking-tight text-black text-center mb-10 sm:mb-12 md:mb-16 px-5"
                 style={{ fontSize: 'clamp(32px, 7vw, 64px)', lineHeight: 1.05 }}
             >
-                Our partners.
+                Brands We Partner With
             </motion.h2>
 
 

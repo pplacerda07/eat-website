@@ -33,21 +33,21 @@ export default function ContactSection() {
                     >
                         <span
                             className="font-sans font-black uppercase tracking-tighter text-black leading-[0.85] text-center block"
-                            style={{ fontSize: 'clamp(32px, 9.5vw, 150px)', textShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
+                            style={{ fontSize: 'clamp(32px, 7vw, 150px)', textShadow: '0 2px 12px rgba(0,0,0,0.08)' }}
                         >
-                            READY TO TURN
+                            WANT TO SEE HOW
                         </span>
                         <span
                             className="font-sans font-black uppercase tracking-tighter text-black leading-[0.85] text-center block"
-                            style={{ fontSize: 'clamp(32px, 9.5vw, 150px)' }}
+                            style={{ fontSize: 'clamp(32px, 7vw, 150px)' }}
                         >
-                            TABLES INTO
+                            WE FILL TABLES
                         </span>
                         <span
                             className="font-sans font-black uppercase tracking-tighter text-black leading-[0.85] text-center block"
-                            style={{ fontSize: 'clamp(32px, 9.5vw, 150px)' }}
+                            style={{ fontSize: 'clamp(32px, 7vw, 150px)' }}
                         >
-                            REVENUE?
+                            USING SOCIAL MEDIA?
                         </span>
                     </motion.div>
                 </div>
@@ -61,13 +61,13 @@ export default function ContactSection() {
                     className="flex justify-center mt-10 md:mt-14"
                 >
                     <a
-                        href={content.contact.calendar}
+                        href={content.contact.email}
                         target="_blank"
                         rel="noopener noreferrer"
                         className="inline-flex items-center justify-center gap-2 px-8 py-3.5 md:px-10 md:py-4 bg-white border-2 border-black text-black tracking-wide font-medium transition-all duration-200 hover:translate-x-[3px] hover:translate-y-[3px] hover:shadow-none font-sans"
                         style={{ fontSize: '14px', borderRadius: '12px', boxShadow: '4px 4px 0px 0px #00642E' }}
                     >
-                        Contact us
+                        Let's talk
                         <svg className="w-4 h-4 ml-1" fill="none" viewBox="0 0 24 24" stroke="currentColor" strokeWidth={2}>
                             <path strokeLinecap="round" strokeLinejoin="round" d="M7 17L17 7M17 7H7M17 7v10" />
                         </svg>

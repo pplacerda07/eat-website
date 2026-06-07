@@ -26,11 +26,11 @@ function AnimatedCounter({ value, suffix = '', isFloat = false }: { value: numbe
 }
 
 const videos = [
-    { src: '/v3.mp4', label: 'Reel' },
-    { src: '/video 1 version 2.mp4', label: 'Welcome' },
-    { src: '/video 2 (Version 2).mp4', label: 'Service' },
-    { src: '/video 2.mp4', label: 'Reel' },
-    { src: '/video 3.mp4', label: 'Reel' },
+    { src: '/v3.mp4', label: '@neighboursrestaurant' },
+    { src: '/video 1 version 2.mp4', label: '@zarakvancouver' },
+    { src: '/video 2 (Version 2).mp4', label: '@botecobrasilcanada' },
+    { src: '/video 2.mp4', label: '@elemvancouver' },
+    { src: '/video 3.mp4', label: '@zarakvancouver' },
 ];
 
 /* Desktop fan — percentage-based instead of fixed px */
@@ -51,11 +51,10 @@ const fanMobile = [
     { x: '30vw', rotate: 0, scale: 0.65, y: 0, zIndex: 10, opacity: 0.7 },
 ];
 
-const stats = [
+const stats: { value: number; suffix: string; label: string; isFloat?: boolean }[] = [
     { value: 650, suffix: 'M+', label: 'impressions generated' },
     { value: 75, suffix: 'K', label: 'avg local views per video' },
     { value: 140, suffix: 'K+', label: 'local followers' },
-    { value: 2.4, suffix: '×', label: 'increase in sales from one video', isFloat: true },
 ];
 
 export default function VideoCarousel() {
@@ -74,17 +73,13 @@ export default function VideoCarousel() {
 
     const fanConfig = isMobile ? fanMobile : fanDesktop;
 
-    // Mute/unmute videos based on which one is centered
-    // Small delay ensures autoplay starts muted first, then we unmute the center
+    // Keep all videos muted automatically so they can autoplay without issues
     useEffect(() => {
-        const timer = setTimeout(() => {
-            Object.entries(videoRefs.current).forEach(([key, vid]) => {
-                if (vid) {
-                    vid.muted = Number(key) !== current;
-                }
-            });
-        }, 300);
-        return () => clearTimeout(timer);
+        Object.values(videoRefs.current).forEach((vid) => {
+            if (vid) {
+                vid.muted = true;
+            }
+        });
     }, [current]);
 
     const goTo = (index: number) => {
@@ -136,34 +131,38 @@ export default function VideoCarousel() {
 
                 {/* Title — left side, static, hidden on small mobile */}
                 <div
-                    className="absolute left-4 md:left-16 z-[5] pointer-events-none hidden sm:block"
-                    style={{ bottom: '70%' }}
+                    className="absolute text-center z-[5] pointer-events-none hidden sm:block"
+                    style={{ bottom: '75%' }}
                 >
-                    <div className="text-xs text-black/80 max-w-[200px] mb-4 overflow-hidden">
+                    <div className="text-black leading-[1.3] tracking-tight max-w-5xl mb-10 overflow-hidden"
+                        style={{
+                            fontSize: 'clamp(32px, 2vw, 150px)'
+                        }}
+                    >
                         <motion.p
                             initial={{ y: '100%' }}
                             whileInView={{ y: 0 }}
                             viewport={{ once: true, margin: '0px 0px -80px 0px' }}
                             transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
                         >
-                            We help Vancouver restaurants fill tables by standing out on social media.
+                            We help Vancouver restaurants fill tables through social media.
                         </motion.p>
                     </div>
 
-                    <div className="overflow-hidden">
+                    {/* <div className="overflow-hidden">
                         <motion.h2
                             initial={{ y: '100%' }}
                             whileInView={{ y: 0 }}
                             viewport={{ once: true, margin: '0px 0px -80px 0px' }}
                             transition={{ duration: 1.0, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-                            className="font-serif font-bold text-[6vw] sm:text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-tighter text-black uppercase text-left"
+                            className="font-sans font-bold text-[6vw] sm:text-[5vw] md:text-[3.5vw] leading-[1.05] tracking-tight text-black text-left"
                         >
-                            <span className="underline decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8">
-                                OUR
+                            <span className="decoration-2 md:decoration-4 underline-offset-4 md:underline-offset-8">
+                                Our
                             </span>
-                            {' '}RESULTS.
+                            {' '}Results
                         </motion.h2>
-                    </div>
+                    </div> */}
                 </div>
 
                 {/* Carousel */}
@@ -259,7 +258,7 @@ export default function VideoCarousel() {
             </div>
 
             {/* Stats — shown unconditionally below carousel, larger */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-x-8 gap-y-10 px-6 md:px-16 mt-16 md:mt-24 max-w-6xl mx-auto">
+            <div className="grid grid-cols-3 md:grid-cols-3 gap-x-8 gap-y-10 px-6 md:px-16 mt-16 md:mt-24 max-w-6xl mx-auto">
                 {stats.map((stat, i) => (
                     <motion.div
                         key={i}
@@ -267,9 +266,9 @@ export default function VideoCarousel() {
                         whileInView={{ opacity: 1, y: 0 }}
                         viewport={{ once: true }}
                         transition={{ delay: i * 0.1, duration: 0.8, ease: [0.16, 1, 0.3, 1] }}
-                        className="flex flex-col py-6 border-t border-black/[0.07] text-center md:text-left"
+                        className="flex flex-col py-6 border-t border-black/[0.07] text-center md:text-center"
                     >
-                        <span className="font-serif text-3xl md:text-5xl lg:text-6xl font-semibold text-black tracking-tight drop-shadow-sm mb-2">
+                        <span className="font-sans text-3xl md:text-5xl lg:text-6xl font-semibold text-black tracking-tight drop-shadow-sm mb-2">
                             <AnimatedCounter value={stat.value as number} suffix={stat.suffix} isFloat={stat.isFloat} />
                         </span>
                         <span className="text-xs md:text-sm uppercase tracking-widest text-black/60 leading-tight font-sans">
