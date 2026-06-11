@@ -22,7 +22,7 @@ const paragraphs = [
     },
 ];
 
-const stackOffsets = ['0%', '-50%', '-200%', '-300%'];
+const stackOffsets = ['0%', '-50%', '-150%', '-300%'];
 
 const galleryImages = [
     { src: '/herosection_bg.png', span: 'col-span-2' },
