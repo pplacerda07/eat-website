@@ -23,6 +23,23 @@ button,
   cursor: url("/cursor-active.svg"), auto !important;
 }
 
+a {
+  position: relative;
+}
+
+a::before {
+  content: "";
+  position: absolute;
+  top: -10px;
+  /* Extends 10px above */
+  bottom: -10px;
+  /* Extends 10px below */
+  left: -10px;
+  /* Extends 10px left */
+  right: -10px;
+  /* Extends 10px right */
+}
+
 body {
   color: var(--foreground);
   background: var(--background);
