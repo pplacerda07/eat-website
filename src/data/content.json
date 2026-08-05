@@ -101,32 +101,42 @@
     {
       "name": "Jamie Chelin",
       "role": "CEO",
-      "image": "/team/25.png"
+      "image": "/team/Jamie.png"
     },
     {
       "name": "Jacob Porte",
       "role": "Partner & Head of Operations",
-      "image": "/team/30.png"
+      "image": "/team/Jacob.png"
     },
     {
       "name": "Ben Chelin",
       "role": "Founder",
-      "image": "/team/26.png"
-    },
-    {
-      "name": "Mykyta Vasyliev",
-      "role": "Videographer",
-      "image": "/team/27.png"
+      "image": "/team/Ben.png"
     },
     {
       "name": "Max Laskin",
       "role": "Partner",
-      "image": "/team/28.png"
+      "image": "/team/Max.png"
     },
     {
-      "name": "Ella Weitzman",
+      "name": "Giulia Priol",
+      "role": "Videographer & Content Strategist",
+      "image": "/team/Giulia.png"
+    },
+    {
+      "name": "Jovana Asprovski",
+      "role": "Videographer & Editor",
+      "image": "/team/Jovana.png"
+    },
+    {
+      "name": "Mykyta Vasyliev",
       "role": "Videographer",
-      "image": "/team/29.png"
+      "image": "/team/Mykyta.png"
+    },
+    {
+      "name": "Chloe Jones",
+      "role": "Copywriter",
+      "image": "/team/Chloe.png"
     }
   ],
   "contact": {

@@ -63,7 +63,7 @@ export default function Hero() {
     return (
         <div
             ref={ref}
-            style={{ position: 'sticky', top: 0, zIndex: 0, height: '100vh', overflow: 'hidden' }}
+            style={{ position: 'sticky', top: 0, zIndex: 0, height: '95vh', overflow: 'hidden' }}
         >
             <motion.div
                 style={{ scale, opacity, height: '100%' }}
