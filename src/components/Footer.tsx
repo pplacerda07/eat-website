@@ -50,6 +50,14 @@ export default function Footer() {
                         >
                             @vibecouver
                         </a>
+                        <a
+                            href="https://www.instagram.com/foodcouver/"
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="text-accent hover:underline font-medium"
+                        >
+                            @foodcouver
+                        </a>
                     </div>
                 </div>
 

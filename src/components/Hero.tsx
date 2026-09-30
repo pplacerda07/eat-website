@@ -3,7 +3,7 @@
 import Section from './Section';
 import Link from 'next/link';
 import Navbar from './Navbar';
-import { motion, useScroll, useTransform } from 'framer-motion';
+import { motion, AnimatePresence, useScroll, useTransform } from 'framer-motion';
 import { useRef, useState, useEffect } from 'react';
 
 export default function Hero() {
@@ -14,19 +14,42 @@ export default function Hero() {
         offset: ['start start', 'end start'],
     });
 
+    const [socialPlatform, setSocialPlatform] = useState(0);
+
+    const socialPlatforms = ["Instagram", "Facebook", "TikTok"];
+
+    useEffect(() => {
+        const interval = setInterval(() => {
+            setSocialPlatform((current) => (current + 1) % socialPlatforms.length);
+        }, 3000);
+
+        return () => clearInterval(interval);
+    }, []);
+
     const scale = useTransform(scrollYProgress, [0, 1], [1, 0.95]);
     const opacity = useTransform(scrollYProgress, [0, 0.8], [1, 0.5]);
 
-    const AnimatedTitle = ({ text, className, delay = 0 }: { text: string; className: string; delay?: number }) => {
+    const AnimatedTitle = ({
+        text,
+        className,
+        delay = 0
+    }: {
+        text: string;
+        className: string;
+        delay?: number;
+    }) => {
         return (
             <motion.div
-                className="flex flex-wrap"
+                className="flex flex-wrap max-w-full"
                 initial="hidden"
                 animate="visible"
                 variants={{
                     hidden: {},
                     visible: {
-                        transition: { staggerChildren: 0.04, delayChildren: delay }
+                        transition: {
+                            staggerChildren: 0.04,
+                            delayChildren: delay
+                        }
                     }
                 }}
             >
@@ -34,10 +57,21 @@ export default function Hero() {
                     <motion.span
                         key={index}
                         variants={{
-                            hidden: { opacity: 0, y: 30, filter: "blur(8px)" },
-                            visible: { opacity: 1, y: 0, filter: "blur(0px)" }
+                            hidden: {
+                                opacity: 0,
+                                y: 30,
+                                filter: "blur(8px)"
+                            },
+                            visible: {
+                                opacity: 1,
+                                y: 0,
+                                filter: "blur(0px)"
+                            }
                         }}
-                        transition={{ duration: 1.0, ease: [0.16, 1, 0.3, 1] }}
+                        transition={{
+                            duration: 1.0,
+                            ease: [0.16, 1, 0.3, 1]
+                        }}
                         className={className}
                     >
                         {char === " " ? "\u00A0" : char}
@@ -101,29 +135,63 @@ export default function Hero() {
                 {/* Bottom Content */}
                 <div className="relative z-10 w-full px-5 md:px-10 lg:px-14 pb-14 md:pb-16 lg:pb-20 flex flex-col items-end gap-2 md:gap-3">
 
+                    <div className="flex flex-col items-end text-right w-full max-w-full">
 
-                    <div className="flex flex-col items-end text-right">
-                        <AnimatedTitle
-                            text="PREMIUM"
-                            delay={0}
-                            className="font-sans font-black text-[11vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
-                        />
-                        <AnimatedTitle
-                            text="CONTENT"
-                            delay={0.08}
-                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
-                        />
-                        <AnimatedTitle
-                            text="CRAFTED BY"
-                            delay={0.16}
-                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
-                        />
-                        <AnimatedTitle
-                            text="CREATORS"
-                            delay={0.24}
-                            className="font-sans font-black text-[10vw] md:text-[7vw] leading-[0.9] tracking-tighter text-white uppercase"
-                        />
+                        {/* Static headline */}
+                        <div className="font-sans font-black text-[8vw] sm:text-[8vw] md:text-[6vw] leading-[0.9] tracking-tighter text-white uppercase max-w-full">
+                            Vancouver's Leading
+                        </div>
+
+                        <div className="font-sans font-black text-[8vw] sm:text-[8vw] md:text-[6vw] leading-[0.9] tracking-tighter text-white uppercase max-w-full">
+                            Restaurant Discovery
+                        </div>
+
+                        {/* Platform + rotating word */}
+                        <div className="flex flex-col md:flex-row items-end md:items-baseline justify-end w-full max-w-full">
+
+                            {/* Static "Platform on" */}
+                            <div className="font-sans font-black text-[8vw] sm:text-[8vw] md:text-[6vw] leading-[0.9] tracking-tighter text-white uppercase shrink-0">
+                                Platform on
+                            </div>
+
+                            {/* Rotating final word */}
+                            <div className="relative md:ml-[0.25em] overflow-visible shrink-0">
+                                <div className="invisible font-sans font-black text-[8vw] sm:text-[8vw] md:text-[6vw] leading-[0.9] tracking-tighter text-white uppercase whitespace-nowrap">
+                                    &nbsp;Instagram
+                                </div>
+
+                                <div className="absolute inset-0 text-right overflow-visible">
+                                    <AnimatePresence mode="wait">
+                                        <motion.div
+                                            key={socialPlatforms[socialPlatform]}
+                                            initial={{
+                                                opacity: 0,
+                                                scale: 0.92
+                                            }}
+                                            animate={{
+                                                opacity: 1,
+                                                scale: 1
+                                            }}
+                                            exit={{
+                                                opacity: 0,
+                                                scale: 1.02
+                                            }}
+                                            transition={{
+                                                duration: 0.2,
+                                                ease: [0.16, 1, 0.3, 1]
+                                            }}
+                                            className="font-sans font-black text-[8vw] sm:text-[8vw] md:text-[6vw] leading-[0.9] tracking-tighter text-white uppercase whitespace-nowrap"
+                                        >
+                                            {socialPlatforms[socialPlatform]}
+                                        </motion.div>
+                                    </AnimatePresence>
+                                </div>
+                            </div>
+
+                        </div>
+
                     </div>
+
                 </div>
             </motion.div>
         </div>

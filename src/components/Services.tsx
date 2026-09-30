@@ -9,7 +9,7 @@ const services = [
         title: 'Reels',
         tags: ['Short form Video', 'Eatcouver Platform', 'Local Reach'],
         description:
-            'Averaging 75K+ local views, our Eatcouver reels deliver high impact exposure for Vancouver restaurants. We collaborate closely to align messaging with your brand.',
+            'Averaging 150K+ local views, our Eatcouver and Foodcouver reels deliver high impact exposure for Vancouver restaurants. We collaborate closely to align messaging with your brand.',
         image: '/19.jpg',
     },
     {
@@ -17,7 +17,7 @@ const services = [
         title: 'Partnerships',
         tags: ['Ongoing Content', 'Strategy', 'Brand Growth'],
         description:
-            'Continuous content and visibility campaigns for a hand-selected group of exceptional restaurants. Collaborative, strategic, and built for long-term outcomes.',
+            'Ongoing content and targeted Meta advertising for a select group of exceptional restaurants. We combine proven creative with strategic campaigns to drive consistent traffic, sales, and long-term growth.',
         image: '/JDM09960.jpg',
     },
     {

@@ -224,7 +224,7 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
                 onError={handleError}
                 className="object-contain w-full h-full hover:opacity-100 transition-opacity duration-500"
                 style={{
-                    opacity: loaded ? 0.7 : 0,
+                    opacity: loaded ? 1.0 : 0,
                     maxWidth: '120px',
                     maxHeight: '80px',
                 }}

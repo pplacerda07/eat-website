@@ -52,9 +52,9 @@ const fanMobile = [
 ];
 
 const stats: { value: number; suffix: string; label: string; isFloat?: boolean }[] = [
-    { value: 650, suffix: 'M+', label: 'impressions generated' },
-    { value: 75, suffix: 'K', label: 'avg local views per video' },
-    { value: 140, suffix: 'K+', label: 'local followers' },
+    { value: 675, suffix: 'M+', label: 'impressions generated' },
+    { value: 250, suffix: 'K+', label: 'local followers' },
+    { value: 315, suffix: '+', label: 'local restaurant partners' },
 ];
 
 export default function VideoCarousel() {

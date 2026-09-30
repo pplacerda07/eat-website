@@ -17,8 +17,12 @@ const paragraphs = [
         image: "/5.jpg",
     },
     {
-        description: "Today, we partner directly with restaurants to produce high-performing content, coordinate creator visits, and amplify local visibility. To date, our content has generated over 650M organic impressions.",
+        description: "In March 2026, we acquired Foodcouver, another local media platform that now operates as a sister brand to Eatcouver. Foodcouver averages more than 75,000 views per reel, further strengthening our position as a leading marketing partner for restaurants across the Lower Mainland.",
         image: "/13.jpg",
+    },
+    {
+        description: "Today, we partner directly with restaurants to drive measurable increases in customer traffic and sales—not just brand awareness. Our long-term partnerships combine audience trust, proven content formats, and targeted Meta advertising to generate consistent results rather than the short-lived spikes often associated with one-off influencer campaigns. Let’s talk about how we can bring more guests through your doors.",
+        image: "/9.jpg",
     },
 ];
 

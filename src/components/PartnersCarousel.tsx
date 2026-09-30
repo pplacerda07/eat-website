@@ -113,7 +113,7 @@ function MarqueeRow({
                             width={120}
                             height={50}
                             loading="lazy"
-                            className="object-contain w-full h-full opacity-70 hover:opacity-100 transition-all duration-500"
+                            className="object-contain w-full h-full opacity-100 hover:opacity-100 transition-all duration-500"
                         />
                     </div>
                 ))}

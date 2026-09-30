@@ -65,16 +65,16 @@
   ],
   "stats": [
     {
-      "value": "650M+",
+      "value": "675M+",
       "label": "Impressions generated"
     },
     {
-      "value": "75k",
-      "label": "Avg local views per video"
+      "value": "250K+",
+      "label": "Local followers"
     },
     {
-      "value": "140k+",
-      "label": "Local followers"
+      "value": "315+",
+      "label": "Local restaurant partners"
     }
   ],
   "story": {
@@ -127,6 +127,11 @@
       "name": "Jovana Asprovski",
       "role": "Videographer & Editor",
       "image": "/team/Jovana.png"
+    },
+    {
+      "name": "Kelsie Exley",
+      "role": "Partnership Manager",
+      "image": "/team/Kelsie.png"
     },
     {
       "name": "Mykyta Vasyliev",
