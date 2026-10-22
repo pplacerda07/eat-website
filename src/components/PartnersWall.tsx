@@ -17,33 +17,40 @@ const allLogos = [
     { name: 'Elem', src: '/18. Elem.png' },
     { name: 'Brooklyn Dumpling Shop', src: '/19. Brooklyn Dumpling Shop.png' },
     { name: 'Shipyards Night Market', src: '/20. Shipyards Night Market.png' },
+    { name: 'Time Out Market', src: '/3.Time Out Market.png' },
     { name: 'Brewery & The Beast', src: '/21 Brewery & The Beast.png' },
     { name: 'Le Crocodile', src: '/22. Le Crocodile.png' },
+    { name: 'Mister', src: '/195. Mister.png' },
     { name: 'The Acorn', src: '/23. The Acorn.png' },
     { name: 'Call Me Back', src: '/24. Call Me Back.png' },
     { name: 'Baan Lao', src: '/25. Baan Lao.png' },
     { name: 'Melo Patisserie', src: '/26. Melo Patisserie.png' },
     { name: 'Ciclo Espresso', src: '/27. Ciclo Espresso.png' },
     { name: 'Odd Burger', src: '/28. Odd Burger.png' },
+    { name: 'Grape Vibes', src: "73.Grape Vibes.png" },
     { name: 'Folke', src: '/29. Folke.png' },
     { name: 'Fiorino', src: '/30. Fiorino.png' },
     { name: 'Wildlight Kitchen & Bar', src: '/32. Wildlight Kitchen & Bar.png' },
     { name: 'St. Lawrence', src: '/34. St. Lawrence.png' },
     { name: 'Fanny Bay Oysters', src: '/35. Fanny Bay Oysters.png' },
-    { name: "Steve's Poke", src: "/36. Steve's Poke.png" },
+    { name: "Steve's Poke", src: "/36. Steve’s Poke.png" },
     { name: 'Kozak', src: '/37. Kozak.png' },
     { name: 'Sula Indian Restaurant', src: '/38.  Sula Indian Restaurant.png' },
     { name: 'Di Beppe', src: '/40. Di Beppe.png' },
+    { name: 'Tacofino', src: '/2.Tacofino.png' },
     { name: 'Dockside', src: '/41. Dockside.png' },
+    { name: 'Loam', src: "46.Loam.png" },
     { name: 'Brix & Mortar', src: '/42. Brix & Mortar.png' },
     { name: 'Atlas Steak House', src: '/43. Atlas Steak House.png' },
     { name: 'Bar Asra', src: '/45. Bar Asra.png' },
     { name: 'La Ruota Pizza', src: '/46. La Ruota Pizza.png' },
-    { name: "AJ's Pizza", src: "/47. AJ_s Pizza.png" },
+    { name: 'Yolks', src: "7.Yolks.png" },
+    { name: 'AJs Pizza', src: '/47. AJ_s Pizza.png' },
     { name: 'Grounds for Coffee', src: '/48. Grounds for Coffee.png' },
     { name: 'Soft Peaks', src: '/49. Soft Peaks.png' },
+    { name: 'Slo Coffee', src: '/108. Slo Coffee.png' },
     { name: 'One Under', src: '/50. One Under.png' },
-    { name: "Big Mama & Papa's Pizza", src: "/51. Big Mama & Papa's Pizza.png" },
+    { name: "Big Mama & Papa's Pizza", src: "/51. Big_Mama_&_Papas Pizza.png" },
     { name: 'Park Drive Bar', src: '/52. Park Drive Bar.png' },
     { name: 'FlyOver Vancouver', src: '/53. FlyOver Vancouver.png' },
     { name: '49th Parallel', src: '/54. 49th Parallel.png' },
@@ -52,6 +59,7 @@ const allLogos = [
     { name: 'Earl of Sandwich', src: '/57. Earl of Sandwich.png' },
     { name: 'Barcelos', src: '/59. Barcelos.png' },
     { name: 'Vancouver Cherry Blossom Festival', src: '/60. Vancouver Cherry Blossom Festival.png' },
+    { name: 'Touk', src: "58.Touk.png" },
     { name: 'Kitchen Table Group', src: '/61. Kitchen Table Group.png' },
     { name: 'BC Halal Food Fest', src: '/62. BC Halal Food Fest.png' },
     { name: 'Afghan Kitchen', src: '/63. Afghan Kitchen.png' },
@@ -71,7 +79,7 @@ const allLogos = [
     { name: 'Madame Danh', src: '/79. Madame Danh.png' },
     { name: 'Damaskino Shawarma', src: '/81. Damaskino Shawarma.png' },
     { name: 'Belgard Kitchen', src: '/82. Belgard Kitchen.png' },
-    { name: "Frankie's Jazz Club", src: "/83. Frankie's Jazz Club.png" },
+    { name: "Frankie's Jazz Club", src: "/83. Frankie’s Jazz Club.png" },
     { name: 'Onda by Casereccio', src: '/85. Onda by Casereccio.png' },
     { name: 'Giusti', src: '/86. Giusti.png' },
     { name: 'Robba da Matti', src: '/87. Robba da Matti.png' },
@@ -95,7 +103,6 @@ const allLogos = [
     { name: 'Funk Coffee', src: '/105. Funk Coffee.png' },
     { name: 'Comma Cafe', src: '/106. Comma Cafe.png' },
     { name: 'Little Cafe on Robson', src: '/107. Little Cafe on Robson.png' },
-    { name: 'Slo Coffee', src: '/108. Slo Coffee.png' },
     { name: 'Hooray Cafe & Coffee Lab', src: '/109. Hooray Cafe & Coffee Lab.png' },
     { name: 'Sud Cafe', src: '/110. Sud Cafe.png' },
     { name: 'Mon Paris Bakery', src: '/111. Mon Paris Bakery.png' },
@@ -122,11 +129,11 @@ const allLogos = [
     { name: 'Boteco Brazil', src: '/132. Boteco Brazil.png' },
     { name: 'Coffee Party', src: '/133. Coffee Party.png' },
     { name: 'Collective Goods', src: '/134. Collective Goods.png' },
-    { name: "Donegal's", src: "/135. Donegal_s.png" },
+    { name: 'Donegals', src: '/135. Donegal_s.png' },
     { name: 'Douce Diner', src: '/136. Douce Diner.png' },
     { name: 'Ellipsis', src: '/137. Ellipsis.png' },
     { name: 'Erbil Restaurant', src: '/138. Erbil Restaurant.png' },
-    { name: "Fred's (Kitsilano)", src: "/139. Fred's (Kitsilano).png" },
+    { name: "Fred's Kitsilano", src: "/139. Freds_Kitsilano.png" },
     { name: 'Friendlies', src: '/140. Friendlies.png' },
     { name: "Gigi's", src: "/141. Gigi's.png" },
     { name: "JJ's", src: "/142. JJ_s.png" },
@@ -182,33 +189,120 @@ const allLogos = [
     { name: 'Hahaheri', src: '/192. Hahaheri.png' },
     { name: 'Paratha2Pasta', src: '/193. Paratha2Pasta.png' },
     { name: 'Meetrice', src: '/194. Meetrice.png' },
-    { name: 'Mister', src: '/195. Mister.png' },
     { name: 'Rice Burger', src: '/196. Rice Burger.png' },
     { name: 'Chickpea', src: '/197. Chickpea.png' },
+    { name: 'DoorDash', src: '/1.DoorDash.png' },
+    { name: 'Meridian Farm Market', src: "4.Meridian Farm Market.png" },
+    { name: 'Meat & Bread', src: "5.Meat & Bread.png" },
+    { name: 'Nuba', src: "6.Nuba.png" },
+    { name: 'Trees Coffee', src: "8.Trees Coffee.png" },
+    { name: 'Kobe', src: "9.Kobe.png" },
+    { name: 'Butter Baked Goods', src: "10.Butter Baked Goods.png" },
+    { name: 'Jam Jar', src: "11.Jam Jar.png" },
+    { name: 'Zaatar W Zeit', src: "12.Zaatar W Zeit.png" },
+    { name: 'Pür & Simple', src: "13.Pür & Simple.png" },
+    { name: "Finch's", src: "14.Finch_s.png" },
+    { name: 'Rocky Mountain', src: "15.Rocky Mountain.png" },
+    { name: 'D Spot', src: "16.D Spot.png" },
+    { name: 'Pizza Garden', src: "17.Pizza Garden.png" },
+    { name: 'Key Party', src: "18.Key Party.png" },
+    { name: "Hail Mary's", src: "19.Hail Mary_s.png" },
+    { name: 'Aureliana', src: "20.Aureliana.png" },
+    { name: 'Carlino', src: "21.Carlino.png" },
+    { name: 'Bridge', src: "22.Bridge.png" },
+    { name: 'Luppolo Brewing', src: "23.Luppolo Brewing.png" },
+    { name: 'Pallet', src: "24.Pallet.png" },
+    { name: 'Fresh Solo Pasta', src: "25.Fresh Solo Pasta.tiff" },
+    { name: 'Stock & Supply', src: "26.Stock & Supply.png" },
+    { name: "Cioffi's", src: "27.Cioffi_s.png" },
+    { name: 'Angus T', src: "28.Angus T.png" },
+    { name: 'Four Winds Brewery', src: "29.Four Winds Brewery.png" },
+    { name: "Donegal's", src: "30.Donegal_s.png" },
+    { name: "Tahini's", src: "31.Tahini_s.png" },
+    { name: 'Sula Cafe', src: "32.Sula Cafe.png" },
+    { name: 'Bonta', src: "33.Bonta.png" },
+    { name: 'Alice & Brohm', src: "34.Alice & Brohm.png" },
+    { name: 'Il Corvo', src: "35.Il Corvo.png" },
+    { name: 'Those Indian Guys', src: "36.Those Indian Guys.png" },
+    { name: "Ricardo's", src: "37.Ricardo_s.png" },
+    { name: 'Feast & Fallow', src: "38.Feast & Fallow.png" },
+    { name: 'Holy Shakes', src: "39.Holy Shakes.png" },
+    { name: 'Killer Ice Cream', src: "40.Killer Ice Cream.png" },
+    { name: 'Naan Club', src: "41.Naan Club.png" },
+    { name: 'Tacosaurus', src: "42.Tacosaurus.png" },
+    { name: 'Monzo Burger', src: "43.Monzo Burger.png" },
+    { name: 'VF', src: "45.VF.png" },
+    { name: 'Meros', src: "47.Meros.png" },
+    { name: 'Good9', src: "48.Good9.png" },
+    { name: 'Palate', src: "49.Palate.png" },
+    { name: 'Cockney', src: "50.Cockney.png" },
+    { name: 'Crabapple', src: "51.Crabapple.png" },
+    { name: 'Sushi Hinode', src: "52.Sushi Hinode.png" },
+    { name: 'Indian Affair', src: "53.Indian Affair.png" },
+    { name: 'Istanbul Doner', src: "54.Istanbul Doner.png" },
+    { name: 'Melo Patisserie', src: "55.Melo Patisserie.png" },
+    { name: 'Alchemy Kitchen & Bar', src: "56.Alchemy Kitchen & Bar.webp" },
+    { name: 'La Ruota', src: "57.La Ruota.png" },
+    { name: 'Giusti', src: "59.Giusti.png" },
+    { name: 'L Atelier', src: "60.L_Atelier.png" },
+    { name: 'Yume', src: "61.Yume.png" },
+    { name: 'Float30', src: "62.Float30.png" },
+    { name: 'Puerto Mexican', src: "63.Puerto Mexican.png" },
+    { name: 'Saint St Grill', src: "64.Saint St Grill.png" },
+    { name: 'Tutto Belle', src: "65.Tutto Belle.png" },
+    { name: 'The Garden', src: "66.The Garden.png" },
+    { name: 'Bean and Berry', src: "67.Bean and Berry.png" },
+    { name: 'Dosa Hub', src: "68.Dosa Hub.png" },
+    { name: "Mom's Food Truck", src: "69.Mom_s Food Truck.png" },
+    { name: 'The Sauce', src: "70.The Sauce.png" },
+    { name: 'The Sequel', src: "71.The Sequel.png" },
+    { name: 'The Backyard', src: "72.The Backyard.png" },
+    { name: 'Verandah', src: "74.Verandah.png" },
+    { name: 'Neighbours', src: "/75.Neighbours.png" },
+    { name: 'Karakoram', src: "76.Karakoram.png" },
+    { name: 'Samurai', src: "77.Samurai.png" },
+    { name: 'Squamish Samurai Sushi', src: "78.Squamish Samurai Sushi.png" },
+    { name: 'Ignite Pizzeria', src: "79.Ignite Pizzeria.png" },
+    { name: 'London Fish', src: "80.London Fish.png" },
+    { name: 'Un Pho Get A Bowl', src: "81.Un Pho Get A Bowl.png" },
+    { name: 'Taqueria Jalisco', src: "82.Taqueria Jalisco.png" },
+    { name: 'Hariyali', src: "83.Hariyali.png" },
+    { name: 'Dragon Bowl', src: "84.Dragon Bowl.png" },
+    { name: 'Tocha', src: "85.Tocha.png" },
+    { name: 'MOD Kitchen', src: "86.MOD Kitchen.png" },
+    { name: 'Iamajoun', src: "87.Iamajoun.png" },
+    { name: 'Mnimes', src: "88.Mnimes.png" },
+    { name: 'Broken Seal', src: "89.Broken Seal.png" },
+    { name: 'Indian Bombay', src: "90.Indian Bombay.png" },
+    { name: 'Bombay Masala', src: "91.Bombay Masala.png" },
+    { name: 'G3 Restaurant', src: "92.G3 Restaurant.png" },
+    { name: 'Same Vietnamese', src: "93.Same Vietnamese.png" },
+    { name: 'Abracashaba', src: "94.Abracashaba.png" },
+    { name: 'ROMA Italian North Vancouver', src: "95.ROMA Italian North Vancouver.png" },
+    { name: 'Bevel Restaurant', src: "96.Bevel Restaurant.png" },
+    { name: 'Hungryzus', src: "97.Hungryzus.png" },
+    { name: 'CJH Bistro', src: "98.CJH Bistro.png" },
+    { name: 'Sanjo Sushi', src: "99.Sanjo Sushi.png" },
+    { name: 'TWK', src: "100.TWK.png" },
+    { name: 'No Ne', src: "101.No Ne.png" },
+    { name: 'Eivan', src: "102.Eivan.png" },
 ];
 
 const BATCH_SIZE = 24;
 
-function LogoItem({ logo }: { logo: { name: string; src: string } }) {
-    const [loaded, setLoaded] = useState(false);
+
+function LogoItem({
+    logo,
+    priority = false,
+}: {
+    logo: { name: string; src: string };
+    priority?: boolean;
+}) {
     const [error, setError] = useState(false);
-    const [retryCount, setRetryCount] = useState(0);
 
-    const handleError = () => {
-        if (retryCount < 2) {
-            // Retry loading with a cache-busting parameter
-            setRetryCount((c) => c + 1);
-            setError(false);
-        } else {
-            setError(true);
-        }
-    };
-
-    const imgSrc = retryCount > 0
-        ? `${encodeSrc(logo.src)}?retry=${retryCount}`
-        : encodeSrc(logo.src);
-
-    if (error) return null; // Hide permanently failed images
+    if (error) {
+        return null;
+    }
 
     return (
         <div
@@ -216,15 +310,14 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
             style={{ aspectRatio: '1' }}
         >
             <img
-                src={imgSrc}
+                src={encodeSrc(logo.src)}
                 alt={logo.name}
-                loading="lazy"
+                loading={priority ? 'eager' : 'lazy'}
+                fetchPriority={priority ? 'high' : 'auto'}
                 decoding="async"
-                onLoad={() => setLoaded(true)}
-                onError={handleError}
+                onError={() => setError(true)}
                 className="object-contain w-full h-full hover:opacity-100 transition-opacity duration-500"
                 style={{
-                    opacity: loaded ? 1.0 : 0,
                     maxWidth: '120px',
                     maxHeight: '80px',
                 }}
@@ -233,9 +326,11 @@ function LogoItem({ logo }: { logo: { name: string; src: string } }) {
     );
 }
 
+
 export default function PartnersWall() {
     const [visibleCount, setVisibleCount] = useState(BATCH_SIZE);
     const sentinelRef = useRef<HTMLDivElement>(null);
+
 
     useEffect(() => {
         const sentinel = sentinelRef.current;
@@ -243,25 +338,34 @@ export default function PartnersWall() {
 
         const observer = new IntersectionObserver(
             (entries) => {
-                if (entries[0].isIntersecting) {
+                const entry = entries[0];
+
+                if (entry.isIntersecting) {
                     setVisibleCount((prev) => {
-                        const next = prev + BATCH_SIZE;
-                        if (next >= allLogos.length) {
+                        if (prev >= allLogos.length) {
                             observer.disconnect();
-                            return allLogos.length;
+                            return prev;
                         }
-                        return next;
+
+                        return Math.min(prev + BATCH_SIZE, allLogos.length);
                     });
                 }
             },
-            { rootMargin: '400px' }
+            {
+                rootMargin: '800px 0px',
+                threshold: 0,
+            }
         );
 
         observer.observe(sentinel);
+
         return () => observer.disconnect();
     }, []);
 
-    const visibleLogos = allLogos.slice(0, visibleCount);
+
+    // const visibleLogos = allLogos.slice(0, visibleCount);
+    const visibleLogos = allLogos;
+    console.log('Total:', allLogos.length, 'Visible:', visibleCount);
 
     return (
         <section className="w-full py-16 md:py-24 px-4 md:px-10 lg:px-16" style={{ backgroundColor: '#ffffff' }}>
@@ -290,14 +394,18 @@ export default function PartnersWall() {
             {/* Logo wall grid */}
             <div className="max-w-7xl mx-auto grid grid-cols-3 sm:grid-cols-4 md:grid-cols-5 lg:grid-cols-7 xl:grid-cols-8 gap-6 md:gap-8">
                 {visibleLogos.map((logo, i) => (
-                    <LogoItem key={`${logo.name}-${i}`} logo={logo} />
+                    <LogoItem
+                        key={`${logo.name}-${i}`}
+                        logo={logo}
+                        priority={i < BATCH_SIZE}
+                    />
                 ))}
             </div>
 
             {/* Sentinel for infinite scroll loading */}
-            {visibleCount < allLogos.length && (
+            {/* {visibleCount < allLogos.length && (
                 <div ref={sentinelRef} style={{ height: '1px' }} />
-            )}
+            )} */}
         </section>
     );
 }

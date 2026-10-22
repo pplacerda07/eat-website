@@ -26,11 +26,31 @@ function AnimatedCounter({ value, suffix = '', isFloat = false }: { value: numbe
 }
 
 const videos = [
-    { src: '/v3.mp4', label: '@neighboursrestaurant' },
-    { src: '/video 1 version 2.mp4', label: '@zarakvancouver' },
-    { src: '/video 2 (Version 2).mp4', label: '@botecobrasilcanada' },
-    { src: '/video 2.mp4', label: '@elemvancouver' },
-    { src: '/video 3.mp4', label: '@zarakvancouver' },
+    {
+        src: '/Float30.mp4',
+        heading: 'Float 30',
+        subheading: '2,160,000 views | 50,000+ interactions',
+    },
+    {
+        src: '/Aureliana.mp4',
+        heading: 'Aureliana',
+        subheading: '650,000 views | 43,000+ interactions',
+    },
+    {
+        src: '/SudSoi.mp4',
+        heading: 'Sud Soi',
+        subheading: '478,000 views | 21,000+ interactions',
+    },
+    {
+        src: '/Truck Stop Cafe.mp4',
+        heading: 'Truck Stop Cafe',
+        subheading: '320,000 views | 11,000+ interactions',
+    },
+    {
+        src: '/Mount Pleasant Vintage.mp4',
+        heading: 'Mount Pleasant Vintage',
+        subheading: '993,000 views | 44,000+ interactions',
+    },
 ];
 
 /* Desktop fan — percentage-based instead of fixed px */
@@ -247,9 +267,16 @@ export default function VideoCarousel() {
                                         </div>
                                     )}
 
-                                    <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3 text-[8px] md:text-[9px] text-white/60 uppercase tracking-widest">
-                                        {video.label}
+                                    <div className="absolute top-3 left-3 right-3 md:top-4 md:left-4 md:right-4 z-10 pointer-events-none">
+                                        <div className="text-white text-xs md:text-sm font-semibold leading-tight">
+                                            {video.heading}
+                                        </div>
+
+                                        <div className="mt-1 text-[9px] md:text-[10px] text-white/80 uppercase tracking-widest leading-tight">
+                                            {video.subheading}
+                                        </div>
                                     </div>
+
                                 </div>
                             </motion.div>
                         );
