@@ -22,14 +22,6 @@ const services = [
     },
     {
         number: '03',
-        title: 'Creators',
-        tags: ['Coordination', 'Creator Visits', 'UGC'],
-        description:
-            'We coordinate local content creators to visit your restaurant and produce authentic content on your behalf. We handle everything — you get the visibility.',
-        image: '/3.jpg',
-    },
-    {
-        number: '04',
         title: 'Strategy',
         tags: ['Positioning', 'Creative Direction', 'Messaging'],
         description:
