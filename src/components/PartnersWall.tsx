@@ -377,7 +377,8 @@ export default function PartnersWall() {
                     transition={{ duration: 1.2, ease: [0.16, 1, 0.3, 1] }}
                     className="font-sans text-[12px] uppercase tracking-[0.2em] text-black/30 mb-3"
                 >
-                    {allLogos.length}+ partners and counting
+                    {/* {allLogos.length}+ partners and counting */}
+                    315+ partners and counting
                 </motion.p>
                 <div className="overflow-hidden inline-block">
                     <motion.h1
